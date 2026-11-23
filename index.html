@@ -94,16 +94,67 @@
 .section-jump{display:inline-block;margin-top:18px;color:#dbb977;font:11px 'Space Mono',monospace;letter-spacing:.06em;border-bottom:1px solid #9f824a;padding-bottom:5px}
 @media(max-width:700px){.story-grid,.mission-grid{grid-template-columns:1fr}.founding-panel,.story-card,.mission-card{padding:24px 18px}.chapter-intro{font-size:13px}}
 
+
+/* BLACK LINE: public interactive pilot */
+.bl-shell{border:1px solid #b18a45;background:linear-gradient(145deg,#18140d 0%,#090c10 58%,#090809);padding:clamp(20px,4vw,42px);box-shadow:inset 0 0 48px #d0ab4810}
+.bl-top{display:flex;justify-content:space-between;align-items:center;gap:15px;border-bottom:1px solid #735c36;padding-bottom:19px;flex-wrap:wrap}
+.bl-top strong{font:600 14px 'Space Mono',monospace;color:#edcb82;letter-spacing:.16em}
+.bl-status{font:11px 'Space Mono',monospace;color:#cfb47e;letter-spacing:.07em}
+.bl-stage{font:11px 'Space Mono',monospace;color:#9e8b66;margin-top:20px}
+.bl-body{min-height:290px;padding:20px 0}
+.bl-heading{font:500 clamp(28px,4vw,47px) 'Cormorant Garamond',serif;letter-spacing:.07em;color:#f1d39c;margin:0 0 15px}
+.bl-copy{font-size:14px;line-height:2.1;color:#ded3bb;max-width:670px}
+.bl-inputrow{display:flex;gap:10px;margin-top:20px;max-width:620px}
+.bl-inputrow input{flex:1;min-width:0;background:#050607;border:1px solid #9d7b46;border-radius:0;padding:14px 15px;color:#fff;font:16px 'Noto Serif JP',serif}
+.bl-inputrow button,.bl-controls button{background:#d1ab60;color:#120f0a;border:1px solid #d1ab60;padding:12px 20px;font:700 11px 'Space Mono',monospace;letter-spacing:.06em;cursor:pointer}
+.bl-inputrow button:hover,.bl-controls button:hover{background:#f0d497}
+.bl-feedback{min-height:29px;color:#e2ba70;font:12px 'Noto Serif JP',serif;margin-top:13px}
+.bl-data{border-left:2px solid #b18a45;padding:18px 20px;background:#1c1a15;margin:22px 0;font-size:14px;color:#e6d4b5;line-height:2.2}
+.bl-controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.bl-controls button.secondary{background:transparent;color:#d1ab60}
+.bl-complete{font:600 12px 'Space Mono',monospace;letter-spacing:.13em;color:#edd08f}
+.bl-ribbon{margin:24px 0 0;padding:18px;border:1px dashed #846b3a;color:#b6a788;font-size:12px;line-height:2}
+.bl-hidden{display:none!important}
+@media(max-width:600px){.bl-inputrow{flex-direction:column}.bl-inputrow button{min-height:45px}.bl-shell{padding:22px 17px}.bl-body{min-height:0}.bl-controls button{flex:1}.bl-top strong{font-size:12px}}
+
 </style>
 </head>
 <body>
-<nav><div class="navinner"><a href="#top" class="brand" aria-label="MOSHIMATION ORDER ホーム">MOSHIMATION ORDER<small>OFFICIAL COMMUNICATION CHANNEL</small></a><div class="navlinks"><a href="#manifesto">PHILOSOPHY</a><a href="#principles">ARTICLES</a><a href="#organization">STRUCTURE</a><a href="#transmission">TRANSMISSION</a><a href="#archive">ARCHIVE</a><a href="#directives">DIRECTIVES</a><a class="navcta" href="#join">ENTER THE ORDER ↗</a></div><button class="mobile-toggle" id="mobileToggle" aria-label="メニューを開く" aria-controls="mobileMenu" aria-expanded="false">☰</button></div><div class="mobile-menu" id="mobileMenu"><a href="#manifesto">PHILOSOPHY</a><a href="#principles">ARTICLES</a><a href="#organization">STRUCTURE</a><a href="#transmission">TRANSMISSION</a><a href="#archive">ARCHIVE</a><a href="#directives">DIRECTIVES</a><a href="#story">ORIGIN</a><a href="#missions">MISSIONS</a><a href="#faq">FAQ</a><a href="#join">ENTER THE ORDER ↗</a></div></nav>
+<nav><div class="navinner"><a href="#top" class="brand" aria-label="MOSHIMATION ORDER ホーム">MOSHIMATION ORDER<small>OFFICIAL COMMUNICATION CHANNEL</small></a><div class="navlinks"><a href="#manifesto">PHILOSOPHY</a><a href="#principles">ARTICLES</a><a href="#organization">STRUCTURE</a><a href="#transmission">TRANSMISSION</a><a href="#black-line">BLACK LINE</a><a href="#archive">ARCHIVE</a><a href="#directives">DIRECTIVES</a><a class="navcta" href="#join">ENTER THE ORDER ↗</a></div><button class="mobile-toggle" id="mobileToggle" aria-label="メニューを開く" aria-controls="mobileMenu" aria-expanded="false">☰</button></div><div class="mobile-menu" id="mobileMenu"><a href="#manifesto">PHILOSOPHY</a><a href="#principles">ARTICLES</a><a href="#organization">STRUCTURE</a><a href="#transmission">TRANSMISSION</a><a href="#archive">ARCHIVE</a><a href="#directives">DIRECTIVES</a><a href="#story">ORIGIN</a><a href="#missions">MISSIONS</a><a href="#faq">FAQ</a><a href="#join">ENTER THE ORDER ↗</a></div></nav>
 <main id="top"><header class="hero"><div class="hero-inner"><div><div class="eyebrow">[ SECURE CHANNEL // EST. 2026 ]</div><h1><span>MOSHIMATION</span><span>ORDER</span></h1><div class="rule"></div><p class="jcopy">我々は、応答のない世界にも呼びかける。</p><p class="desc">最初の通信は、たった一言から始まる。<br>世界の沈黙に向けて、今日も信号を送る。<br>これは支配のための結社ではない。対話のための結社である。</p><div class="buttons"><a class="btn gold" href="#transmission">📡 &nbsp; INITIATE CONTACT</a><a class="btn" href="#manifesto">READ THE MANIFESTO</a></div><p class="micro">FIRST CALLER / POLICE HORITIUS<br>FOUNDING DATE: 2026.11.30<br>AUTHORIZATION CODE: MOSHI MOSHI</p></div><img class="hero-emblem" src="assets/emblem.png" alt="アンティーク電話、電波、長い月桂樹の黄金紋章"></div></header>
 <section class="section" id="manifesto"><div class="sectionhead"><span class="num">01 /</span><h2>THE MANIFESTO<small>創設理念</small></h2><div class="goldline"></div></div><div class="manifesto"><p>世界には、<br>声を出せない者がいる。<br>声を出しても、届かない者がいる。<br>声をかけられるのを、待っている者がいる。</p><p class="strong">我々は、その沈黙を見過ごさない。</p><p>「もしもし、聞こえていますか？」</p><p>応答は義務ではない。<br>だが、呼びかける自由は誰にも奪えない。</p><div class="sig">— THE FIRST CALLER, POLICE HORITIUS</div></div></section>
 <section class="section" id="principles"><div class="sectionhead"><span class="num">02 /</span><h2>FIVE ARTICLES<small>五大教義</small></h2><div class="goldline"></div></div><div class="grid3"><article class="doctrine"><div class="index">I.</div><h3>呼びかけよ。</h3><p>声を届けることから、世界は動き始める。</p></article><article class="doctrine"><div class="index">II.</div><h3>沈黙を裁くな。</h3><p>応答する自由と、応答しない自由を尊重する。</p></article><article class="doctrine"><div class="index">III.</div><h3>声を奪うな。</h3><p>異なる声にも、耳を傾ける。</p></article><article class="doctrine"><div class="index">IV.</div><h3>疑うことを恐れるな。</h3><p>教義も始声者も、絶対ではない。</p></article><article class="doctrine"><div class="index">V.</div><h3>最後は笑え。</h3><p>深刻な世界だからこそ、ユーモアを忘れない。</p></article><article class="doctrine"><div class="index">∞</div><h3>認証語は一つ。</h3><p>呼びかけも、応答も。「もしもし」。</p></article></div></section>
 <section class="section" id="organization"><div class="sectionhead"><span class="num">03 /</span><h2>THE ORDER<small>組織構造（構想）</small></h2><div class="goldline"></div></div><div class="org"><div class="role founder"><div class="subtitle">FOUNDER / FIRST CALLER</div><div class="rtitle">始声者 — Police Horitius</div><p>理念の象徴・最初の通信の発信者</p></div><div class="role"><div class="subtitle">GUARDIAN</div><div class="rtitle">聴守官</div><p>理念と秩序を守る</p></div><div class="role"><div class="subtitle">MESSENGER</div><div class="rtitle">伝声官</div><p>通信と企画を届ける</p></div><div class="role"><div class="subtitle">RESPONDER</div><div class="rtitle">応声者</div><p>呼びかけを自由につなぐ</p></div></div><p class="hint">※階級は物語上の役割です。人の優劣や服従関係を意味しません。役職の実際の任命状況は未確認です。</p></section>
 <section class="section" id="transmission"><div class="sectionhead"><span class="num">04 /</span><h2>SECURE TRANSMISSION<small>内部通信端末</small></h2><div class="goldline"></div></div><div class="transmission"><div class="status">● CHANNEL OPEN &nbsp; / &nbsp; LOCAL DEMONSTRATION &nbsp; / &nbsp; MO-001</div><div class="terminal" id="screen" aria-live="polite"><p>&gt; SIGNAL DETECTED</p><p>&gt; SOURCE: MOSHIMATION ORDER</p><p class="muted">&gt; 認証語を入力してください。</p><p class="green">&gt; _</p></div><form class="termrow" id="termForm"><input id="code" maxlength="32" placeholder="認証語を入力…" autocomplete="off" aria-label="認証語"><button class="btn gold" type="submit">送信 / TRANSMIT</button></form><p class="hint">この端末は演出用です。入力内容は送信・保存されません。正式な入団登録機能はありません。</p></div></section>
 
+<section class="section" id="black-line">
+<div class="sectionhead"><span class="num">BL /</span><h2>BLACK LINE<small>機密通信局｜公開体験版</small></h2><div class="goldline"></div></div>
+<p class="chapter-intro">公式サイトの隠された回線に接続し、認証語を送信して、機密記録を解読する。これは誰でも遊べる公開体験版。Xサブスクリプションの加入確認や課金機能ではありません。</p>
+<div class="bl-shell" id="blApp">
+<div class="bl-top"><strong>◈ BLACK LINE / PILOT 001</strong><span class="bl-status" id="blStatus">● CHANNEL LOCKED</span></div>
+<div class="bl-stage" id="blStage">STAGE 01 / 03 — AUTHENTICATION</div>
+<div class="bl-body">
+<div id="blStep1">
+<h3 class="bl-heading">INTERCEPTED SIGNAL</h3>
+<p class="bl-copy">中央通信局から暗号回線を検出した。<br>最初の通信は、いつも同じ言葉から始まる。<br>本結社の認証語を入力せよ。</p>
+<form class="bl-inputrow" id="blAuthForm"><input id="blAuth" maxlength="32" placeholder="認証語を入力" aria-label="BLACK LINE 認証語" autocomplete="off" required><button type="submit">TRANSMIT</button></form>
+</div>
+<div id="blStep2" class="bl-hidden">
+<h3 class="bl-heading">CLASSIFIED / MO-BL-001</h3>
+<div class="bl-data">【傍受記録】<br>発令者は最初の呼びかけを行う者。<br>教義は絶対ではなく、始めた者も疑われてよい。<br>問：その発令者の日本語の役職名を答えよ。</div>
+<p class="bl-copy">ヒント：公式サイトの「THE ORDER」に記された役職。</p>
+<form class="bl-inputrow" id="blPuzzleForm"><input id="blAnswer" maxlength="32" placeholder="役職名を入力" aria-label="BLACK LINE 解読回答" autocomplete="off" required><button type="submit">DECODE</button></form>
+</div>
+<div id="blStep3" class="bl-hidden">
+<p class="bl-complete">◈ SIGNAL AUTHENTICATED / DOCUMENT DECLASSIFIED</p>
+<h3 class="bl-heading">FIRST CONTACT COMPLETE</h3>
+<div class="bl-data">【解読された中央通達】<br>最初の呼びかけは、世界を支配するためではない。<br>誰かの存在を確かめるためだ。<br><br>諸君、次の通信を待て。<br><strong>もしもし。</strong><br><small>— Police Horitius / First Caller</small></div>
+<div class="bl-controls"><button type="button" id="blCopy">機密文をコピー</button><button type="button" id="blReset" class="secondary">RESTART</button></div>
+</div>
+<p class="bl-feedback" id="blFeedback" role="status" aria-live="polite"></p>
+</div>
+<div class="bl-ribbon">[ PUBLIC PILOT NOTICE ] この演出はブラウザー内で完結します。入力内容のサーバー送信・保存は行いません。合言葉は秘密の会員認証ではなく、謎解きの入口です。Xサブスクは申請中のため、有料限定回線は未提供です。</div>
+</div></section>
 <section class="section" id="archive"><div class="sectionhead"><span class="num">05 /</span><h2>TRANSMISSION ARCHIVE<small>公式通信記録</small></h2><div class="goldline"></div></div>
 <div class="archive-list">
 <article class="archive-entry"><div class="tag">MO-001 / CHARTER</div><div><h3>黄金紋章制定通達</h3><p>アンティーク通信機、三重電波、長い月桂樹。MOSHIMATION ORDER の象徴を定める創作上の内部通達。</p></div></article>
@@ -163,5 +214,18 @@
     catch(e){result.textContent='自動コピーできませんでした。ブラウザーの権限をご確認ください。';}
   });
 })();
+
+(function(){
+ const root=document.getElementById('blApp'); if(!root)return;
+ const steps=[document.getElementById('blStep1'),document.getElementById('blStep2'),document.getElementById('blStep3')];
+ const status=document.getElementById('blStatus'),stage=document.getElementById('blStage'),feedback=document.getElementById('blFeedback');
+ const normalize=(s)=>String(s||'').replace(/[\\s　]/g,'').normalize('NFKC');
+ function show(i){steps.forEach((el,n)=>el.classList.toggle('bl-hidden',n!==i));stage.textContent=['STAGE 01 / 03 — AUTHENTICATION','STAGE 02 / 03 — DECRYPTION','STAGE 03 / 03 — TRANSMISSION COMPLETE'][i];status.textContent=['● CHANNEL LOCKED','● CHANNEL DECRYPTING','● SIGNAL ACCEPTED'][i];feedback.textContent='';}
+ document.getElementById('blAuthForm').addEventListener('submit',e=>{e.preventDefault();if(normalize(document.getElementById('blAuth').value)==='もしもし'){show(1);document.getElementById('blAnswer').focus();}else feedback.textContent='SIGNAL REJECTED — 認証語が一致しません。';});
+ document.getElementById('blPuzzleForm').addEventListener('submit',e=>{e.preventDefault();const v=normalize(document.getElementById('blAnswer').value);if(v==='始声者'||v.toLowerCase()==='firstcaller'){show(2);}else feedback.textContent='DECODE FAILED — 「THE ORDER」の役職を確認せよ。';});
+ document.getElementById('blReset').addEventListener('click',()=>{document.getElementById('blAuth').value='';document.getElementById('blAnswer').value='';show(0);});
+ document.getElementById('blCopy').addEventListener('click',async()=>{const msg='【MOSHIMATION ORDER｜BLACK LINE / MO-BL-001】\\n最初の呼びかけは、世界を支配するためではない。\\n誰かの存在を確かめるためだ。\\nもしもし。\\n— Police Horitius / First Caller';try{await navigator.clipboard.writeText(msg);feedback.textContent='COPIED — 投稿や送信は行われていません。';}catch(e){feedback.textContent='コピーできませんでした。ブラウザーの権限をご確認ください。';}});
+})();
+
 </script>
 </body></html>
