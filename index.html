@@ -76,10 +76,28 @@
   .hero .buttons .btn{width:100%}
 }
 
+
+/* Expanded site content: declaration, missions, participation and FAQ */
+.chapter-intro{max-width:760px;color:#bfb4a0;font-size:14px;line-height:2.2;margin:-8px 0 28px}
+.founding-panel{border:1px solid #82683f;background:linear-gradient(125deg,#201a11,#090b0e);padding:30px;margin:32px 0}
+.founding-panel strong{display:block;font:500 clamp(30px,5vw,48px) 'Cormorant Garamond',serif;color:#edcb88;letter-spacing:.1em;line-height:1.2}
+.founding-panel p{font-size:13px;color:#c6baa5;margin:12px 0 0}
+.story-grid,.mission-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.story-card,.mission-card{border:1px solid #69553777;padding:27px;background:#12110f;min-width:0}
+.story-card .eyebrow,.mission-card .eyebrow{font-size:10px}
+.story-card h3,.mission-card h3{color:#e6cb94;font-size:21px;margin:11px 0}
+.story-card p,.mission-card p{color:#bdb09b;font-size:13px;line-height:2}
+.story-card small,.mission-card small{font:10px 'Space Mono',monospace;letter-spacing:.08em;color:#c7aa73}
+.mission-card{background:linear-gradient(140deg,#1a160f,#0c0d0e)}
+.mission-notice{margin-top:18px;padding:15px 20px;border-left:2px solid #d6b36c;color:#bcb1a1;font-size:12px;background:#17140e}
+.faq{display:grid;gap:10px}.faq details{border:1px solid #69553691;background:#12110e}.faq summary{list-style:none;cursor:pointer;padding:20px 24px;color:#e8d1a4;font-size:15px;font-weight:600}.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:"+";float:right;color:#ccad71;font:24px Georgia,serif}.faq details[open] summary:after{content:"−"}.faq details p{margin:0;padding:0 24px 21px;color:#bfb4a4;font-size:13px;line-height:2}
+.section-jump{display:inline-block;margin-top:18px;color:#dbb977;font:11px 'Space Mono',monospace;letter-spacing:.06em;border-bottom:1px solid #9f824a;padding-bottom:5px}
+@media(max-width:700px){.story-grid,.mission-grid{grid-template-columns:1fr}.founding-panel,.story-card,.mission-card{padding:24px 18px}.chapter-intro{font-size:13px}}
+
 </style>
 </head>
 <body>
-<nav><div class="navinner"><a href="#top" class="brand" aria-label="MOSHIMATION ORDER ホーム">MOSHIMATION ORDER<small>OFFICIAL COMMUNICATION CHANNEL</small></a><div class="navlinks"><a href="#manifesto">PHILOSOPHY</a><a href="#principles">ARTICLES</a><a href="#organization">STRUCTURE</a><a href="#transmission">TRANSMISSION</a><a href="#archive">ARCHIVE</a><a href="#directives">DIRECTIVES</a><a class="navcta" href="#join">ENTER THE ORDER ↗</a></div><button class="mobile-toggle" id="mobileToggle" aria-label="メニューを開く" aria-controls="mobileMenu" aria-expanded="false">☰</button></div><div class="mobile-menu" id="mobileMenu"><a href="#manifesto">PHILOSOPHY</a><a href="#principles">ARTICLES</a><a href="#organization">STRUCTURE</a><a href="#transmission">TRANSMISSION</a><a href="#archive">ARCHIVE</a><a href="#directives">DIRECTIVES</a><a href="#join">ENTER THE ORDER ↗</a></div></nav>
+<nav><div class="navinner"><a href="#top" class="brand" aria-label="MOSHIMATION ORDER ホーム">MOSHIMATION ORDER<small>OFFICIAL COMMUNICATION CHANNEL</small></a><div class="navlinks"><a href="#manifesto">PHILOSOPHY</a><a href="#principles">ARTICLES</a><a href="#organization">STRUCTURE</a><a href="#transmission">TRANSMISSION</a><a href="#archive">ARCHIVE</a><a href="#directives">DIRECTIVES</a><a class="navcta" href="#join">ENTER THE ORDER ↗</a></div><button class="mobile-toggle" id="mobileToggle" aria-label="メニューを開く" aria-controls="mobileMenu" aria-expanded="false">☰</button></div><div class="mobile-menu" id="mobileMenu"><a href="#manifesto">PHILOSOPHY</a><a href="#principles">ARTICLES</a><a href="#organization">STRUCTURE</a><a href="#transmission">TRANSMISSION</a><a href="#archive">ARCHIVE</a><a href="#directives">DIRECTIVES</a><a href="#story">ORIGIN</a><a href="#missions">MISSIONS</a><a href="#faq">FAQ</a><a href="#join">ENTER THE ORDER ↗</a></div></nav>
 <main id="top"><header class="hero"><div class="hero-inner"><div><div class="eyebrow">[ SECURE CHANNEL // EST. 2026 ]</div><h1><span>MOSHIMATION</span><span>ORDER</span></h1><div class="rule"></div><p class="jcopy">我々は、応答のない世界にも呼びかける。</p><p class="desc">最初の通信は、たった一言から始まる。<br>世界の沈黙に向けて、今日も信号を送る。<br>これは支配のための結社ではない。対話のための結社である。</p><div class="buttons"><a class="btn gold" href="#transmission">📡 &nbsp; INITIATE CONTACT</a><a class="btn" href="#manifesto">READ THE MANIFESTO</a></div><p class="micro">FIRST CALLER / POLICE HORITIUS<br>FOUNDING DATE: 2026.11.30<br>AUTHORIZATION CODE: MOSHI MOSHI</p></div><img class="hero-emblem" src="assets/emblem.png" alt="アンティーク電話、電波、長い月桂樹の黄金紋章"></div></header>
 <section class="section" id="manifesto"><div class="sectionhead"><span class="num">01 /</span><h2>THE MANIFESTO<small>創設理念</small></h2><div class="goldline"></div></div><div class="manifesto"><p>世界には、<br>声を出せない者がいる。<br>声を出しても、届かない者がいる。<br>声をかけられるのを、待っている者がいる。</p><p class="strong">我々は、その沈黙を見過ごさない。</p><p>「もしもし、聞こえていますか？」</p><p>応答は義務ではない。<br>だが、呼びかける自由は誰にも奪えない。</p><div class="sig">— THE FIRST CALLER, POLICE HORITIUS</div></div></section>
 <section class="section" id="principles"><div class="sectionhead"><span class="num">02 /</span><h2>FIVE ARTICLES<small>五大教義</small></h2><div class="goldline"></div></div><div class="grid3"><article class="doctrine"><div class="index">I.</div><h3>呼びかけよ。</h3><p>声を届けることから、世界は動き始める。</p></article><article class="doctrine"><div class="index">II.</div><h3>沈黙を裁くな。</h3><p>応答する自由と、応答しない自由を尊重する。</p></article><article class="doctrine"><div class="index">III.</div><h3>声を奪うな。</h3><p>異なる声にも、耳を傾ける。</p></article><article class="doctrine"><div class="index">IV.</div><h3>疑うことを恐れるな。</h3><p>教義も始声者も、絶対ではない。</p></article><article class="doctrine"><div class="index">V.</div><h3>最後は笑え。</h3><p>深刻な世界だからこそ、ユーモアを忘れない。</p></article><article class="doctrine"><div class="index">∞</div><h3>認証語は一つ。</h3><p>呼びかけも、応答も。「もしもし」。</p></article></div></section>
@@ -99,6 +117,34 @@
 <div class="directive-grid"><article><div class="eyebrow">ARTICLE 01</div><h3>FIRST CONTACT</h3><p>最初の呼びかけは、常に「もしもし」。返答もまた「もしもし」。</p></article><article><div class="eyebrow">ARTICLE 02</div><h3>RIGHT TO SILENCE</h3><p>応答、参加、離脱は自由。沈黙や意見の相違を責めない。</p></article><article><div class="eyebrow">ARTICLE 03</div><h3>OPEN RECORD</h3><p>公式文書と創作設定を区別し、未確認の活動実績を事実として公表しない。</p></article></div>
 <div class="dispatch"><div><span class="eyebrow">[ SIGNAL PACKAGE ]</span><h3>TRANSMISSION 001</h3><p>最初の通信文を取得する。外部への投稿は自動で行われない。</p></div><button class="btn" type="button" id="copySignal">通信文をコピー</button></div><p class="copy-result" id="copyResult" role="status" aria-live="polite"></p>
 </section>
+<section class="section" id="story">
+<div class="sectionhead"><span class="num">07 /</span><h2>ORIGIN &amp; PURPOSE<small>創設の物語</small></h2><div class="goldline"></div></div>
+<p class="chapter-intro">人類は遠くの星へ信号を送る。しかし、すぐ隣にいる誰かの声を聞き逃すこともある。MOSHIMATION ORDERは、その矛盾を少しだけ笑いながら、通信という行為を考える架空の結社である。</p>
+<div class="founding-panel"><span class="eyebrow">FOUNDING DATE / OFFICIAL DESIGNATION</span><strong>30 NOVEMBER 2026</strong><p>創立予定日：2026年11月30日。始声者は Police Horitius。組織の歴史を未来に向けて綴るための起点として、この日を制定した。</p></div>
+<div class="story-grid">
+<article class="story-card"><span class="eyebrow">THE FIRST CALL</span><h3>なぜ「もしもし」なのか。</h3><p>それは相手を説得する言葉ではない。まず声が届くかを確かめる、最も小さな問いかけ。呼びかける者も、返事をする者も、同じ認証語を使う。</p><small>CALL SIGN — MOSHI MOSHI</small></article>
+<article class="story-card"><span class="eyebrow">THE INSIGNIA</span><h3>三つの象徴。</h3><p>手回し式アンティーク電話は「最初の一声」、三重電波は「広がる呼びかけ」、長い月桂樹は「対話を守る意思」を表す。黒と金は本結社の意匠である。</p><small>TELEPHONE / SIGNAL / LAUREL</small></article>
+</div></section>
+<section class="section" id="missions">
+<div class="sectionhead"><span class="num">08 /</span><h2>COMMUNICATION MISSIONS<small>通信活動の構想</small></h2><div class="goldline"></div></div>
+<p class="chapter-intro">参加者が受け身にならず、自分の声で世界観を育てられるように。以下は今後の実施候補であり、実施済みの企画や活動成果ではない。</p>
+<div class="mission-grid">
+<article class="mission-card"><span class="eyebrow">MISSION / 001</span><h3>FIRST CALL</h3><p>一日のどこかで「もしもし」と呼びかける。挨拶の相手を増やす、小さな通信実験。</p><small>STATUS: PROPOSED</small></article>
+<article class="mission-card"><span class="eyebrow">MISSION / 002</span><h3>WORLD TRANSMISSION</h3><p>世界の文化や通信をテーマに、ユーモアのある公開メッセージを制作する。著名人への大量メンションは行わない。</p><small>STATUS: PROPOSED</small></article>
+<article class="mission-card"><span class="eyebrow">MISSION / 003</span><h3>THE SILENT LINE</h3><p>返事を求めないメッセージを考える日。発言する自由と、沈黙する自由を体験する。</p><small>STATUS: PROPOSED</small></article>
+<article class="mission-card"><span class="eyebrow">MISSION / 004</span><h3>THE SIGNAL ARCHIVE</h3><p>許可を得た名言、迷言、交流の記録をアーカイブ化する。引用・公開前の同意を重視する。</p><small>STATUS: PROPOSED</small></article>
+</div><div class="mission-notice">中央通信局の活動計画は構想段階です。実施日・担当者・参加人数は現時点で確定していません。</div>
+<a class="section-jump" href="#join">参加方法を見る ↗</a></section>
+<section class="section" id="faq">
+<div class="sectionhead"><span class="num">09 /</span><h2>FREQUENTLY ASKED<small>入団・通信に関するFAQ</small></h2><div class="goldline"></div></div>
+<div class="faq">
+<details><summary>MOSHIMATION ORDERとは何ですか？</summary><p>哲学・通信・ユーモアをテーマにした、架空の秘密通信結社を演出する創作コミュニティです。実在の宗教法人、歴史上の友愛団体、政府機関とは関係ありません。</p></details>
+<details><summary>入団には審査や費用が必要ですか？</summary><p>現在、正式な会員登録や審査、会費の仕組みはありません。Xの公開リストを閲覧し、自由に交流できます。リストの閲覧やフォローは会員資格の証明ではありません。</p></details>
+<details><summary>「もしもし」と返信しないといけませんか？</summary><p>いいえ。応答は任意です。沈黙を裁かないことは、組織理念の中心にあります。呼びかけも応答も、使う言葉は「もしもし」です。</p></details>
+<details><summary>階級や役職は実在しますか？</summary><p>始声者 Police Horitius を中心とした役職設定はありますが、ほかの役職は構想段階です。階級は創作上の役割で、人間の優劣や服従義務を意味しません。</p></details>
+<details><summary>通信端末は本当にメッセージを送りますか？</summary><p>いいえ。現在の認証端末はページ内で動作する演出です。入力内容を外部に送信したり、保存したりする会員システムではありません。</p></details>
+<details><summary>創立日はいつですか？</summary><p>制定された創立年月日は2026年11月30日です。現時点では創立予定日として扱っています。</p></details>
+</div></section>
 <section class="section" id="join"><div class="join"><div><div class="eyebrow">[ OPEN CHANNEL / VOLUNTARY PARTICIPATION ]</div><h3>ANSWER THE CALL.</h3><p>通信を受信した者へ。<br>参加も沈黙も、あなたの自由だ。</p><small>Xの公開リストへ移動します。閲覧・フォローは正式な入団登録ではありません。</small></div><a class="btn gold" href="https://x.com/i/lists/2123885725460627471" target="_blank" rel="noopener noreferrer">OPEN THE X LIST ↗</a></div>
 <div class="protocol"><div class="step"><span>01 / LISTEN</span><h3>呼びかけを受信する</h3><p>理念と五大教義を読み、活動の世界観を知る。</p></div><div class="step"><span>02 / RESPOND</span><h3>「もしもし」と応答する</h3><p>Xでの交流や投稿への返信は自由。応答しなくても構わない。</p></div><div class="step"><span>03 / CONNECT</span><h3>自由に交流する</h3><p>他者の沈黙や異論を尊重し、無理な勧誘・大量メンションは行わない。</p></div></div>
 <p class="privacy">このサイトは架空の秘密結社をテーマにした創作コミュニティの紹介ページです。外部アカウントとの連携、会員データの収集、決済、正式入団審査は実装していません。</p>
