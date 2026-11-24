@@ -115,6 +115,19 @@
 .bl-complete{font:600 12px 'Space Mono',monospace;letter-spacing:.13em;color:#edd08f}
 .bl-ribbon{margin:24px 0 0;padding:18px;border:1px dashed #846b3a;color:#b6a788;font-size:12px;line-height:2}
 .bl-hidden{display:none!important}
+.bl-freqrow{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-top:22px;font:12px 'Space Mono',monospace;color:#cfb47e;letter-spacing:.07em}
+.bl-freqrow .bl-dec{color:#e2ba70}
+.bl-range{width:100%;accent-color:#d1ab60;margin:12px 0 4px;cursor:pointer}
+.bl-bar{height:10px;border:1px solid #9d7b46;background:#050607;margin:10px 0}
+.bl-bar>div{height:100%;width:0%;background:linear-gradient(90deg,#9d7b46,#f0d497)}
+.bl-signal{font:15px 'Space Mono',monospace;letter-spacing:.05em;line-height:2.1;color:#e6d4b5;min-height:3.4em;word-break:break-all;margin:10px 0}
+.bl-locked{color:#edd08f;font-weight:700;letter-spacing:.1em}
+.bl-pieces{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.bl-frag{border:1px solid #9d7b46;background:#1c1a15;color:#e6d4b5;padding:10px 12px;font-size:14px;cursor:pointer}
+.bl-frag:hover{border-color:#d1ab60}
+.bl-frag.used{opacity:.35;text-decoration:line-through;cursor:default}
+.bl-controls a.bl-share{background:#d1ab60;color:#120f0a;border:1px solid #d1ab60;padding:12px 20px;font:700 11px 'Space Mono',monospace;letter-spacing:.06em;text-decoration:none;display:inline-block}
+.bl-controls a.bl-share:hover{background:#f0d497}
 @media(max-width:600px){.bl-inputrow{flex-direction:column}.bl-inputrow button{min-height:45px}.bl-shell{padding:22px 17px}.bl-body{min-height:0}.bl-controls button{flex:1}.bl-top strong{font-size:12px}}
 
 </style>
@@ -149,7 +162,35 @@
 <p class="bl-complete">◈ SIGNAL AUTHENTICATED / DOCUMENT DECLASSIFIED</p>
 <h3 class="bl-heading">FIRST CONTACT COMPLETE</h3>
 <div class="bl-data">【解読された中央通達】<br>最初の呼びかけは、世界を支配するためではない。<br>誰かの存在を確かめるためだ。<br><br>諸君、次の通信を待て。<br><strong>もしもし。</strong><br><small>— Police Horitius / First Caller</small></div>
-<div class="bl-controls"><button type="button" id="blCopy">機密文をコピー</button><button type="button" id="blReset" class="secondary">RESTART</button></div>
+<div class="bl-controls"><button type="button" id="blCopy">機密文をコピー</button><button type="button" id="blToStage2">次の回線を開く — STAGE 02</button><button type="button" id="blReset" class="secondary">RESTART</button></div>
+</div>
+<div id="blStep4" class="bl-hidden">
+<h3 class="bl-heading">FREQUENCY TUNE</h3>
+<p class="bl-copy">傍受回線には、まだ暗号化された通信文が残っている。<br>周波数を合わせて、信号を復号せよ。正しい周波数に近づくほど、文字が復元される。</p>
+<div class="bl-freqrow"><span>FREQUENCY — <span id="blFreqLabel">10.00</span> MHz</span><span class="bl-dec">復号率 <span id="blPct">0</span>%</span></div>
+<input type="range" class="bl-range" id="blFreq" min="10" max="12" step="0.01" value="10" aria-label="周波数スライダー">
+<div class="bl-bar"><div id="blBar"></div></div>
+<p class="bl-signal" id="blSignal"></p>
+<p class="bl-feedback" id="blLockMsg" role="status" aria-live="polite"></p>
+<div class="bl-controls"><button type="button" id="blHintBtn" class="secondary">ヒントを見る（1/3）</button><button type="button" id="blToStage3" class="bl-hidden">次の通信へ進む — STAGE 03</button></div>
+<p class="bl-feedback" id="blHint"></p>
+</div>
+<div id="blStep5" class="bl-hidden">
+<h3 class="bl-heading">THE LAST MESSAGE</h3>
+<p class="bl-copy">STAGE 02で復号した断片を、正しい順番に並べて最終メッセージを完成させよ。</p>
+<p class="bl-stage">残りピース: <span id="blRemain">5</span> / 5</p>
+<div class="bl-pieces" id="blPieces"></div>
+<p class="bl-copy">いまの並び:</p>
+<p class="bl-signal" id="blAnswerSeq"></p>
+<div class="bl-controls"><button type="button" id="blFragReset" class="secondary">並び直す</button></div>
+<p class="bl-feedback" id="blStage3Msg" role="status" aria-live="polite"></p>
+</div>
+<div id="blStep6" class="bl-hidden">
+<p class="bl-complete">◈ RECEPTION COMPLETE / ALL STAGES CLEAR</p>
+<h3 class="bl-heading">受信完了</h3>
+<div class="bl-data"><br>もしもし、聞こえていますか。声は届かなくても、呼びかける自由は誰にも奪えない。</div>
+<div class="bl-controls"><a class="bl-share" id="blShare" href="https://x.com/intent/post?text=%E3%82%82%E3%81%97%E3%82%82%E3%81%97%E3%80%81%E5%8F%97%E4%BF%A1%E5%AE%8C%E4%BA%86%E3%80%82BLACK%20LINE%E3%82%92%E3%82%AF%E3%83%AA%E3%82%A2%E3%81%97%E3%81%9F%E3%80%82%23%E3%82%82%E3%81%97%E3%82%82%E3%81%97%E5%8F%97%E4%BF%A1%E4%B8%AD" target="_blank" rel="noopener">Xでシェアする</a><button type="button" id="blResetAll" class="secondary">RESTART</button></div>
+<p class="bl-copy">シェアは、自分の意思で投稿するものです。外部への投稿は自動で行われません。</p>
 </div>
 <p class="bl-feedback" id="blFeedback" role="status" aria-live="polite"></p>
 </div>
@@ -217,15 +258,78 @@
 
 (function(){
  const root=document.getElementById('blApp'); if(!root)return;
- const steps=[document.getElementById('blStep1'),document.getElementById('blStep2'),document.getElementById('blStep3')];
+ const steps=[document.getElementById('blStep1'),document.getElementById('blStep2'),document.getElementById('blStep3'),document.getElementById('blStep4'),document.getElementById('blStep5'),document.getElementById('blStep6')];
  const status=document.getElementById('blStatus'),stage=document.getElementById('blStage'),feedback=document.getElementById('blFeedback');
  const normalize=(s)=>String(s||'').replace(/[\\s　]/g,'').normalize('NFKC');
- function show(i){steps.forEach((el,n)=>el.classList.toggle('bl-hidden',n!==i));stage.textContent=['STAGE 01 / 03 — AUTHENTICATION','STAGE 02 / 03 — DECRYPTION','STAGE 03 / 03 — TRANSMISSION COMPLETE'][i];status.textContent=['● CHANNEL LOCKED','● CHANNEL DECRYPTING','● SIGNAL ACCEPTED'][i];feedback.textContent='';}
+ function show(i){steps.forEach((el,n)=>el.classList.toggle('bl-hidden',n!==i));stage.textContent=['STAGE 01 / 03 — AUTHENTICATION','STAGE 01 / 03 — DECRYPTION','STAGE 01 / 03 — FIRST CONTACT COMPLETE','STAGE 02 / 03 — FREQUENCY TUNE','STAGE 03 / 03 — THE LAST MESSAGE','STAGE 03 / 03 — TRANSMISSION COMPLETE'][i];status.textContent=['● CHANNEL LOCKED','● CHANNEL DECRYPTING','● SIGNAL ACCEPTED','● TUNING','● DECODING','● SIGNAL ACCEPTED'][i];feedback.textContent='';}
  document.getElementById('blAuthForm').addEventListener('submit',e=>{e.preventDefault();if(normalize(document.getElementById('blAuth').value)==='もしもし'){show(1);document.getElementById('blAnswer').focus();}else feedback.textContent='SIGNAL REJECTED — 認証語が一致しません。';});
  document.getElementById('blPuzzleForm').addEventListener('submit',e=>{e.preventDefault();const v=normalize(document.getElementById('blAnswer').value);if(v==='始声者'||v.toLowerCase()==='firstcaller'){show(2);}else feedback.textContent='DECODE FAILED — 「THE ORDER」の役職を確認せよ。';});
  document.getElementById('blReset').addEventListener('click',()=>{document.getElementById('blAuth').value='';document.getElementById('blAnswer').value='';show(0);});
  document.getElementById('blCopy').addEventListener('click',async()=>{const msg='【MOSHIMATION ORDER｜BLACK LINE / MO-BL-001】\\n最初の呼びかけは、世界を支配するためではない。\\n誰かの存在を確かめるためだ。\\nもしもし。\\n— Police Horitius / First Caller';try{await navigator.clipboard.writeText(msg);feedback.textContent='COPIED — 投稿や送信は行われていません。';}catch(e){feedback.textContent='コピーできませんでした。ブラウザーの権限をご確認ください。';}});
+ document.getElementById('blToStage2').addEventListener('click',()=>{show(3);renderFreq();});
+ const TARGET=11.30;
+ const PLAIN='もしもし、聞こえていますか。こちらはMOSHIMATION ORDER。声は届かなくても、呼びかける自由は誰にも奪えない。';
+ const NOISE='アイウエオカキクケコサシスセソタチツテト0123456789#%&@';
+ const freqEl=document.getElementById('blFreq'),freqLabel=document.getElementById('blFreqLabel'),pctEl=document.getElementById('blPct'),barEl=document.getElementById('blBar'),signalEl=document.getElementById('blSignal'),lockMsg=document.getElementById('blLockMsg'),toStage3=document.getElementById('blToStage3');
+ const hintBtn=document.getElementById('blHintBtn'),hintEl=document.getElementById('blHint');
+ const hints=['ヒント1: 正しい周波数は、サイトのどこかにある日付に隠されている。','ヒント2: 創立日は 2026年11月30日。その月日が周波数だ。','ヒント3: 答えは 11.30 MHz。±0.05 MHz の範囲で SIGNAL LOCKED になる。'];
+ let hintCount=0,locked=false;
+ function hash(i){const x=Math.sin(i*127.1+311.7)*43758.5453;return x-Math.floor(x);}
+ function renderFreq(){
+  const f=parseFloat(freqEl.value);
+  freqLabel.textContent=f.toFixed(2);
+  const closeness=Math.max(0,1-Math.abs(f-TARGET)/1.0);
+  const pct=Math.round(Math.pow(closeness,1.5)*100);
+  pctEl.textContent=pct;
+  barEl.style.width=pct+'%';
+  let out='';
+  for(let i=0;i<PLAIN.length;i++){out+=(hash(i)<pct/100)?PLAIN[i]:NOISE[Math.floor(hash(i+1000)*NOISE.length)];}
+  signalEl.textContent=out;
+  if(Math.abs(f-TARGET)<=0.05){
+   lockMsg.innerHTML='<span class="bl-locked">SIGNAL LOCKED / STAGE CLEAR</span>';
+   locked=true;
+   toStage3.classList.remove('bl-hidden');
+  }else{
+   lockMsg.textContent=(pct>=70)?'近い。もう少し。':(pct>=40)?'信号が見え始めた。':'';
+   if(!locked)toStage3.classList.add('bl-hidden');
+  }
+ }
+ freqEl.addEventListener('input',renderFreq);
+ hintBtn.addEventListener('click',()=>{if(hintCount<hints.length){hintEl.textContent=hints[hintCount];hintCount++;hintBtn.textContent=hintCount>=hints.length?'ヒントは以上':'ヒントを見る（'+(hintCount+1)+'/3）';if(hintCount>=hints.length)hintBtn.disabled=true;}});
+ toStage3.addEventListener('click',()=>{show(4);});
+ const FRAGS=['もしもし、','聞こえていますか。','声は届かなくても、','呼びかける自由は','誰にも奪えない。'];
+ const ORDER=[2,0,4,1,3];
+ const piecesEl=document.getElementById('blPieces'),answerSeqEl=document.getElementById('blAnswerSeq'),remainEl=document.getElementById('blRemain'),stage3Msg=document.getElementById('blStage3Msg');
+ let picked=[];
+ ORDER.forEach(function(idx){
+  const s=document.createElement('span');
+  s.className='bl-frag';
+  s.textContent=FRAGS[idx];
+  s.addEventListener('click',function(){
+   if(s.classList.contains('used')||picked.length>=5)return;
+   s.classList.add('used');
+   picked.push(idx);
+   answerSeqEl.textContent=picked.map(function(i){return FRAGS[i];}).join('');
+   remainEl.textContent=5-picked.length;
+   if(picked.length===5){
+    const ok=picked.every(function(v,i){return v===i;});
+    if(ok){show(5);}
+    else{stage3Msg.textContent='信号が乱れている。順番が違うようだ。「並び直す」で最初から。';}
+   }
+  });
+  piecesEl.appendChild(s);
+ });
+ function resetFrags(){picked=[];answerSeqEl.textContent='';remainEl.textContent='5';stage3Msg.textContent='';piecesEl.querySelectorAll('.bl-frag').forEach(n=>n.classList.remove('used'));}
+ document.getElementById('blFragReset').addEventListener('click',resetFrags);
+ function resetExtra(){
+  freqEl.value='10';locked=false;hintCount=0;hintEl.textContent='';hintBtn.disabled=false;hintBtn.textContent='ヒントを見る（1/3）';lockMsg.textContent='';toStage3.classList.add('bl-hidden');renderFreq();
+  resetFrags();
+ }
+ document.getElementById('blReset').addEventListener('click',resetExtra);
+ document.getElementById('blResetAll').addEventListener('click',()=>{document.getElementById('blAuth').value='';document.getElementById('blAnswer').value='';resetExtra();show(0);});
+ renderFreq();
 })();
+
 
 </script>
 </body></html>
