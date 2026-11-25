@@ -1,0 +1,11 @@
+name = "moshimation-credential-auth"
+main = "worker.js"
+compatibility_date = "2026-11-25"
+
+[vars]
+PUBLIC_ORIGIN = "https://polishoritius.github.io"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "moshimation-credentials"
+database_id = "REPLACE_WITH_CREATED_D1_DATABASE_ID"
