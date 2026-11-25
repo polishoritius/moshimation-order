@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090a0c">
+<title>OFFICIAL ID VERIFICATION | MOSHIMATION ORDER</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+:root{--gold:#d7b46f;--light:#f1dfba;--muted:#b6a892;--line:#655131}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 70% -10%,#49311455,transparent 48%),#090a0c;color:var(--light);font-family:Georgia,"Noto Serif JP",serif;line-height:1.8}
+.wrap{max-width:820px;margin:0 auto;padding:36px 20px 65px}
+.header{display:flex;justify-content:space-between;align-items:center;gap:24px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.brand{font-size:clamp(17px,3.5vw,28px);letter-spacing:.13em;color:var(--gold);line-height:1.15}
+.tag{font:10px ui-monospace,monospace;letter-spacing:.12em;color:var(--muted)}
+.emblem{height:76px;width:76px;object-fit:contain}
+h1{font-size:clamp(32px,7vw,56px);letter-spacing:.08em;line-height:1.1;font-weight:400;margin:45px 0 10px}
+.lead{color:#c1b6a5;font-size:14px;max-width:680px}
+.panel{border:1px solid #967548;background:linear-gradient(140deg,#18130c,#0e1012);padding:clamp(18px,4vw,32px);margin-top:32px}
+label{font:11px ui-monospace,monospace;letter-spacing:.12em;color:var(--gold)}
+.field{display:flex;gap:10px;margin-top:12px}
+input{flex:1;min-width:0;border:1px solid #907647;background:#060809;color:white;padding:14px 16px;font:20px ui-monospace,monospace;text-transform:uppercase}
+button{border:1px solid var(--gold);color:#151109;background:var(--gold);font:700 12px ui-monospace,monospace;letter-spacing:.06em;padding:13px 20px;cursor:pointer}
+button:hover{background:#eed098}button:focus-visible,input:focus-visible{outline:2px solid white;outline-offset:3px}
+.status{padding:16px 18px;margin:20px 0 0;background:#171717;border-left:3px solid #806b45;color:#d4c8b5;font-size:14px}
+.status[data-tone="success"]{border-color:#a6c998}
+.status[data-tone="error"]{border-color:#ca8a7a}
+.status[data-tone="warning"]{border-color:#d1ad66}
+.retry{margin-top:14px}.registry{margin-top:22px;border:1px solid #655333;background:#0b0d0e;padding:22px}
+.registry h2{font-size:29px;color:var(--gold);font-weight:400;margin:0 0 13px}
+.data{display:grid;grid-template-columns:140px 1fr;gap:8px 20px;padding:9px 0;border-top:1px solid #554329;font-size:14px}
+.data dt{color:#b7a27f}.data dd{margin:0;overflow-wrap:anywhere;color:#f3e6ca}
+.official-card{width:100%;max-width:570px;height:auto;object-fit:contain;margin-top:20px;border:1px solid #8b7145}
+.disclaimer{border-top:1px solid var(--line);margin-top:40px;padding-top:22px;color:#b9ad9a;font-size:12px;line-height:2}
+a{color:#e6ca90}button{touch-action:manipulation}input{max-width:100%}@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+[hidden]{display:none!important}
+@media(max-width:600px){.field{flex-direction:column}button{min-height:47px}.emblem{width:58px;height:58px}.data{grid-template-columns:1fr;gap:0}.data dd{margin-bottom:8px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header class="header">
+<div><div class="brand">MOSHIMATION ORDER</div><div class="tag">CENTRAL COMMUNICATION BUREAU / OFFICIAL REGISTRY</div></div>
+<img class="emblem" src="assets/emblem.png" alt="MOSHIMATION ORDERの正式な黄金紋章">
+</header>
+<h1>CREDENTIAL VERIFICATION</h1>
+<p class="lead">公式構成員証の登録状況を照合する窓口。発行番号を入力すると、中央通信局が公開した公式名簿と照合します。登録や構成員証の発行はできません。</p>
+<section class="panel" aria-labelledby="verifyHeading">
+<div class="tag" id="verifyHeading">VERIFICATION CONSOLE / PUBLIC READ ONLY</div>
+<form id="verifyForm">
+<label for="memberNo">OFFICIAL MEMBER NUMBER</label>
+<div class="field"><input type="text" id="memberNo" maxlength="6" pattern="[0-9]{3,6}" inputmode="numeric" autocomplete="off" placeholder="例：001" aria-describedby="numberHelp" required><button type="submit">VERIFY ID</button></div>
+<div class="tag" id="numberHelp" style="margin-top:9px">数字3〜6桁。000は始声者の予約番号であり、現在は未発行です。</div>
+</form>
+<div id="result" class="status" data-tone="warning" role="status" aria-live="polite">名簿との照合準備中。発行番号を入力してください。</div>
+<div class="retry" id="retryArea" hidden><button id="retryButton" type="button">名簿の取得を再試行</button></div>
+<section class="registry" id="record" hidden aria-labelledby="recordHeading">
+<h2 id="recordHeading">OFFICIAL RECORD</h2>
+<dl>
+<div class="data"><dt>MEMBER NO.</dt><dd id="recordNo"></dd></div>
+<div class="data"><dt>CALL SIGN</dt><dd id="recordName"></dd></div>
+<div class="data"><dt>RANK</dt><dd id="recordRank"></dd></div>
+<div class="data"><dt>STATUS</dt><dd id="recordStatus"></dd></div>
+<div class="data"><dt>ISSUED ON</dt><dd id="recordDate"></dd></div>
+<div class="data"><dt>CERTIFICATE VERSION</dt><dd id="recordVersion"></dd></div>
+</dl>
+<img id="recordImage" class="official-card" hidden alt="運営側が公開した公式構成員証">
+<p class="tag" id="imageNote"></p>
+</section>
+</section>
+<p class="disclaimer">本ページはMOSHIMATION ORDERの創作上の公式名簿照合サービスです。照合結果が示すのは「この番号で登録された公式記録の有無・状態」であり、画像のコピー防止、提示した人物の本人確認、Xサブスク加入状態の自動確認を保証するものではありません。発行・変更・失効は運営側が管理します。名簿への掲載は事前の本人同意を前提とします。<br><a href="./">公式サイトへ戻る</a></p>
+</main>
+<script>
+(function(){
+'use strict';
+const $=id=>document.getElementById(id),result=$('result'),record=$('record'),retry=$('retryArea');
+const query=new URLSearchParams(location.search);
+let registry=null;
+function message(text,tone){record.hidden=true;result.dataset.tone=tone;result.textContent=text;}
+async function loadRegistry(){
+ retry.hidden=true;
+ try {
+  const res=await fetch('members/registry.json',{cache:'no-store'});
+  if(!res.ok)throw new Error('HTTP '+res.status);
+  const data=await res.json();
+  if(data.schemaVersion!==1||!Array.isArray(data.members))throw new Error('registry format');
+  const seen=new Set();
+  for(const member of data.members){
+   if(!member||typeof member!=='object'||!/^\d{3,6}$/.test(member.number)||seen.has(member.number)||!['active','revoked'].includes(member.status)||typeof member.callsign!=='string'||typeof member.rank!=='string')throw new Error('invalid record');
+   seen.add(member.number);
+  }
+  registry=data;
+  if(data.members.length===0)message('公式構成員登録：現在0名。発行済みの構成員証はありません。','warning');
+  else message('公式名簿を読み込みました。発行番号を入力して照合してください。','warning');
+ }catch(e){registry=null;message('照合システムに接続できません。現在は「未登録」かどうかも判定できません。再試行してください。','error');retry.hidden=false;}
+}
+function verify(raw){
+ const n=String(raw||'').trim();
+ if(!/^\d{3,6}$/.test(n)){message('番号形式が不正です。数字3〜6桁で入力してください。','error');return;}
+ if(!registry){message('名簿を取得できないため、照合できません。','error');return;}
+ const item=registry.members.find(x=>x.number===n);
+ if(!item){message('NO RECORD — 公式名簿に該当する番号は登録されていません。','warning');return;}
+ $('recordNo').textContent=item.number;
+ $('recordName').textContent=item.callsign;
+ $('recordRank').textContent=item.rank;
+ $('recordDate').textContent=item.issuedOn||'未記録';
+ $('recordVersion').textContent=String(item.version||1);
+ $('recordStatus').textContent=item.status==='active'?'ACTIVE / 有効':'REVOKED / 失効';
+ const image=$('recordImage');
+ image.hidden=true;image.removeAttribute('src');
+ $('imageNote').textContent='';
+ if(typeof item.certificateImage==='string'&&/^assets\/members\/[a-zA-Z0-9_.-]+\.(png|webp|jpg)$/.test(item.certificateImage)){
+  image.src=item.certificateImage;
+  image.hidden=false;
+  $('imageNote').textContent='公式登録画像と提示された構成員証の外観を比較してください。';
+ }
+ record.hidden=false;
+ result.dataset.tone=item.status==='active'?'success':'error';
+ result.textContent=item.status==='active'?'OFFICIAL RECORD FOUND — 登録・有効。':'RECORD REVOKED — 登録記録はありますが、構成員証は失効しています。';
+}
+$('verifyForm').addEventListener('submit',e=>{e.preventDefault();verify($('memberNo').value);});
+$('retryButton').addEventListener('click',async()=>{await loadRegistry();if(registry&&$('memberNo').value.trim())verify($('memberNo').value);});
+loadRegistry().then(()=>{const n=query.get('no');if(n){$('memberNo').value=n;verify(n);}});
+})();
+</script>
+</body>
+</html>
