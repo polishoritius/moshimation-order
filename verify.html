@@ -27,13 +27,13 @@ button:hover{background:#eed098}button:focus-visible,input:focus-visible{outline
 .status[data-tone="success"]{border-color:#a6c998}
 .status[data-tone="error"]{border-color:#ca8a7a}
 .status[data-tone="warning"]{border-color:#d1ad66}
-.registry{margin-top:22px;border:1px solid #655333;background:#0b0d0e;padding:22px}
+.retry{margin-top:14px}.registry{margin-top:22px;border:1px solid #655333;background:#0b0d0e;padding:22px}
 .registry h2{font-size:29px;color:var(--gold);font-weight:400;margin:0 0 13px}
 .data{display:grid;grid-template-columns:140px 1fr;gap:8px 20px;padding:9px 0;border-top:1px solid #554329;font-size:14px}
 .data dt{color:#b7a27f}.data dd{margin:0;overflow-wrap:anywhere;color:#f3e6ca}
 .official-card{width:100%;max-width:570px;height:auto;object-fit:contain;margin-top:20px;border:1px solid #8b7145}
 .disclaimer{border-top:1px solid var(--line);margin-top:40px;padding-top:22px;color:#b9ad9a;font-size:12px;line-height:2}
-a{color:#e6ca90}
+a{color:#e6ca90}button{touch-action:manipulation}input{max-width:100%}@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 [hidden]{display:none!important}
 @media(max-width:600px){.field{flex-direction:column}button{min-height:47px}.emblem{width:58px;height:58px}.data{grid-template-columns:1fr;gap:0}.data dd{margin-bottom:8px}}
 </style>
@@ -54,6 +54,7 @@ a{color:#e6ca90}
 <div class="tag" id="numberHelp" style="margin-top:9px">数字3〜6桁。000は始声者の予約番号であり、現在は未発行です。</div>
 </form>
 <div id="result" class="status" data-tone="warning" role="status" aria-live="polite">名簿との照合準備中。発行番号を入力してください。</div>
+<div class="retry" id="retryArea" hidden><button id="retryButton" type="button">名簿の取得を再試行</button></div>
 <section class="registry" id="record" hidden aria-labelledby="recordHeading">
 <h2 id="recordHeading">OFFICIAL RECORD</h2>
 <dl>
@@ -73,11 +74,12 @@ a{color:#e6ca90}
 <script>
 (function(){
 'use strict';
-const $=id=>document.getElementById(id),result=$('result'),record=$('record');
+const $=id=>document.getElementById(id),result=$('result'),record=$('record'),retry=$('retryArea');
 const query=new URLSearchParams(location.search);
 let registry=null;
 function message(text,tone){record.hidden=true;result.dataset.tone=tone;result.textContent=text;}
 async function loadRegistry(){
+ retry.hidden=true;
  try {
   const res=await fetch('members/registry.json',{cache:'no-store'});
   if(!res.ok)throw new Error('HTTP '+res.status);
@@ -91,7 +93,7 @@ async function loadRegistry(){
   registry=data;
   if(data.members.length===0)message('公式構成員登録：現在0名。発行済みの構成員証はありません。','warning');
   else message('公式名簿を読み込みました。発行番号を入力して照合してください。','warning');
- }catch(e){registry=null;message('照合システムに接続できません。現在は「未登録」かどうかも判定できません。時間をおいて再試行してください。','error');}
+ }catch(e){registry=null;message('照合システムに接続できません。現在は「未登録」かどうかも判定できません。再試行してください。','error');retry.hidden=false;}
 }
 function verify(raw){
  const n=String(raw||'').trim();
@@ -118,6 +120,7 @@ function verify(raw){
  result.textContent=item.status==='active'?'OFFICIAL RECORD FOUND — 登録・有効。':'RECORD REVOKED — 登録記録はありますが、構成員証は失効しています。';
 }
 $('verifyForm').addEventListener('submit',e=>{e.preventDefault();verify($('memberNo').value);});
+$('retryButton').addEventListener('click',async()=>{await loadRegistry();if(registry&&$('memberNo').value.trim())verify($('memberNo').value);});
 loadRegistry().then(()=>{const n=query.get('no');if(n){$('memberNo').value=n;verify(n);}});
 })();
 </script>
