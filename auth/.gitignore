@@ -1,0 +1,14 @@
+# Local admin credentials and Cloudflare development secrets
+admin-token-DPAPI-PRIVATE.txt
+.dev.vars
+.dev.vars.*
+.env
+.env.*
+*.private
+*.key
+*.pem
+# Local Wrangler runtime files
+.wrangler/
+
+# Locally generated member keys (DPAPI-encrypted)
+*-DPAPI-PRIVATE.txt

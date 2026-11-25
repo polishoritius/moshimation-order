@@ -1,0 +1,26 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#070809"><meta name="robots" content="noindex,nofollow"><title>PRIVATE LINE | MOSHIMATION ORDER</title>
+<style>
+*{box-sizing:border-box}body{background:radial-gradient(circle at 50% -10%,#513c1b55,transparent 53%),#070809;color:#eed8ad;font-family:Georgia,"Noto Serif JP",serif;margin:0;line-height:1.9}.wrap{max-width:760px;margin:0 auto;padding:26px 20px 75px}.top{display:flex;align-items:center;gap:20px;border-bottom:1px solid #8d7544;padding-bottom:22px}.top img{width:88px;height:88px;object-fit:contain}.label{font:11px ui-monospace,monospace;letter-spacing:.12em;color:#c4a66f}h1{font-size:clamp(40px,9vw,75px);font-weight:400;margin:35px 0 0;line-height:1}.muted{color:#beaf97;font-size:14px}.panel{border:1px solid #98784c;background:#15130f;padding:clamp(20px,5vw,36px);margin-top:30px}label{display:block;color:#d8ba82;font-size:12px;margin-top:20px}input{display:block;background:#080909;border:1px solid #8b7246;color:#f7e3bd;font:17px ui-monospace,monospace;padding:15px;width:100%;margin-top:8px}button{background:#d6ad62;color:#170f08;border:0;padding:16px 22px;font-weight:700;min-height:48px;margin-top:24px;cursor:pointer}button:disabled{opacity:.5}button:focus-visible,input:focus-visible{outline:2px solid white;outline-offset:2px}.status{background:#0b0d0e;border-left:3px solid #8c764f;color:#ead4ac;padding:15px;margin-top:25px;white-space:pre-line;font-size:14px}.status.good{border-color:#a3c58f}.status.bad{border-color:#c77d71}a{color:#e6c488}.foot{font-size:12px;color:#a9977b;margin-top:34px;border-top:1px solid #59482e;padding-top:20px}
+</style></head><body><main class="wrap"><div class="top"><img src="assets/emblem.png" alt="MOSHIMATION ORDER正式紋章"><div><strong>MOSHIMATION ORDER</strong><div class="label">CENTRAL COMMUNICATION BUREAU</div></div></div>
+<h1>PRIVATE LINE</h1><p class="muted">構成員本人向けの認証回線。本人用任命状に記載された番号と個別認証キーを入力する。公開用構成員証のQRコードや画像だけではアクセスできません。</p>
+<section class="panel"><div class="label">AUTHENTICATION CONSOLE / HOLDER ONLY</div><form id="authForm"><label for="memberNumber">MEMBER NUMBER / 構成員番号</label><input id="memberNumber" autocomplete="off" inputmode="numeric" pattern="[0-9]{3,6}" maxlength="6" placeholder="001" required><label for="privateKey">PRIVATE AUTHENTICATION KEY / 本人用認証キー</label><input id="privateKey" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" minlength="20" maxlength="128" placeholder="任命状記載の認証キー" required><button id="submit" type="submit">AUTHENTICATE / 認証</button></form><div id="result" class="status" role="status" aria-live="polite">このシステムは発行準備中です。</div></section>
+<p class="foot">この回線は運営側が認証サーバーを公開し、構成員番号001を登録してから有効になります。認証キーは公開ポストやスクリーンショットに掲載しないでください。盗難・流出時は運営側に失効・再発行を依頼してください。<br><a href="./">公式サイトに戻る</a></p></main>
+<script src="auth-config.js"></script><script>
+(function(){
+const endpoint=typeof window.MO_AUTH_ENDPOINT==='string'?window.MO_AUTH_ENDPOINT.replace(/\/$/,''):'';
+const form=document.getElementById('authForm'),result=document.getElementById('result'),submit=document.getElementById('submit');
+if(!/^https:\/\/[a-z0-9.-]+$/i.test(endpoint)){submit.disabled=true;result.textContent='PRE-LAUNCH / 認証サーバー未接続。公開運用はまだ開始していません。';return;}
+result.textContent='認証キーを入力してください。';
+form.addEventListener('submit',async function(e){
+e.preventDefault();submit.disabled=true;result.className='status';result.textContent='照合中…';
+const number=document.getElementById('memberNumber').value.trim(),key=document.getElementById('privateKey').value;
+try {
+const res=await fetch(endpoint+'/api/authenticate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({number,password:key}),cache:'no-store',referrerPolicy:'no-referrer'});
+const data=await res.json();
+if(res.ok&&data.ok&&data.number===number){result.className='status good';result.textContent='ACCESS GRANTED\n認証成功：'+data.callsign+' / '+data.rank+'\n構成員番号：'+data.number+'\n認証版数：'+data.version;}
+else{result.className='status bad';result.textContent='ACCESS DENIED\n認証できません。番号と認証キーを確認してください。';}
+}catch(err){result.className='status bad';result.textContent='回線に接続できません。再試行してください。';}
+document.getElementById('privateKey').value='';submit.disabled=false;
+});
+})();
+</script></body></html>
