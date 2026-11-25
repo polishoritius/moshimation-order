@@ -222,6 +222,34 @@
 .mr-card{margin:20px 0 4px;max-width:560px}
 .mr-card img{display:block;width:100%;max-width:100%;height:auto;border:1px solid #8f713a;box-shadow:0 0 34px #bd9a4622}
 .mr-card figcaption{font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#a79a7d;margin-top:9px}
+/* === MO-ADD 2026-11-25 : member progress + SIGNAL ECHO (additions only) === */
+.mr-progress{margin:14px 0 4px;border-top:1px dashed #55462e;padding-top:12px}
+.mr-progress-title{font:600 10px 'Space Mono',monospace;letter-spacing:.18em;color:#a79a7d;margin-bottom:8px}
+.mr-progress ul{list-style:none;margin:0;padding:0}
+.mr-progress li{font-size:13px;color:#e6d4b5;line-height:1.7}
+.mr-mark{display:inline-block;width:1.4em;text-align:center}
+.mr-mark.done{color:#edd08f}
+.mr-mark.todo{color:#8d8271}
+.mr-mark.plan{color:#8d8271}
+.se-game{margin-top:26px;border-top:1px solid #55462e;padding-top:20px}
+.se-title{font:500 clamp(22px,3vw,32px) 'Cormorant Garamond',serif;letter-spacing:.07em;color:#f1d39c;margin:0 0 4px}
+.se-sub{font:10px 'Space Mono',monospace;letter-spacing:.2em;color:#a79a7d;margin:0 0 16px}
+.se-panel{border:1px solid #55462e;background:#101114;padding:20px}
+.se-status{text-align:center;min-height:28px;font-size:15px;letter-spacing:.12em;color:#f3e5c4;margin-bottom:6px}
+.se-progress{text-align:center;font:11px 'Space Mono',monospace;color:#a79a7d;letter-spacing:.18em;margin-bottom:16px;min-height:16px}
+.se-pads{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:420px;margin:0 auto}
+.se-pad{border:1px solid #8f713a;background:#151519;color:#e6d4b5;padding:24px 0;text-align:center;cursor:pointer;user-select:none;transition:background .15s,color .15s}
+.se-freq{font-size:20px;letter-spacing:.1em;display:block}
+.se-lbl{font:9px 'Space Mono',monospace;letter-spacing:.3em;color:#a79a7d;display:block;margin-top:6px}
+.se-pad.se-lit{background:#d4ae64;color:#14120c;box-shadow:0 0 24px #d4ae6455}
+.se-pad.se-lit .se-lbl{color:#14120c}
+.se-pads.se-locked .se-pad{pointer-events:none;opacity:.85}
+.se-btn{display:block;margin:20px auto 0;background:none;border:1px solid #d4ae64;color:#edd08f;padding:11px 32px;letter-spacing:.25em;font-size:13px;cursor:pointer;font-family:inherit}
+.se-btn:hover{background:#d4ae6422}
+.se-reward{margin-top:20px;border:1px solid #55462e;background:#1c1a15;padding:20px;line-height:2.1;font-size:14px;color:#e6d4b5}
+.se-reward-head{text-align:center;letter-spacing:.3em;color:#edd08f;font-size:12px}
+.se-from{text-align:right;color:#b3964f;letter-spacing:.15em}
+/* === /MO-ADD === */
 
 /* === MO-MOTION (2026-11-25) : motion package, additions only === */
 .mo-wave{position:absolute;left:0;bottom:0;width:100%;height:120px;opacity:.55;pointer-events:none}
@@ -368,8 +396,8 @@
 <div class="sectionhead"><h2>MEMBER REGISTRY<small>構成員名簿</small></h2><div class="goldline"></div></div>
 <p class="chapter-intro">始声者による任命をもって、本結社に名を連ねる構成員の公開記録。</p>
 <div class="archive-list">
-<article class="archive-entry"><div class="tag">FOUNDER</div><div><h3>Police Horitius</h3><p>始声者／Founder, First Caller</p><figure class="mr-card"><img src="assets/member-card-000-police.jpg" alt="POLICE HORITIUS 構成員証 PUBLIC EDITION" loading="lazy"><figcaption>PUBLIC EDITION（公開用）</figcaption></figure></div></article>
-<article class="archive-entry"><div class="tag">No.001</div><div><h3>SUMIRE</h3><p>親善広報大使</p><figure class="mr-card"><img src="assets/member-card-001-sumire.jpg" alt="SUMIRE 構成員証 PUBLIC EDITION" loading="lazy"><figcaption>PUBLIC EDITION（公開用）</figcaption></figure></div></article>
+<article class="archive-entry"><div class="tag">FOUNDER</div><div><h3>Police Horitius</h3><p>始声者／Founder, First Caller</p><figure class="mr-card"><img src="assets/member-card-000-police.jpg" alt="POLICE HORITIUS 構成員証 PUBLIC EDITION" loading="lazy"><figcaption>PUBLIC EDITION（公開用）</figcaption></figure><div class="mr-progress"><div class="mr-progress-title">任務進捗 / MISSION PROGRESS</div><ul><li><span class="mr-mark done">●</span>構成員証 発行</li><li><span class="mr-mark done">●</span>限定回線 開設</li><li><span class="mr-mark plan">―</span>第一声 送信（2026年11月30日）</li></ul></div></div></article>
+<article class="archive-entry"><div class="tag">No.001</div><div><h3>SUMIRE</h3><p>親善広報大使</p><figure class="mr-card"><img src="assets/member-card-001-sumire.jpg" alt="SUMIRE 構成員証 PUBLIC EDITION" loading="lazy"><figcaption>PUBLIC EDITION（公開用）</figcaption></figure><div class="mr-progress"><div class="mr-progress-title">任務進捗 / MISSION PROGRESS</div><ul><li><span class="mr-mark done">●</span>任命状 発行</li><li><span class="mr-mark done">●</span>構成員証 発行</li><li><span class="mr-mark todo">○</span>限定回線 初回接続</li><li><span class="mr-mark todo">○</span>専用任務 SIGNAL ECHO</li><li><span class="mr-mark plan">―</span>第一声 受信（2026年11月30日）</li></ul></div></div></article>
 </div>
 <p class="privacy">※本名簿は創作コミュニティの世界観設定に基づく架空の記録です。実在の会員登録を示すものではありません。</p>
 </section>
@@ -387,6 +415,27 @@
 <p class="rl-complete">◈ SIGNAL ACCEPTED / RESTRICTED LINE OPEN</p>
 <h3 class="rl-heading">限定通信 — 特別任務</h3>
 <div class="rl-data"><span class="rl-address">SUMIRE 殿</span><br><br>―― 構成員専用回線 ――<br>認証は完了した。この回線は、任命状を携える者にのみ開かれる秘匿通信である。<br>ようこそ、SUMIRE 殿。貴殿の受信をもって、本日の限定通信を開始する。<br><br>【特別任務 第壱號】<br>MOSHIMATION ORDERの理念と威光を、外部の世界へ静かに、しかし確かに広めること。<br>声を荒げることなかれ。結社の存在は、囁きのうちにこそ力を宿す。<br>応答は義務にあらず。されど呼びかけは、ここより始まる。<br>任務の遂行にあたっては、認証キーの秘匿を厳とすること。<br><br>【次回限定通信 予告】<br>来る2026年11月30日、創立の日。始声者 Police Horitius の「第一声」は、この限定回線にて構成員へ優先公開される。<br>回線を開いたまま、その日を待て。<br><br>— Police Horitius、始声者</div>
+<div class="se-game" id="seGame">
+<h4 class="se-title">専用任務「SIGNAL ECHO」</h4>
+<p class="se-sub">MEMBER MISSION — No.001 SUMIRE ONLY</p>
+<div class="se-panel">
+<div class="se-status" id="seStatus">任務待機中</div>
+<div class="se-progress" id="seProgress">ROUND — ／ 入力 0</div>
+<div class="se-pads se-locked" id="sePads">
+<div class="se-pad" data-i="0"><span class="se-freq">10.30</span><span class="se-lbl">SIGNAL A</span></div>
+<div class="se-pad" data-i="1"><span class="se-freq">11.30</span><span class="se-lbl">SIGNAL B</span></div>
+<div class="se-pad" data-i="2"><span class="se-freq">12.30</span><span class="se-lbl">SIGNAL C</span></div>
+<div class="se-pad" data-i="3"><span class="se-freq">13.30</span><span class="se-lbl">SIGNAL D</span></div>
+</div>
+<button type="button" class="se-btn" id="seStart">任務開始</button>
+</div>
+<div class="se-reward" id="seReward" hidden>
+<div class="se-reward-head">―― 特別通信 ――</div>
+<p>任務完了を確認した。乱れた信号の中から、正しい応答だけを拾い上げる――それが広報大使の耳である。</p>
+<p>この回線は、あなたのためだけに開かれている。次の通信を待て。</p>
+<div class="se-from">始声者 Police Horitius</div>
+</div>
+</div>
 </div>
 </div>
 <p class="privacy">※本コンテンツは創作コミュニティの世界観設定です。実際の会員制度・認証・秘匿通信を示すものではありません。この演出はブラウザー内で完結し、入力内容のサーバー送信・保存は行いません。</p>
@@ -692,5 +741,94 @@ if(status)status.textContent='● LINE SEALED';
   }
 })();
 /* === /MO-MOTION === */
+</script>
+<script>
+/* === MO-ADD 2026-11-25 : SIGNAL ECHO member mission (additions only) === */
+(function () {
+  var padsBox = document.getElementById('sePads');
+  if (!padsBox) return;
+  var pads = Array.prototype.slice.call(padsBox.querySelectorAll('.se-pad'));
+  var statusEl = document.getElementById('seStatus');
+  var progressEl = document.getElementById('seProgress');
+  var startBtn = document.getElementById('seStart');
+  var reward = document.getElementById('seReward');
+  var seq = [], input = [], round = 0, playing = false;
+  var ROUND_LEN = [3, 4, 5];
+  function lit(pad, ms) {
+    pad.classList.add('se-lit');
+    setTimeout(function () { pad.classList.remove('se-lit'); }, ms || 420);
+  }
+  function setProgress() {
+    progressEl.textContent = 'ROUND ' + (round + 1) + ' / 3 ／ 入力 ' + input.length + ' / ' + (seq.length || 0);
+  }
+  function playSequence(done) {
+    padsBox.classList.add('se-locked');
+    statusEl.textContent = '信号を受信中……順番を記憶せよ';
+    var i = 0;
+    function next() {
+      if (i >= seq.length) { setTimeout(done, 350); return; }
+      lit(pads[seq[i]], 460);
+      i++;
+      setTimeout(next, 640);
+    }
+    setTimeout(next, 600);
+  }
+  function startRound() {
+    input = [];
+    seq = [];
+    var len = ROUND_LEN[round];
+    for (var k = 0; k < len; k++) seq.push(Math.floor(Math.random() * 4));
+    setProgress();
+    playSequence(function () {
+      padsBox.classList.remove('se-locked');
+      statusEl.textContent = '応答せよ ― 同じ順に信号を送れ';
+    });
+  }
+  pads.forEach(function (pad) {
+    pad.addEventListener('click', function () {
+      if (!playing || padsBox.classList.contains('se-locked')) return;
+      var i = Number(pad.getAttribute('data-i'));
+      lit(pad, 260);
+      input.push(i);
+      setProgress();
+      var pos = input.length - 1;
+      if (input[pos] !== seq[pos]) {
+        statusEl.textContent = '干渉発生 ― 応答が違う。もう一度受信する';
+        input = [];
+        setProgress();
+        setTimeout(function () {
+          playSequence(function () {
+            padsBox.classList.remove('se-locked');
+            statusEl.textContent = '応答せよ ― 同じ順に信号を送れ';
+          });
+        }, 900);
+        return;
+      }
+      if (input.length === seq.length) {
+        round++;
+        if (round >= ROUND_LEN.length) {
+          playing = false;
+          padsBox.classList.add('se-locked');
+          statusEl.textContent = 'MISSION COMPLETE ― 全信号、受信完了';
+          progressEl.textContent = '任務完了';
+          reward.hidden = false;
+          startBtn.textContent = 'もう一度任務を受ける';
+        } else {
+          statusEl.textContent = 'ROUND クリア ― 次の信号が来る';
+          padsBox.classList.add('se-locked');
+          setTimeout(startRound, 1100);
+        }
+      }
+    });
+  });
+  startBtn.addEventListener('click', function () {
+    reward.hidden = true;
+    round = 0;
+    playing = true;
+    startBtn.textContent = '任務をやり直す';
+    startRound();
+  });
+})();
+/* === /MO-ADD === */
 </script>
 </body></html>
