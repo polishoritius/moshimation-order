@@ -317,7 +317,7 @@
 <h3 class="hq-title">COMMAND OVERVIEW</h3><p class="hq-desc">回線は開放されている。各装置を操作し、3つの公開任務を達成せよ。</p>
 <div class="hq-grid">
 <div class="hq-tile"><span class="hq-small">MISSION PROGRESS</span><div class="hq-stat"><span id="hqCompleted">0</span> / 3</div><div class="hq-progress" aria-label="公開任務達成率"><span id="hqProgress"></span></div></div>
-<div class="hq-tile"><span class="hq-small">OFFICIAL MEMBER REGISTRY</span><h4>登録構成員 0名</h4><p>公式名簿は準備中。構成員証は将来のXサブスクリプション特典として運営側が発行予定。</p></div>
+<div class="hq-tile"><span class="hq-small">OFFICIAL MEMBER REGISTRY</span><h4>登録構成員 5名</h4><p>公式名簿に始声者と構成員5名を掲載中。構成員証は、始声者の任命により運営側が発行します。</p></div>
 <div class="hq-tile"><span class="hq-small">FILE ACCESS</span><h4 id="hqFileStatus">機密文書が待機中</h4><p>機密記録を読んで、2件の謎を解読せよ。</p><div class="hq-actions"><button type="button" class="hq-btn alt" data-hq-go="archive">保管庫へ</button></div></div>
 <div class="hq-tile"><span class="hq-small">RADIO INTERCEPT</span><h4 id="hqRadioStatus">信号を探索中</h4><p>目標周波数を探し、秘匿された通信を傍受せよ。</p><div class="hq-actions"><button type="button" class="hq-btn alt" data-hq-go="radio">周波数へ</button></div></div>
 </div><div class="hq-actions"><button type="button" class="hq-btn" data-hq-go="archive">任務を開始</button><button type="button" class="hq-btn alt" data-hq-go="member">公式名簿を見る</button></div>
@@ -329,18 +329,19 @@
 </div>
 <div class="hq-page" id="hqMember" role="tabpanel" aria-labelledby="hqTabMember" hidden>
 <h3 class="hq-title">OFFICIAL MEMBER REGISTRY</h3>
-<p class="hq-desc">MOSHIMATION ORDERの公式構成員名簿。構成員証はXサブスクリプション特典として、運営側が確認・発行する予定です。このページからの自己登録・証明書の自動発行はできません。</p>
+<p class="hq-desc">MOSHIMATION ORDERの公式構成員名簿。構成員証は、始声者の任命により運営側が発行します。このページからの自己登録・証明書の自動発行はできません。</p>
 <div class="hq-tile" style="text-align:center; padding:34px 18px">
 <span class="hq-small">OFFICIAL REGISTER / CURRENT STATUS</span>
-<div class="hq-stat" style="font-size:66px;margin:14px 0">0 <span style="font-size:18px">MEMBERS</span></div>
-<h4 style="margin:8px 0">現在、登録構成員はいません</h4>
-<p>構成員名簿は準備中です。登録者が確定し、本人の公開同意を得た場合に限り、運営側が掲載します。</p>
+<div class="hq-stat" style="font-size:66px;margin:14px 0">5 <span style="font-size:18px">MEMBERS</span></div>
+<h4 style="margin:8px 0">現在、構成員5名が登録されています</h4>
+<p>公式名簿（MEMBER REGISTRY）に、始声者 Police Horitius と構成員 No.001〜005 を掲載しています。掲載は、本人の公開同意を得たうえで運営側が行います。</p>
 </div>
+<p><a class="section-jump" href="#member-registry">公式構成員名簿（MEMBER REGISTRY）を見る ↗</a></p>
 <div class="hq-record">
-<header><span class="hq-small">FUTURE BENEFIT / X SUBSCRIPTIONS</span><span class="hq-small">COMING SOON</span></header>
-<h4>構成員証・公式名簿への掲載（予定）</h4>
-<p>今後、Xサブスクリプションの特典として構成員証を発行し、希望する構成員をこちらに紹介する予定です。審査・運用開始前につき、現在は申請も登録も受け付けていません。</p>
-<p>掲載するコールサイン・プロフィール・発行番号等は、開始時にルールを定め、本人の同意を得てから公開します。加入しただけで自動掲載されることはありません。</p>
+<header><span class="hq-small">ISSUANCE / APPOINTMENT</span><span class="hq-small">IN OPERATION</span></header>
+<h4>構成員証の発行と名簿掲載について</h4>
+<p>構成員証は、始声者による任命をもって運営側が発行します。現在、サイトからの申請・自己登録は受け付けていません。</p>
+<p>掲載するコールサイン・プロフィール・発行番号等は、本人の同意を得てから公開します。加入しただけで自動掲載されることはありません。</p>
 </div>
 <p class="hq-alert">構成員の登録・発行権限は運営側が管理します。サイト訪問者が自由に構成員証を作成する機能はありません。</p>
 <p><a class="section-jump" href="#credential-policy">公式構成員証の制度と公開規程を見る ↗</a></p>
@@ -349,7 +350,7 @@
 <h3 class="hq-title">FREQUENCY EXPLORER</h3><p class="hq-desc">通信帯域を調整せよ。正しい周波数に合うと通信が開き、司令室に任務完了が記録される。数字は創作上の演出であり、実際の無線通信ではない。</p>
 <div class="hq-tile"><span class="hq-small">FREQUENCY / MHZ</span><div class="hq-dial"><output id="hqFreqValue" for="hqFreq">10.00</output> <span style="font-size:18px">MHz</span></div><input class="hq-range" id="hqFreq" type="range" min="10" max="13" step="0.01" value="10" aria-label="周波数を合わせる"><div class="hq-wave" id="hqWave" aria-hidden="true"></div><p class="hq-tune-info" id="hqFrequencyMessage" aria-live="polite">……ザーッ……信号がありません。</p><div class="hq-actions"><button type="button" class="hq-btn alt" id="hqRadioHint">ヒントを表示</button><button type="button" class="hq-btn alt" id="hqRadioReset">再探索</button></div><p class="hq-alert" id="hqRadioHintText"></p></div>
 </div>
-<div class="hq-footnote">[ PUBLIC PILOT V2 ] 謎解き・周波数任務の進捗だけが、このブラウザーのローカル保存領域に保存されます。端末・ブラウザーを変えても引き継がれません。シークレットモード等では保存できない場合があります。Xサブスク加入者認証、課金、公式構成員の自己登録・構成員証発行は実装していません。<button type="button" class="hq-btn alt" id="hqResetProgress" style="margin-left:12px;margin-top:8px">この端末の進捗を削除</button></div>
+<div class="hq-footnote">[ PUBLIC PILOT V2 ] 謎解き・周波数任務の進捗だけが、このブラウザーのローカル保存領域に保存されます。端末・ブラウザーを変えても引き継がれません。シークレットモード等では保存できない場合があります。Xサブスク加入者認証、課金、公式構成員の自己登録・構成員証の自動発行は実装していません。<button type="button" class="hq-btn alt" id="hqResetProgress" style="margin-left:12px;margin-top:8px">この端末の進捗を削除</button></div>
 </div></section>
 <section class="section" id="manifesto"><div class="sectionhead"><span class="num">01 /</span><h2>THE MANIFESTO<small>創設理念</small></h2><div class="goldline"></div></div><div class="manifesto"><p>世界には、<br>声を出せない者がいる。<br>声を出しても、届かない者がいる。<br>声をかけられるのを、待っている者がいる。</p><p class="strong">我々は、その沈黙を見過ごさない。</p><p>「もしもし、聞こえていますか？」</p><p>応答は義務ではない。<br>だが、呼びかける自由は誰にも奪えない。</p><div class="sig">— THE FIRST CALLER, POLICE HORITIUS</div></div></section>
 <section class="section" id="principles"><div class="sectionhead"><span class="num">02 /</span><h2>FIVE ARTICLES<small>五大教義</small></h2><div class="goldline"></div></div><div class="grid3"><article class="doctrine"><div class="index">I.</div><h3>呼びかけよ。</h3><p>声を届けることから、世界は動き始める。</p></article><article class="doctrine"><div class="index">II.</div><h3>沈黙を裁くな。</h3><p>応答する自由と、応答しない自由を尊重する。</p></article><article class="doctrine"><div class="index">III.</div><h3>声を奪うな。</h3><p>異なる声にも、耳を傾ける。</p></article><article class="doctrine"><div class="index">IV.</div><h3>疑うことを恐れるな。</h3><p>教義も始声者も、絶対ではない。</p></article><article class="doctrine"><div class="index">V.</div><h3>最後は笑え。</h3><p>深刻な世界だからこそ、ユーモアを忘れない。</p></article><article class="doctrine"><div class="index">∞</div><h3>認証語は一つ。</h3><p>呼びかけも、応答も。「もしもし」。</p></article></div></section>
@@ -610,30 +611,30 @@
 <details><summary>創立日はいつですか？</summary><p>制定された創立年月日は2026年11月30日です。現時点では創立予定日として扱っています。</p></details>
 </div></section>
 <section class="section credential-policy" id="credential-policy">
-<div class="sectionhead"><span class="num">ID /</span><h2>OFFICIAL CREDENTIALS<small>公式構成員証制度｜公開規程（案）</small></h2><div class="goldline"></div></div>
-<p class="chapter-intro">MOSHIMATION ORDERは、構成員証を「公開用」と「本人用」の二部構成で発行する制度を準備しています。いずれも中央通信局が管理し、サイト訪問者が自分で作成・登録することはできません。</p>
-<div class="credential-status"><strong>PRE-LAUNCH / 制度準備中</strong>　公式登録者は現在<strong>0名</strong>。番号<strong>000</strong>は始声者 Police Horitius の予約番号であり、発行済みではありません。Xサブスクリプション特典としての運用は開始前です。</div>
+<div class="sectionhead"><span class="num">ID /</span><h2>OFFICIAL CREDENTIALS<small>公式構成員証制度｜公開規程</small></h2><div class="goldline"></div></div>
+<p class="chapter-intro">MOSHIMATION ORDERの発行物は二種。公開用の「構成員証」（PUBLIC EDITION）と、本人だけに渡す非公開の「任命状」です。いずれも運営側が管理し、サイト訪問者が自分で作成・登録することはできません。</p>
+<div class="credential-status"><strong>IN OPERATION / 運用中</strong>　公式登録者は、始声者 Police Horitius（No.000）と構成員<strong>5名</strong>（No.001〜005）。構成員証と任命状は発行済みです。</div>
 <div class="credential-grid">
 <article class="credential-panel"><span class="eyebrow">PUBLIC EDITION / P</span><h3>公開用構成員証</h3><p>SNSや公式名簿に掲示できる証票。表示名・役職・番号・公式紋章と、公開可能な画像を掲載。登録状況の照合先を示すことができます。</p><p>本人が公開に同意した情報だけを掲載します。</p></article>
-<article class="credential-panel"><span class="eyebrow">PRIVATE EDITION / S</span><h3>本人用構成員証</h3><p>登録本人向けの発行物。公開用と共通の番号を使用し、必要に応じて本人用の識別表示を持たせます。</p><p>画像だけで本人確認や有料特典へのアクセスが完了するわけではありません。秘密のパスワードや認証コードを画像に記載しません。</p></article>
+<article class="credential-panel"><span class="eyebrow">PRIVATE / APPOINTMENT</span><h3>任命状（本人用・非公開）</h3><p>任命を受けた本人にのみ、DMで直接渡される発行物。公開用と共通の番号を使用し、その人専用の個別認証パスワードを記載します。このパスワードが、公式サイトの限定回線を開く鍵となります。</p><p>任命状はサイトに掲載しません。パスワードは本人以外に知らせてはなりません。</p></article>
 </div>
 <h3 style="color:#e5c88d;margin-top:35px">CERTIFICATE FIELDS / 記載事項</h3>
-<table class="credential-table"><thead><tr><th>項目</th><th>公開用</th><th>本人用</th></tr></thead><tbody>
-<tr><td>公式紋章</td><td>正式な黄金紋章</td><td>正式な黄金紋章</td></tr>
+<table class="credential-table"><thead><tr><th>項目</th><th>構成員証（公開用）</th><th>任命状（本人用）</th></tr></thead><tbody>
+<tr><td>紋章</td><td>構成員章（星と電波塔と月桂樹）</td><td>結社の公式紋章（アンティーク電話と月桂樹）</td></tr>
 <tr><td>番号・表示名・役職</td><td>掲載同意の範囲</td><td>本人向けに記載</td></tr>
-<tr><td>画像・アイコン</td><td>公開許諾済み画像のみ</td><td>承認済み画像</td></tr>
-<tr><td>版数・発行状態</td><td>照合情報で確認</td><td>発行記録で確認</td></tr>
-<tr><td>QR・照合URL</td><td>公開用の照合先</td><td>同じ公開照合先を使用可能</td></tr>
-<tr><td>非公開の認証情報</td><td>掲載しない</td><td>画像には掲載しない</td></tr>
+<tr><td>画像・アイコン</td><td>公開許諾済み画像のみ</td><td>本人の肖像</td></tr>
+<tr><td>版数・発行状態</td><td>発行記録で確認</td><td>発行記録で確認</td></tr>
+<tr><td>QR・照合URL</td><td>公式サイトへのQRコード</td><td>なし</td></tr>
+<tr><td>非公開の認証情報</td><td>掲載しない</td><td>個別認証パスワードを記載（本人以外は非公開）</td></tr>
 </tbody></table>
 <h3 style="color:#e5c88d;margin-top:35px">REGISTRY POLICY / 公開運用ルール</h3>
 <details><summary>01｜誰が発行できますか？</summary><p>発行・変更・再発行・失効は中央通信局の管理下で行います。発行の最終承認権者は始声者 Police Horitius とします。自動発行や自由登録は行いません。</p></details>
-<details><summary>02｜誰が対象になりますか？</summary><p>予定されているXサブスクリプション特典など、開始後に定める条件を満たし、運営側が承認した方が対象です。加入しただけで自動登録されるものではありません。</p></details>
+<details><summary>02｜誰が対象になりますか？</summary><p>始声者が任命した方が対象です。加入しただけで自動登録されるものではありません。</p></details>
 <details><summary>03｜公式名簿には何が載りますか？</summary><p>本人が公開を承諾したコールサイン、役職、番号、公開画像などを必要な範囲だけ掲載します。本人用の識別情報や審査情報は公開しません。本人の同意撤回に応じて公開を停止します。</p></details>
-<details><summary>04｜番号000と再発行は？</summary><p>000は始声者用の予約番号です。発行された番号は再利用しません。再発行する際は版数を更新し、必要な場合は旧版を失効扱いにします。</p></details>
+<details><summary>04｜番号000と再発行は？</summary><p>000は始声者 Police Horitius の番号として発行済みです。発行された番号は再利用しません。再発行する際は版数を更新し、必要な場合は旧版を失効扱いにします。</p></details>
 <details><summary>05｜QRコードで本人確認できますか？</summary><p>いいえ。公開照合は公式名簿に記録が存在するか、有効かどうかの確認に限ります。QRコードや画像は複製可能で、提示者が正規の本人である保証にはなりません。</p></details>
 <details><summary>06｜偽造・無断転載は？</summary><p>公式を装う無断の発行・改変・登録の詐称、本人の許可のない画像転載は認めません。確認された場合は発行停止・失効・公開停止などを検討します。</p></details>
-<p class="credential-status muted"><strong>NOTICE</strong>　この公開規程は施行前の案です。正式発行・公開照合サービスの開始日は未定です。現段階の公式名簿には登録者がいません。</p>
+<p class="credential-status muted"><strong>NOTICE</strong>　この公開規程は運用中のものです。公式名簿には始声者と構成員5名を掲載しています。公開照合は、名簿に記録が存在するかの確認に限ります。</p>
 </section>
 <section class="section" id="join"><div class="join"><div><div class="eyebrow">[ OPEN CHANNEL / VOLUNTARY PARTICIPATION ]</div><h3>ANSWER THE CALL.</h3><p>通信を受信した者へ。<br>参加も沈黙も、あなたの自由だ。</p><small>Xの公開リストへ移動します。閲覧・フォローは正式な入団登録ではありません。</small></div><a class="btn gold" href="https://x.com/i/lists/2123885725460627471" target="_blank" rel="noopener noreferrer">OPEN THE X LIST ↗</a></div>
 <div class="protocol"><div class="step"><span>01 / LISTEN</span><h3>呼びかけを受信する</h3><p>理念と五大教義を読み、活動の世界観を知る。</p></div><div class="step"><span>02 / RESPOND</span><h3>「もしもし」と応答する</h3><p>Xでの交流や投稿への返信は自由。応答しなくても構わない。</p></div><div class="step"><span>03 / CONNECT</span><h3>自由に交流する</h3><p>他者の沈黙や異論を尊重し、無理な勧誘・大量メンションは行わない。</p></div></div>
