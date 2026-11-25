@@ -1,5 +1,5 @@
 const enc=new TextEncoder();
-const ITER=160000,MAX=4096;
+const ITER=100000,MAX=4096; // Workers WebCrypto PBKDF2 rejects iterations > 100000
 const headers=(origin)=>({'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff',...(origin?{'Access-Control-Allow-Origin':origin}:{}),'Vary':'Origin'});
 const respond=(x,status=200,origin='')=>new Response(JSON.stringify(x),{status,headers:headers(origin)});
 const validNumber=n=>typeof n==='string'&&/^\d{3,6}$/.test(n);
@@ -33,7 +33,7 @@ await env.DB.prepare('UPDATE credentials SET failures=0,lock_until=0 WHERE numbe
 return respond({ok:true,number:entry.number,callsign:entry.callsign,rank:entry.rank,status:'active',version:entry.version},200,origin);
 }
 if(url.pathname.startsWith('/api/admin/')&&request.method==='POST'){
-if(!env.ADMIN_TOKEN||!same(request.headers.get('Authorization')||'', 'Bearer '+env.ADMIN_TOKEN))return respond({ok:false,error:'UNAUTHORIZED'},401,origin);
+if(!env.ADMIN_TOKEN||!env.ADMIN_TOKEN.trim()||!same(request.headers.get('Authorization')||'', 'Bearer '+env.ADMIN_TOKEN.trim()))return respond({ok:false,error:'UNAUTHORIZED'},401,origin);
 let data;try{data=await body(request);}catch{return respond({ok:false,error:'INVALID_INPUT'},400,origin);}
 if(url.pathname==='/api/admin/issue'){
 const {number,callsign,rank,password,version}=data;

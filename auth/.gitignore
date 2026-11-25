@@ -9,3 +9,6 @@ admin-token-DPAPI-PRIVATE.txt
 *.pem
 # Local Wrangler runtime files
 .wrangler/
+
+# Locally generated member keys (DPAPI-encrypted)
+*-DPAPI-PRIVATE.txt

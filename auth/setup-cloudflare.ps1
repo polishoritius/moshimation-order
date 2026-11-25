@@ -30,17 +30,15 @@ try {
   npx --yes wrangler deploy --config=./wrangler.toml
   Check-Exit "Deploy Worker"
   Write-Host "Step 4: Create an admin token, save an encrypted local copy, set Cloudflare secret."
-  $rng=[System.Security.Cryptography.RandomNumberGenerator]::Create()
-  $random=New-Object byte[] 32
-  $rng.GetBytes($random)
-  $rng.Dispose()
-  $token=[Convert]::ToBase64String($random).TrimEnd('=').Replace('+','-').Replace('/','_')
+  . (Join-Path $PSScriptRoot 'lib/admin-secret.ps1')
+  $token=New-AdminToken
+  Assert-AdminTokenShape $token
   $secure=ConvertTo-SecureString $token -AsPlainText -Force
   $protected=ConvertFrom-SecureString $secure
   $secretFile=Join-Path $PSScriptRoot "admin-token-DPAPI-PRIVATE.txt"
   [System.IO.File]::WriteAllText($secretFile,$protected)
-  $token | npx --yes wrangler secret put ADMIN_TOKEN --config=./wrangler.toml
-  Check-Exit "Set admin secret"
+  # Never pipe the token into wrangler: PowerShell 5.1 appends CRLF, which becomes part of the secret.
+  Set-AdminSecret $token './wrangler.toml'
   $token=$null
   Write-Host ""
   Write-Host "BOOTSTRAP COMPLETE (pending live authentication checks)."
