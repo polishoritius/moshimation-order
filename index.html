@@ -130,11 +130,104 @@
 .bl-controls a.bl-share:hover{background:#f0d497}
 @media(max-width:600px){.bl-inputrow{flex-direction:column}.bl-inputrow button{min-height:45px}.bl-shell{padding:22px 17px}.bl-body{min-height:0}.bl-controls button{flex:1}.bl-top strong{font-size:12px}}
 
+
+/* V2 integrated communications HQ — scoped to #command-center */
+#command-center .hq-shell{border:1px solid #826940;background:#0b0c0c;box-shadow:0 30px 90px #0007;overflow:hidden}
+#command-center .hq-mast{background:linear-gradient(110deg,#251d11,#0c0e11);padding:26px 28px;border-bottom:1px solid #76603d;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+#command-center .hq-kicker{font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#c7aa79}
+#command-center .hq-mast h3{font:500 clamp(25px,3.4vw,39px) 'Cormorant Garamond',serif;letter-spacing:.11em;color:#f1d5a1;margin:6px 0}
+#command-center .hq-mast small{color:#bcb09b;font-size:11px}
+#command-center .hq-live{border:1px solid #695d3d;padding:10px 14px;color:#e2c790;font:11px 'Space Mono',monospace}
+#command-center .hq-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid #6b5737}
+#command-center .hq-tab{border:0;border-right:1px solid #50442e;background:#131313;color:#b8ab94;padding:18px 10px;font:11px 'Space Mono',monospace;cursor:pointer;min-width:0;letter-spacing:.03em}
+#command-center .hq-tab:last-child{border-right:0}
+#command-center .hq-tab[aria-selected="true"]{background:#bd9b60;color:#14100b;font-weight:700}
+#command-center .hq-tab:focus-visible,#command-center button:focus-visible,#command-center input:focus-visible{outline:2px solid #f7df9b;outline-offset:2px}
+#command-center .hq-page{padding:clamp(19px,4vw,37px)}
+#command-center .hq-page[hidden]{display:none}
+#command-center .hq-title{font:500 clamp(24px,4vw,39px) 'Cormorant Garamond',serif;color:#ead2a1;letter-spacing:.06em;margin:0 0 9px}
+#command-center .hq-desc{color:#c1b6a6;font-size:13px;line-height:2;margin:0 0 22px}
+#command-center .hq-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+#command-center .hq-tile{padding:22px;background:#141414;border:1px solid #5b4c32}
+#command-center .hq-tile h4{margin:8px 0;font-size:18px;color:#f0d49d;font-weight:500}
+#command-center .hq-tile p{font-size:12px;color:#c0b5a4;line-height:1.9;margin:0}
+#command-center .hq-small{font:10px 'Space Mono',monospace;color:#c3a46d;letter-spacing:.08em}
+#command-center .hq-stat{font:500 33px 'Cormorant Garamond',serif;color:#f2d79e;line-height:1.2}
+#command-center .hq-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+#command-center .hq-btn{min-height:43px;border:1px solid #c9a768;background:#c9a768;color:#1d1609;padding:10px 18px;font:700 11px 'Space Mono',monospace;cursor:pointer}
+#command-center .hq-btn.alt{background:transparent;color:#dfc18b}
+#command-center .hq-btn:disabled{opacity:.45;cursor:not-allowed}
+#command-center .hq-record{border:1px solid #6a5734;background:#15130f;margin-top:13px;padding:20px;line-height:1.9}
+#command-center .hq-record header{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+#command-center .hq-record h4{color:#eacb8b;margin:9px 0;font-size:19px}
+#command-center .hq-record p{color:#cbbda6;font-size:13px}
+#command-center .hq-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:13px}
+#command-center .hq-input{min-height:46px;border:1px solid #967b48;background:#050607;padding:11px 14px;color:#f5e4c3;font-size:16px;flex:1;min-width:180px;max-width:100%}
+#command-center .hq-alert{min-height:25px;font-size:12px;color:#e1bc77;margin-top:13px;line-height:1.8}
+#command-center .hq-card{max-width:570px;margin:22px auto;border:2px solid #c9a463;background:radial-gradient(circle at 76% 8%,#61452088,transparent 47%),linear-gradient(130deg,#191a1a,#080909);padding:clamp(21px,5vw,36px);aspect-ratio:1.62;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
+#command-center .hq-card-head{display:flex;justify-content:space-between;gap:12px}
+#command-center .hq-card-head img{width:64px;height:64px;object-fit:contain}
+#command-center .hq-card-line{font:10px 'Space Mono',monospace;color:#e0c38b;letter-spacing:.09em}
+#command-center .hq-card-name{font:500 clamp(25px,4.5vw,42px) 'Cormorant Garamond',serif;color:#f3daa7;overflow-wrap:anywhere;line-height:1.05}
+#command-center .hq-card-footer{font:10px 'Space Mono',monospace;color:#cbb487;letter-spacing:.09em;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+#command-center .hq-range{width:100%;accent-color:#d9b876;min-height:35px}
+#command-center .hq-dial{text-align:center;font:500 clamp(35px,6vw,65px) 'Cormorant Garamond',serif;color:#ebd095}
+#command-center .hq-wave{height:54px;display:flex;align-items:center;justify-content:center;gap:5px;overflow:hidden;padding:8px;background:#0a0f0d;border:1px solid #555039;margin:18px 0}
+#command-center .hq-wave i{display:block;background:#cbb07b;width:5px;height:var(--h,10px);opacity:.8;transition:height .15s}
+#command-center .hq-tune-info{font-size:13px;color:#cbbda7;min-height:55px}
+#command-center .hq-rule{height:1px;background:#615236;margin:27px 0}
+#command-center .hq-footnote{border-top:1px solid #53462f;padding:15px 28px;color:#ac9e88;font-size:11px;line-height:1.9;background:#10100e}
+#command-center .hq-progress{background:#25231f;height:8px;border:1px solid #584c33;margin-top:10px}
+#command-center .hq-progress>span{display:block;height:100%;background:#caa76a;width:0;transition:width .2s}
+@media(max-width:700px){#command-center .hq-mast{padding:22px 16px}#command-center .hq-tab{padding:15px 4px;font-size:9px}#command-center .hq-grid{grid-template-columns:1fr}#command-center .hq-tile{padding:18px}#command-center .hq-card-head img{width:48px;height:48px}#command-center .hq-card{aspect-ratio:auto;min-height:270px}#command-center .hq-card-footer{font-size:9px}#command-center .hq-footnote{padding:15px 18px}}
+
 </style>
 </head>
 <body>
-<nav><div class="navinner"><a href="#top" class="brand" aria-label="MOSHIMATION ORDER ホーム">MOSHIMATION ORDER<small>OFFICIAL COMMUNICATION CHANNEL</small></a><div class="navlinks"><a href="#manifesto">PHILOSOPHY</a><a href="#principles">ARTICLES</a><a href="#organization">STRUCTURE</a><a href="#transmission">TRANSMISSION</a><a href="#black-line">BLACK LINE</a><a href="#archive">ARCHIVE</a><a href="#directives">DIRECTIVES</a><a class="navcta" href="#join">ENTER THE ORDER ↗</a></div><button class="mobile-toggle" id="mobileToggle" aria-label="メニューを開く" aria-controls="mobileMenu" aria-expanded="false">☰</button></div><div class="mobile-menu" id="mobileMenu"><a href="#manifesto">PHILOSOPHY</a><a href="#principles">ARTICLES</a><a href="#organization">STRUCTURE</a><a href="#transmission">TRANSMISSION</a><a href="#archive">ARCHIVE</a><a href="#directives">DIRECTIVES</a><a href="#story">ORIGIN</a><a href="#missions">MISSIONS</a><a href="#faq">FAQ</a><a href="#join">ENTER THE ORDER ↗</a></div></nav>
+<nav><div class="navinner"><a href="#top" class="brand" aria-label="MOSHIMATION ORDER ホーム">MOSHIMATION ORDER<small>OFFICIAL COMMUNICATION CHANNEL</small></a><div class="navlinks"><a href="#command-center">HQ</a><a href="#command-center">HQ</a><a href="#manifesto">PHILOSOPHY</a><a href="#principles">ARTICLES</a><a href="#organization">STRUCTURE</a><a href="#transmission">TRANSMISSION</a><a href="#black-line">BLACK LINE</a><a href="#archive">ARCHIVE</a><a href="#directives">DIRECTIVES</a><a class="navcta" href="#join">ENTER THE ORDER ↗</a></div><button class="mobile-toggle" id="mobileToggle" aria-label="メニューを開く" aria-controls="mobileMenu" aria-expanded="false">☰</button></div><div class="mobile-menu" id="mobileMenu"><a href="#manifesto">PHILOSOPHY</a><a href="#principles">ARTICLES</a><a href="#organization">STRUCTURE</a><a href="#transmission">TRANSMISSION</a><a href="#archive">ARCHIVE</a><a href="#directives">DIRECTIVES</a><a href="#story">ORIGIN</a><a href="#missions">MISSIONS</a><a href="#faq">FAQ</a><a href="#join">ENTER THE ORDER ↗</a></div></nav>
 <main id="top"><header class="hero"><div class="hero-inner"><div><div class="eyebrow">[ SECURE CHANNEL // EST. 2026 ]</div><h1><span>MOSHIMATION</span><span>ORDER</span></h1><div class="rule"></div><p class="jcopy">我々は、応答のない世界にも呼びかける。</p><p class="desc">最初の通信は、たった一言から始まる。<br>世界の沈黙に向けて、今日も信号を送る。<br>これは支配のための結社ではない。対話のための結社である。</p><div class="buttons"><a class="btn gold" href="#transmission">📡 &nbsp; INITIATE CONTACT</a><a class="btn" href="#manifesto">READ THE MANIFESTO</a></div><p class="micro">FIRST CALLER / POLICE HORITIUS<br>FOUNDING DATE: 2026.11.30<br>AUTHORIZATION CODE: MOSHI MOSHI</p></div><img class="hero-emblem" src="assets/emblem.png" alt="アンティーク電話、電波、長い月桂樹の黄金紋章"></div></header>
+
+<section class="section" id="command-center">
+<div class="sectionhead"><span class="num">HQ /</span><h2>CENTRAL COMMAND<small>中央通信司令室｜統合システム Ver.2</small></h2><div class="goldline"></div></div>
+<p class="chapter-intro">中央通信司令室から、機密記録の解読、構成員証の作成、周波数探索を実行せよ。4機能はこのページ内でつながる。任務の達成状況はブラウザー内に保存できる。</p>
+<div class="hq-shell" id="hqApp">
+<div class="hq-mast"><div><div class="hq-kicker">MOSHIMATION ORDER / HEADQUARTERS</div><h3>CENTRAL COMMUNICATION BUREAU</h3><small>PUBLIC EXPERIMENTAL SYSTEM // ALL OPERATIONS LOCAL</small></div><div class="hq-live" id="hqStatus" role="status">● SYSTEM READY</div></div>
+<div class="hq-tabs" role="tablist" aria-label="通信司令室の機能">
+<button type="button" class="hq-tab" id="hqTabCommand" role="tab" aria-selected="true" aria-controls="hqCommand">01 司令室</button>
+<button type="button" class="hq-tab" id="hqTabArchive" role="tab" aria-selected="false" aria-controls="hqArchive" tabindex="-1">02 保管庫</button>
+<button type="button" class="hq-tab" id="hqTabMember" role="tab" aria-selected="false" aria-controls="hqMember" tabindex="-1">03 構成員証</button>
+<button type="button" class="hq-tab" id="hqTabRadio" role="tab" aria-selected="false" aria-controls="hqRadio" tabindex="-1">04 周波数</button>
+</div>
+<div class="hq-page" id="hqCommand" role="tabpanel" aria-labelledby="hqTabCommand">
+<h3 class="hq-title">COMMAND OVERVIEW</h3><p class="hq-desc">回線は開放されている。各装置を操作し、3つの公開任務を達成せよ。</p>
+<div class="hq-grid">
+<div class="hq-tile"><span class="hq-small">MISSION PROGRESS</span><div class="hq-stat"><span id="hqCompleted">0</span> / 3</div><div class="hq-progress" aria-label="公開任務達成率"><span id="hqProgress"></span></div></div>
+<div class="hq-tile"><span class="hq-small">IDENTITY / CALL SIGN</span><h4 id="hqCallsignDisplay">未登録</h4><p>構成員証を発行すると、この司令室にも登録名が反映される。</p></div>
+<div class="hq-tile"><span class="hq-small">FILE ACCESS</span><h4 id="hqFileStatus">機密文書が待機中</h4><p>機密記録を読んで、2件の謎を解読せよ。</p><div class="hq-actions"><button type="button" class="hq-btn alt" data-hq-go="archive">保管庫へ</button></div></div>
+<div class="hq-tile"><span class="hq-small">RADIO INTERCEPT</span><h4 id="hqRadioStatus">信号を探索中</h4><p>目標周波数を探し、秘匿された通信を傍受せよ。</p><div class="hq-actions"><button type="button" class="hq-btn alt" data-hq-go="radio">周波数へ</button></div></div>
+</div><div class="hq-actions"><button type="button" class="hq-btn" data-hq-go="archive">任務を開始</button><button type="button" class="hq-btn alt" data-hq-go="member">構成員証を作る</button></div>
+</div>
+<div class="hq-page" id="hqArchive" role="tabpanel" aria-labelledby="hqTabArchive" hidden>
+<h3 class="hq-title">CLASSIFIED ARCHIVE</h3><p class="hq-desc">文書番号MO-201とMO-202。解読した文書は司令室の進捗に反映される。</p>
+<article class="hq-record"><header><span class="hq-small">FILE / MO-201</span><span class="hq-small" id="hqFile1Badge">LOCKED</span></header><h4>最初の呼びかけ</h4><p>「応答する自由」と並んで、五大教義が守るもう一つの自由は何か？</p><div class="hq-row"><input class="hq-input" id="hqAnswer1" maxlength="40" autocomplete="off" aria-label="MO-201の解答" placeholder="答えを入力"><button type="button" class="hq-btn" id="hqSubmit1">解読する</button></div><p class="hq-alert" id="hqResult1" aria-live="polite"></p></article>
+<article class="hq-record"><header><span class="hq-small">FILE / MO-202</span><span class="hq-small" id="hqFile2Badge">LOCKED</span></header><h4>三重電波の証言</h4><p>我々の紋章に描かれる、呼びかけが広がることを表すものは何か？</p><div class="hq-row"><input class="hq-input" id="hqAnswer2" maxlength="40" autocomplete="off" aria-label="MO-202の解答" placeholder="答えを入力"><button type="button" class="hq-btn" id="hqSubmit2">解読する</button></div><p class="hq-alert" id="hqResult2" aria-live="polite"></p></article>
+</div>
+<div class="hq-page" id="hqMember" role="tabpanel" aria-labelledby="hqTabMember" hidden>
+<h3 class="hq-title">IDENTIFICATION OFFICE</h3><p class="hq-desc">好きなコールサインで、創作上の構成員証を発行する。実際の身分確認やX会員認証ではない。実名や個人情報は入力しないでください。</p>
+<form id="hqMemberForm"><label for="hqMemberName" class="hq-small">CALL SIGN / 最大20文字</label><div class="hq-row"><input id="hqMemberName" class="hq-input" maxlength="20" required placeholder="例：SIGNAL-07" autocomplete="off"><button type="submit" class="hq-btn">構成員証を発行</button></div></form>
+<p class="hq-alert" id="hqMemberMessage" aria-live="polite"></p>
+<div class="hq-card" id="hqCard" aria-label="生成された構成員証">
+<div class="hq-card-head"><div><div class="hq-card-line">MOSHIMATION ORDER</div><div class="hq-card-line">OFFICIAL FICTIONAL MEMBER CARD</div></div><img src="assets/emblem.png" alt="正式な黄金紋章"></div>
+<div><div class="hq-card-line">CALL SIGN / IDENTIFIER</div><div class="hq-card-name" id="hqCardName">UNREGISTERED</div></div>
+<div class="hq-card-footer"><span id="hqCardId">MO-DEMO-0000</span><span>FIRST CALLER / POLICE HORITIUS</span></div></div>
+<div class="hq-actions"><button type="button" class="hq-btn alt" id="hqDownloadCard" disabled>構成員証を画像保存 (SVG)</button><button type="button" class="hq-btn alt" id="hqClearMember">登録を取り消す</button></div>
+</div>
+<div class="hq-page" id="hqRadio" role="tabpanel" aria-labelledby="hqTabRadio" hidden>
+<h3 class="hq-title">FREQUENCY EXPLORER</h3><p class="hq-desc">通信帯域を調整せよ。正しい周波数に合うと通信が開き、司令室に任務完了が記録される。数字は創作上の演出であり、実際の無線通信ではない。</p>
+<div class="hq-tile"><span class="hq-small">FREQUENCY / MHZ</span><div class="hq-dial"><output id="hqFreqValue" for="hqFreq">10.00</output> <span style="font-size:18px">MHz</span></div><input class="hq-range" id="hqFreq" type="range" min="10" max="13" step="0.01" value="10" aria-label="周波数を合わせる"><div class="hq-wave" id="hqWave" aria-hidden="true"></div><p class="hq-tune-info" id="hqFrequencyMessage" aria-live="polite">……ザーッ……信号がありません。</p><div class="hq-actions"><button type="button" class="hq-btn alt" id="hqRadioHint">ヒントを表示</button><button type="button" class="hq-btn alt" id="hqRadioReset">再探索</button></div><p class="hq-alert" id="hqRadioHintText"></p></div>
+</div>
+<div class="hq-footnote">[ PUBLIC PILOT V2 ] 進捗・コールサインはこのブラウザーのローカル保存領域にのみ保存され、サイト運営者には送信されません。端末・ブラウザーを変えても引き継がれません。シークレットモード等では保存できない場合があります。Xサブスク加入者認証、課金、会員登録は未実装です。<button type="button" class="hq-btn alt" id="hqResetProgress" style="margin-left:12px;margin-top:8px">この端末の進捗を削除</button></div>
+</div></section>
 <section class="section" id="manifesto"><div class="sectionhead"><span class="num">01 /</span><h2>THE MANIFESTO<small>創設理念</small></h2><div class="goldline"></div></div><div class="manifesto"><p>世界には、<br>声を出せない者がいる。<br>声を出しても、届かない者がいる。<br>声をかけられるのを、待っている者がいる。</p><p class="strong">我々は、その沈黙を見過ごさない。</p><p>「もしもし、聞こえていますか？」</p><p>応答は義務ではない。<br>だが、呼びかける自由は誰にも奪えない。</p><div class="sig">— THE FIRST CALLER, POLICE HORITIUS</div></div></section>
 <section class="section" id="principles"><div class="sectionhead"><span class="num">02 /</span><h2>FIVE ARTICLES<small>五大教義</small></h2><div class="goldline"></div></div><div class="grid3"><article class="doctrine"><div class="index">I.</div><h3>呼びかけよ。</h3><p>声を届けることから、世界は動き始める。</p></article><article class="doctrine"><div class="index">II.</div><h3>沈黙を裁くな。</h3><p>応答する自由と、応答しない自由を尊重する。</p></article><article class="doctrine"><div class="index">III.</div><h3>声を奪うな。</h3><p>異なる声にも、耳を傾ける。</p></article><article class="doctrine"><div class="index">IV.</div><h3>疑うことを恐れるな。</h3><p>教義も始声者も、絶対ではない。</p></article><article class="doctrine"><div class="index">V.</div><h3>最後は笑え。</h3><p>深刻な世界だからこそ、ユーモアを忘れない。</p></article><article class="doctrine"><div class="index">∞</div><h3>認証語は一つ。</h3><p>呼びかけも、応答も。「もしもし」。</p></article></div></section>
 <section class="section" id="organization"><div class="sectionhead"><span class="num">03 /</span><h2>THE ORDER<small>組織構造（構想）</small></h2><div class="goldline"></div></div><div class="org"><div class="role founder"><div class="subtitle">FOUNDER / FIRST CALLER</div><div class="rtitle">始声者 — Police Horitius</div><p>理念の象徴・最初の通信の発信者</p></div><div class="role"><div class="subtitle">GUARDIAN</div><div class="rtitle">聴守官</div><p>理念と秩序を守る</p></div><div class="role"><div class="subtitle">MESSENGER</div><div class="rtitle">伝声官</div><p>通信と企画を届ける</p></div><div class="role"><div class="subtitle">RESPONDER</div><div class="rtitle">応声者</div><p>呼びかけを自由につなぐ</p></div></div><p class="hint">※階級は物語上の役割です。人の優劣や服従関係を意味しません。役職の実際の任命状況は未確認です。</p></section>
@@ -330,6 +423,35 @@
  renderFreq();
 })();
 
+
+
+(function(){
+'use strict';
+const root=document.getElementById('hqApp');if(!root)return;
+const tabs=['Command','Archive','Member','Radio'],pages=tabs.map(x=>document.getElementById('hq'+x)),tabButtons=tabs.map(x=>document.getElementById('hqTab'+x));
+const $=id=>document.getElementById(id),storageKey='mo-hq-v2',fresh=()=>({files:[false,false],radio:false,callsign:'',serial:''});
+let state=fresh();
+try{const saved=JSON.parse(localStorage.getItem(storageKey)||'null');if(saved&&typeof saved==='object'){state.files=Array.isArray(saved.files)?[saved.files[0]===true,saved.files[1]===true]:[false,false];state.radio=saved.radio===true;state.callsign=typeof saved.callsign==='string'?saved.callsign.slice(0,20):'';state.serial=typeof saved.serial==='string'&&/^MO-DEMO-[0-9]{4}$/.test(saved.serial)?saved.serial:'';}}catch(e){}
+const persist=()=>{try{localStorage.setItem(storageKey,JSON.stringify(state));}catch(e){}};
+const normalize=s=>String(s||'').normalize('NFKC').replace(/[\\s　。、．!！?？]/g,'').toLowerCase();
+function openTab(i,focus=false){pages.forEach((el,n)=>el.hidden=n!==i);tabButtons.forEach((el,n)=>{el.setAttribute('aria-selected',n===i?'true':'false');el.tabIndex=n===i?0:-1;});$('hqStatus').textContent=['● COMMAND ONLINE','● ARCHIVE OPEN','● ID OFFICE OPEN','● RECEIVER ACTIVE'][i];if(focus)tabButtons[i].focus();}
+tabButtons.forEach((el,i)=>{el.addEventListener('click',()=>openTab(i));el.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();openTab((i+(e.key==='ArrowRight'?1:3))%4,true);}else if(e.key==='Home'){e.preventDefault();openTab(0,true);}else if(e.key==='End'){e.preventDefault();openTab(3,true);}});});
+root.querySelectorAll('[data-hq-go]').forEach(el=>el.addEventListener('click',()=>{const i=tabs.findIndex(s=>s.toLowerCase()===el.dataset.hqGo);if(i>=0){openTab(i,true);root.scrollIntoView({behavior:'smooth',block:'start'});}}));
+function refresh(){const n=state.files.filter(Boolean).length+(state.radio?1:0);$('hqCompleted').textContent=String(n);$('hqProgress').style.width=n/3*100+'%';$('hqCallsignDisplay').textContent=state.callsign||'未登録';$('hqFileStatus').textContent=state.files.every(Boolean)?'全2件解読済み':state.files.filter(Boolean).length+' / 2 件解読済み';$('hqRadioStatus').textContent=state.radio?'SIGNAL LOCKED':'信号を探索中';state.files.forEach((v,i)=>{$('hqFile'+(i+1)+'Badge').textContent=v?'DECLASSIFIED':'LOCKED';$('hqResult'+(i+1)).textContent=v?'認証成功。機密文書を解読しました。':'';});$('hqCardName').textContent=state.callsign||'UNREGISTERED';$('hqCardId').textContent=state.serial||'MO-DEMO-0000';$('hqMemberName').value=state.callsign;$('hqDownloadCard').disabled=!state.callsign;}
+const answers=[s=>['応答しない自由','応答しない','沈黙する自由','沈黙の自由'].includes(s),s=>['三重電波','電波','三つの電波','3つの電波'].includes(s)];
+for(let i=0;i<2;i++){$('hqSubmit'+(i+1)).addEventListener('click',()=>{const val=normalize($('hqAnswer'+(i+1)).value);if(answers[i](val)){state.files[i]=true;persist();refresh();}else $('hqResult'+(i+1)).textContent='解読失敗。教義・紋章の説明に手がかりがある。';});$('hqAnswer'+(i+1)).addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();$('hqSubmit'+(i+1)).click();}});}
+function serialFor(s){let hash=0;for(const ch of s)hash=(Math.imul(hash,31)+ch.codePointAt(0))>>>0;return 'MO-DEMO-'+String(hash%10000).padStart(4,'0');}
+$('hqMemberForm').addEventListener('submit',e=>{e.preventDefault();const name=$('hqMemberName').value.trim();if(!name||name.length>20){$('hqMemberMessage').textContent='コールサインは1〜20文字で入力せよ。';return;}state.callsign=name;state.serial=serialFor(name);persist();refresh();$('hqMemberMessage').textContent='構成員証を発行した（この端末内の創作ID）。';});
+$('hqClearMember').addEventListener('click',()=>{state.callsign='';state.serial='';persist();refresh();$('hqMemberMessage').textContent='この端末のコールサインを削除した。';});
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&apos;');
+$('hqDownloadCard').addEventListener('click',()=>{if(!state.callsign)return;const name=esc(state.callsign),serial=esc(state.serial);const svg='<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620"><rect width="1000" height="620" fill="#0b0d0f"/><rect x="17" y="17" width="966" height="586" fill="none" stroke="#d9b472" stroke-width="5"/><circle cx="835" cy="160" r="105" fill="none" stroke="#71552e" stroke-width="2"/><text x="65" y="85" font-family="Georgia,serif" font-size="40" fill="#e8c58a">MOSHIMATION ORDER</text><text x="65" y="130" font-family="monospace" font-size="19" fill="#c6ad80">FICTIONAL MEMBER ID / CALL SIGN</text><text x="65" y="330" font-family="Arial,sans-serif" font-size="58" fill="#f0dbaa">'+name+'</text><line x1="65" y1="405" x2="935" y2="405" stroke="#6d5834"/><text x="65" y="485" font-family="monospace" font-size="25" fill="#e3c38d">'+serial+'</text><text x="65" y="548" font-family="monospace" font-size="18" fill="#bba67b">FIRST CALLER / POLICE HORITIUS  •  DEMO ID</text></svg>';const url=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='MOSHIMATION-CARD-'+state.serial+'.svg';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+const target=12.40,freq=$('hqFreq'),wave=$('hqWave');for(let i=0;i<32;i++){const el=document.createElement('i');el.style.setProperty('--h',String(8+Math.round(Math.abs(Math.sin(i*1.7))*28))+'px');wave.appendChild(el);}
+function renderFreq(){const f=Number(freq.value),diff=Math.abs(f-target),intensity=Math.max(0,1-diff/.9);$('hqFreqValue').textContent=f.toFixed(2);wave.querySelectorAll('i').forEach((el,i)=>el.style.setProperty('--h',String(5+Math.round(intensity*(12+Math.abs(Math.sin(i*2))*32)))+'px'));let msg='……ザーッ……信号がありません。';if(diff<.035){msg='SIGNAL LOCKED — 傍受成功。「何も返ってこなくても、最初の声は無駄にならない。」';if(!state.radio){state.radio=true;persist();refresh();}}else if(diff<.25)msg='……通信の断片を検出。あと少し……';else if(diff<.8)msg='……弱い信号を確認。周波数を微調整せよ……';$('hqFrequencyMessage').textContent=msg;}
+freq.addEventListener('input',renderFreq);$('hqRadioHint').addEventListener('click',()=>{$('hqRadioHintText').textContent='ヒント：創立予定月11と、五大教義の第2項から第4項を表す数字を組み合わせた帯域ではない。正解は12.40 MHz。';});
+$('hqRadioReset').addEventListener('click',()=>{freq.value='10';$('hqRadioHintText').textContent='';renderFreq();});
+$('hqResetProgress').addEventListener('click',()=>{if(!window.confirm('このブラウザーに保存された機密文書の進捗、周波数達成、コールサインを削除しますか？'))return;state=fresh();try{localStorage.removeItem(storageKey);}catch(e){};['hqAnswer1','hqAnswer2'].forEach(id=>$(id).value='');$('hqMemberMessage').textContent='進捗を削除した。';freq.value='10';$('hqRadioHintText').textContent='';refresh();renderFreq();openTab(0);});
+refresh();renderFreq();openTab(0);
+})();
 
 </script>
 </body></html>
