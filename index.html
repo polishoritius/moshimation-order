@@ -199,6 +199,26 @@
 .credential-policy .muted{color:#ad9d82}
 @media(max-width:660px){.credential-grid{grid-template-columns:1fr}.credential-panel{padding:19px}.credential-table th,.credential-table td{padding:10px 5px;font-size:11px}}
 
+
+/* RESTRICTED LINE — member gate (added 2026-11-25) */
+.rl-shell{border:1px solid #b18a45;background:linear-gradient(145deg,#18140d 0%,#090c10 58%,#090809);padding:clamp(20px,4vw,42px);box-shadow:inset 0 0 48px #d0ab4810}
+.rl-top{display:flex;justify-content:space-between;align-items:center;gap:15px;border-bottom:1px solid #735c36;padding-bottom:19px;flex-wrap:wrap}
+.rl-status{font:11px 'Space Mono',monospace;color:#cfb47e;letter-spacing:.07em}
+.rl-stage{font:11px 'Space Mono',monospace;color:#9e8b66;margin-top:20px;letter-spacing:.08em}
+.rl-copy{font-size:14px;line-height:2.1;color:#ded3bb;max-width:670px}
+.rl-label{font:11px 'Space Mono',monospace;letter-spacing:.26em;color:var(--gold);margin-top:24px}
+.rl-inputrow{display:flex;gap:10px;margin-top:12px;max-width:620px}
+.rl-inputrow input{flex:1;min-width:0;background:#050607;border:1px solid #9d7b46;border-radius:0;padding:14px 15px;color:#fff;font:16px 'Noto Serif JP',serif;letter-spacing:.1em}
+.rl-inputrow button{background:#d1ab60;color:#120f0a;border:1px solid #d1ab60;padding:12px 20px;font:700 11px 'Space Mono',monospace;letter-spacing:.06em;cursor:pointer;white-space:nowrap}
+.rl-inputrow button:hover{background:#f0d497}
+@media(max-width:800px){.rl-inputrow{flex-direction:column}.rl-inputrow button{min-height:45px}}
+.rl-msg{min-height:29px;font:12px 'Space Mono',monospace;letter-spacing:.12em;margin-top:13px}
+.rl-ok{color:#9fd48b}.rl-ng{color:#d48b8b}
+.rl-secret{margin-top:10px}
+.rl-complete{font:600 12px 'Space Mono',monospace;letter-spacing:.13em;color:#edd08f}
+.rl-heading{font:500 clamp(28px,4vw,47px) 'Cormorant Garamond',serif;letter-spacing:.07em;color:#f1d39c;margin:0 0 15px}
+.rl-data{border-left:2px solid #b18a45;padding:18px 20px;background:#1c1a15;margin:22px 0;font-size:14px;color:#e6d4b5;line-height:2.2}
+.rl-address{font-size:16px;color:#f3e5c4;letter-spacing:.14em}
 </style>
 </head>
 <body>
@@ -315,6 +335,33 @@
 </div>
 <div class="bl-ribbon">[ PUBLIC PILOT NOTICE ] この演出はブラウザー内で完結します。入力内容のサーバー送信・保存は行いません。合言葉は秘密の会員認証ではなく、謎解きの入口です。Xサブスクは申請中のため、有料限定回線は未提供です。</div>
 </div></section>
+<section class="section" id="member-registry">
+<div class="sectionhead"><h2>MEMBER REGISTRY<small>構成員名簿</small></h2><div class="goldline"></div></div>
+<p class="chapter-intro">始声者による任命をもって、本結社に名を連ねる構成員の公開記録。</p>
+<div class="archive-list">
+<article class="archive-entry"><div class="tag">FOUNDER</div><div><h3>Police Horitius</h3><p>始声者／Founder, First Caller</p></div></article>
+<article class="archive-entry"><div class="tag">No.001</div><div><h3>SUMIRE</h3><p>親善広報大使</p></div></article>
+</div>
+<p class="privacy">※本名簿は創作コミュニティの世界観設定に基づく架空の記録です。実在の会員登録を示すものではありません。</p>
+</section>
+<section class="section" id="restricted-line">
+<div class="sectionhead"><h2>RESTRICTED LINE<small>限定回線</small></h2><div class="goldline"></div></div>
+<p class="chapter-intro">この回線は、任命状を携える者にのみ開かれる。任命状に記されたパスワードを持つ者は、その鍵をここに入力せよ。持たざる者は、この先の沈黙を裁いてはならない。</p>
+<div class="rl-shell">
+<div class="rl-top"><strong>◈ RESTRICTED LINE</strong><span class="rl-status" id="rlStatus">● LINE SEALED</span></div>
+<div class="rl-stage">MEMBER ACCESS ONLY — AUTHENTICATION REQUIRED</div>
+<p class="rl-copy">回線は閉ざされている。開く鍵は、任命状の中にのみ存在する。</p>
+<div class="rl-label">MEMBER PASSWORD</div>
+<form class="rl-inputrow" id="rlForm"><input id="rlPassword" type="password" autocomplete="off" aria-label="構成員パスワード"><button type="submit">回線を開く</button></form>
+<p class="rl-msg" id="rlMsg" role="status" aria-live="polite"></p>
+<div class="rl-secret" id="rlSecret" hidden>
+<p class="rl-complete">◈ SIGNAL ACCEPTED / RESTRICTED LINE OPEN</p>
+<h3 class="rl-heading">限定通信 — 特別任務</h3>
+<div class="rl-data"><span class="rl-address">SUMIRE 殿</span><br><br>―― 構成員専用回線 ――<br>認証は完了した。この回線は、任命状を携える者にのみ開かれる秘匿通信である。<br>ようこそ、SUMIRE 殿。貴殿の受信をもって、本日の限定通信を開始する。<br><br>【特別任務 第壱號】<br>MOSHIMATION ORDERの理念と威光を、外部の世界へ静かに、しかし確かに広めること。<br>声を荒げることなかれ。結社の存在は、囁きのうちにこそ力を宿す。<br>応答は義務にあらず。されど呼びかけは、ここより始まる。<br>任務の遂行にあたっては、認証キーの秘匿を厳とすること。<br><br>【次回限定通信 予告】<br>来る2026年11月30日、創立の日。始声者 Police Horitius の「第一声」は、この限定回線にて構成員へ優先公開される。<br>回線を開いたまま、その日を待て。<br><br>— Police Horitius、始声者</div>
+</div>
+</div>
+<p class="privacy">※本コンテンツは創作コミュニティの世界観設定です。実際の会員制度・認証・秘匿通信を示すものではありません。この演出はブラウザー内で完結し、入力内容のサーバー送信・保存は行いません。</p>
+</section>
 <section class="section" id="archive"><div class="sectionhead"><span class="num">05 /</span><h2>TRANSMISSION ARCHIVE<small>公式通信記録</small></h2><div class="goldline"></div></div>
 <div class="archive-list">
 <article class="archive-entry"><div class="tag">MO-001 / CHARTER</div><div><h3>黄金紋章制定通達</h3><p>アンティーク通信機、三重電波、長い月桂樹。MOSHIMATION ORDER の象徴を定める創作上の内部通達。</p></div></article>
@@ -502,5 +549,25 @@ $('hqResetProgress').addEventListener('click',()=>{if(!window.confirm('このブ
 refresh();renderFreq();openTab(0);
 })();
 
+</script>
+<script>
+(function(){
+var form=document.getElementById('rlForm'); if(!form)return;
+var input=document.getElementById('rlPassword'),msg=document.getElementById('rlMsg'),secret=document.getElementById('rlSecret'),status=document.getElementById('rlStatus');
+form.addEventListener('submit',function(e){
+e.preventDefault();
+if(input.value.trim()==='MOSHI-001-SUMIRE'){
+msg.textContent='SIGNAL ACCEPTED';
+msg.className='rl-msg rl-ok';
+secret.hidden=false;
+if(status)status.textContent='● LINE OPEN';
+}else{
+msg.textContent='SIGNAL REJECTED';
+msg.className='rl-msg rl-ng';
+secret.hidden=true;
+if(status)status.textContent='● LINE SEALED';
+}
+});
+})();
 </script>
 </body></html>
