@@ -181,10 +181,28 @@
 #command-center .hq-progress>span{display:block;height:100%;background:#caa76a;width:0;transition:width .2s}
 @media(max-width:700px){#command-center .hq-mast{padding:22px 16px}#command-center .hq-tab{padding:15px 4px;font-size:9px}#command-center .hq-grid{grid-template-columns:1fr}#command-center .hq-tile{padding:18px}#command-center .hq-card-head img{width:48px;height:48px}#command-center .hq-card{aspect-ratio:auto;min-height:270px}#command-center .hq-card-footer{font-size:9px}#command-center .hq-footnote{padding:15px 18px}}
 
+
+/* Official credential policy — public-facing, no issuer secrets */
+.credential-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+.credential-panel{border:1px solid #745c34;background:linear-gradient(145deg,#1a1712,#0e1011);padding:25px}
+.credential-panel h3{font:500 28px 'Cormorant Garamond',serif;color:#ead09a;letter-spacing:.04em;margin:10px 0}
+.credential-panel p,.credential-policy p{color:#c6bbaa;font-size:13px;line-height:2}
+.credential-panel .eyebrow{font-size:10px}
+.credential-status{border-left:3px solid #cba25c;background:#16130e;padding:16px 20px;margin:22px 0;color:#e2cda7;font-size:13px}
+.credential-table{width:100%;border-collapse:collapse;margin:24px 0}
+.credential-table th,.credential-table td{border-bottom:1px solid #695639;padding:13px 10px;text-align:left;font-size:12px;vertical-align:top}
+.credential-table th{color:#dfc58e;font:11px 'Space Mono',monospace;letter-spacing:.02em}
+.credential-table td{color:#d1c3ac}
+.credential-policy details{border:1px solid #655334;margin-top:9px;background:#10100e}
+.credential-policy summary{padding:16px 18px;color:#e5cb97;cursor:pointer;font-size:14px}
+.credential-policy details p{padding:0 18px 18px;margin:0}
+.credential-policy .muted{color:#ad9d82}
+@media(max-width:660px){.credential-grid{grid-template-columns:1fr}.credential-panel{padding:19px}.credential-table th,.credential-table td{padding:10px 5px;font-size:11px}}
+
 </style>
 </head>
 <body>
-<nav><div class="navinner"><a href="#top" class="brand" aria-label="MOSHIMATION ORDER ホーム">MOSHIMATION ORDER<small>OFFICIAL COMMUNICATION CHANNEL</small></a><div class="navlinks"><a href="#command-center">HQ</a><a href="#manifesto">PHILOSOPHY</a><a href="#principles">ARTICLES</a><a href="#organization">STRUCTURE</a><a href="#transmission">TRANSMISSION</a><a href="#black-line">BLACK LINE</a><a href="#archive">ARCHIVE</a><a href="#directives">DIRECTIVES</a><a class="navcta" href="#join">ENTER THE ORDER ↗</a></div><button class="mobile-toggle" id="mobileToggle" aria-label="メニューを開く" aria-controls="mobileMenu" aria-expanded="false">☰</button></div><div class="mobile-menu" id="mobileMenu"><a href="#command-center">HQ / 司令室</a><a href="#manifesto">PHILOSOPHY</a><a href="#principles">ARTICLES</a><a href="#organization">STRUCTURE</a><a href="#transmission">TRANSMISSION</a><a href="#archive">ARCHIVE</a><a href="#directives">DIRECTIVES</a><a href="#story">ORIGIN</a><a href="#missions">MISSIONS</a><a href="#faq">FAQ</a><a href="#join">ENTER THE ORDER ↗</a></div></nav>
+<nav><div class="navinner"><a href="#top" class="brand" aria-label="MOSHIMATION ORDER ホーム">MOSHIMATION ORDER<small>OFFICIAL COMMUNICATION CHANNEL</small></a><div class="navlinks"><a href="#command-center">HQ</a><a href="#manifesto">PHILOSOPHY</a><a href="#principles">ARTICLES</a><a href="#organization">STRUCTURE</a><a href="#transmission">TRANSMISSION</a><a href="#black-line">BLACK LINE</a><a href="#archive">ARCHIVE</a><a href="#directives">DIRECTIVES</a><a href="#credential-policy">ID POLICY</a><a class="navcta" href="#join">ENTER THE ORDER ↗</a></div><button class="mobile-toggle" id="mobileToggle" aria-label="メニューを開く" aria-controls="mobileMenu" aria-expanded="false">☰</button></div><div class="mobile-menu" id="mobileMenu"><a href="#command-center">HQ / 司令室</a><a href="#manifesto">PHILOSOPHY</a><a href="#principles">ARTICLES</a><a href="#organization">STRUCTURE</a><a href="#transmission">TRANSMISSION</a><a href="#archive">ARCHIVE</a><a href="#directives">DIRECTIVES</a><a href="#story">ORIGIN</a><a href="#missions">MISSIONS</a><a href="#faq">FAQ</a><a href="#credential-policy">ID POLICY</a><a href="#join">ENTER THE ORDER ↗</a></div></nav>
 <main id="top"><header class="hero"><div class="hero-inner"><div><div class="eyebrow">[ SECURE CHANNEL // EST. 2026 ]</div><h1><span>MOSHIMATION</span><span>ORDER</span></h1><div class="rule"></div><p class="jcopy">我々は、応答のない世界にも呼びかける。</p><p class="desc">最初の通信は、たった一言から始まる。<br>世界の沈黙に向けて、今日も信号を送る。<br>これは支配のための結社ではない。対話のための結社である。</p><div class="buttons"><a class="btn gold" href="#command-center">📡 &nbsp; CENTRAL COMMAND</a><a class="btn" href="#transmission">TRANSMISSION</a><a class="btn" href="#manifesto">READ THE MANIFESTO</a></div><p class="micro">FIRST CALLER / POLICE HORITIUS<br>FOUNDING DATE: 2026.11.30<br>AUTHORIZATION CODE: MOSHI MOSHI</p></div><img class="hero-emblem" src="assets/emblem.png" alt="アンティーク電話、電波、長い月桂樹の黄金紋章"></div></header>
 
 <section class="section" id="command-center">
@@ -228,6 +246,7 @@
 <p>掲載するコールサイン・プロフィール・発行番号等は、開始時にルールを定め、本人の同意を得てから公開します。加入しただけで自動掲載されることはありません。</p>
 </div>
 <p class="hq-alert">構成員の登録・発行権限は運営側が管理します。サイト訪問者が自由に構成員証を作成する機能はありません。</p>
+<p><a class="section-jump" href="#credential-policy">公式構成員証の制度と公開規程を見る ↗</a></p>
 </div>
 <div class="hq-page" id="hqRadio" role="tabpanel" aria-labelledby="hqTabRadio" hidden>
 <h3 class="hq-title">FREQUENCY EXPLORER</h3><p class="hq-desc">通信帯域を調整せよ。正しい周波数に合うと通信が開き、司令室に任務完了が記録される。数字は創作上の演出であり、実際の無線通信ではない。</p>
@@ -337,6 +356,32 @@
 <details><summary>通信端末は本当にメッセージを送りますか？</summary><p>いいえ。現在の認証端末はページ内で動作する演出です。入力内容を外部に送信したり、保存したりする会員システムではありません。</p></details>
 <details><summary>創立日はいつですか？</summary><p>制定された創立年月日は2026年11月30日です。現時点では創立予定日として扱っています。</p></details>
 </div></section>
+<section class="section credential-policy" id="credential-policy">
+<div class="sectionhead"><span class="num">ID /</span><h2>OFFICIAL CREDENTIALS<small>公式構成員証制度｜公開規程（案）</small></h2><div class="goldline"></div></div>
+<p class="chapter-intro">MOSHIMATION ORDERは、構成員証を「公開用」と「本人用」の二部構成で発行する制度を準備しています。いずれも中央通信局が管理し、サイト訪問者が自分で作成・登録することはできません。</p>
+<div class="credential-status"><strong>PRE-LAUNCH / 制度準備中</strong>　公式登録者は現在<strong>0名</strong>。番号<strong>000</strong>は始声者 Police Horitius の予約番号であり、発行済みではありません。Xサブスクリプション特典としての運用は開始前です。</div>
+<div class="credential-grid">
+<article class="credential-panel"><span class="eyebrow">PUBLIC EDITION / P</span><h3>公開用構成員証</h3><p>SNSや公式名簿に掲示できる証票。表示名・役職・番号・公式紋章と、公開可能な画像を掲載。登録状況の照合先を示すことができます。</p><p>本人が公開に同意した情報だけを掲載します。</p></article>
+<article class="credential-panel"><span class="eyebrow">PRIVATE EDITION / S</span><h3>本人用構成員証</h3><p>登録本人向けの発行物。公開用と共通の番号を使用し、必要に応じて本人用の識別表示を持たせます。</p><p>画像だけで本人確認や有料特典へのアクセスが完了するわけではありません。秘密のパスワードや認証コードを画像に記載しません。</p></article>
+</div>
+<h3 style="color:#e5c88d;margin-top:35px">CERTIFICATE FIELDS / 記載事項</h3>
+<table class="credential-table"><thead><tr><th>項目</th><th>公開用</th><th>本人用</th></tr></thead><tbody>
+<tr><td>公式紋章</td><td>正式な黄金紋章</td><td>正式な黄金紋章</td></tr>
+<tr><td>番号・表示名・役職</td><td>掲載同意の範囲</td><td>本人向けに記載</td></tr>
+<tr><td>画像・アイコン</td><td>公開許諾済み画像のみ</td><td>承認済み画像</td></tr>
+<tr><td>版数・発行状態</td><td>照合情報で確認</td><td>発行記録で確認</td></tr>
+<tr><td>QR・照合URL</td><td>公開用の照合先</td><td>同じ公開照合先を使用可能</td></tr>
+<tr><td>非公開の認証情報</td><td>掲載しない</td><td>画像には掲載しない</td></tr>
+</tbody></table>
+<h3 style="color:#e5c88d;margin-top:35px">REGISTRY POLICY / 公開運用ルール</h3>
+<details><summary>01｜誰が発行できますか？</summary><p>発行・変更・再発行・失効は中央通信局の管理下で行います。発行の最終承認権者は始声者 Police Horitius とします。自動発行や自由登録は行いません。</p></details>
+<details><summary>02｜誰が対象になりますか？</summary><p>予定されているXサブスクリプション特典など、開始後に定める条件を満たし、運営側が承認した方が対象です。加入しただけで自動登録されるものではありません。</p></details>
+<details><summary>03｜公式名簿には何が載りますか？</summary><p>本人が公開を承諾したコールサイン、役職、番号、公開画像などを必要な範囲だけ掲載します。本人用の識別情報や審査情報は公開しません。本人の同意撤回に応じて公開を停止します。</p></details>
+<details><summary>04｜番号000と再発行は？</summary><p>000は始声者用の予約番号です。発行された番号は再利用しません。再発行する際は版数を更新し、必要な場合は旧版を失効扱いにします。</p></details>
+<details><summary>05｜QRコードで本人確認できますか？</summary><p>いいえ。公開照合は公式名簿に記録が存在するか、有効かどうかの確認に限ります。QRコードや画像は複製可能で、提示者が正規の本人である保証にはなりません。</p></details>
+<details><summary>06｜偽造・無断転載は？</summary><p>公式を装う無断の発行・改変・登録の詐称、本人の許可のない画像転載は認めません。確認された場合は発行停止・失効・公開停止などを検討します。</p></details>
+<p class="credential-status muted"><strong>NOTICE</strong>　この公開規程は施行前の案です。正式発行・公開照合サービスの開始日は未定です。現段階の公式名簿には登録者がいません。</p>
+</section>
 <section class="section" id="join"><div class="join"><div><div class="eyebrow">[ OPEN CHANNEL / VOLUNTARY PARTICIPATION ]</div><h3>ANSWER THE CALL.</h3><p>通信を受信した者へ。<br>参加も沈黙も、あなたの自由だ。</p><small>Xの公開リストへ移動します。閲覧・フォローは正式な入団登録ではありません。</small></div><a class="btn gold" href="https://x.com/i/lists/2123885725460627471" target="_blank" rel="noopener noreferrer">OPEN THE X LIST ↗</a></div>
 <div class="protocol"><div class="step"><span>01 / LISTEN</span><h3>呼びかけを受信する</h3><p>理念と五大教義を読み、活動の世界観を知る。</p></div><div class="step"><span>02 / RESPOND</span><h3>「もしもし」と応答する</h3><p>Xでの交流や投稿への返信は自由。応答しなくても構わない。</p></div><div class="step"><span>03 / CONNECT</span><h3>自由に交流する</h3><p>他者の沈黙や異論を尊重し、無理な勧誘・大量メンションは行わない。</p></div></div>
 <p class="privacy">このサイトは架空の秘密結社をテーマにした創作コミュニティの紹介ページです。外部アカウントとの連携、会員データの収集、決済、正式入団審査は実装していません。</p>
