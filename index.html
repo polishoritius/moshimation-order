@@ -296,6 +296,10 @@
 .mo-pre{opacity:1;transform:none}
 }
 /* === /MO-MOTION === */
+/* DAILY CIPHER (2026-11-26) — additions only */
+#daily-cipher .bl-body{min-height:0}
+.dc-cipher{font:700 clamp(19px,3.4vw,27px) 'Noto Serif JP',serif;letter-spacing:.32em;line-height:2;color:#f1d39c;border:1px solid #5b4c31;background:#060707;padding:20px 22px;margin:12px 0 4px;word-break:break-all}
+#daily-cipher .bl-data strong{color:#f1d39c;font-size:17px;letter-spacing:.14em}
 </style>
 </head>
 <body><div class="mo-scan" aria-hidden="true"></div>
@@ -576,6 +580,29 @@
 <article class="archive-entry"><div class="tag">PROTOCOL / ACTIVE</div><div><h3>通信に関する基本原則</h3><p>呼びかける自由、応答しない自由、異論を述べる自由を相互に尊重する。</p></div></article>
 </div><p class="privacy">※上記はこの創作コミュニティの世界観設定・構想記録です。実際の対外通信実績や構成員認証を示すものではありません。</p>
 </section>
+
+<section class="section" id="daily-cipher">
+<div class="sectionhead"><span class="num">DC /</span><h2>DAILY CIPHER<small>日替わり暗号｜日刊復号通信</small></h2><div class="goldline"></div></div>
+<p class="chapter-intro">毎日0時（日本時間）、傍受回線に新しい暗号文が届く。暗号はカタカナの置換式――五十音を「周波数オフセット」の分だけずらしたものだ。復号し、その日の通信文を受信せよ。</p>
+<div class="bl-shell" id="dcApp">
+<div class="bl-top"><strong>◈ DAILY CIPHER / MO-DC</strong><span class="bl-status" id="dcStatus">● SIGNAL ENCRYPTED</span></div>
+<div class="bl-stage">BROADCAST DATE — <span id="dcDate">----.--.--</span>（JST） / <span id="dcEdition">DAILY EDITION</span></div>
+<div class="bl-body">
+<p class="bl-copy">傍受した暗号文：</p>
+<p class="dc-cipher" id="dcCipher">―― LOADING SIGNAL ――</p>
+<div class="bl-freqrow"><span>FREQUENCY OFFSET — <span id="dcOffset">+0</span></span><span class="bl-dec">ENCRYPTION: KANA SHIFT CIPHER</span></div>
+<form class="bl-inputrow" id="dcForm"><input id="dcInput" maxlength="40" placeholder="復号した文をカタカナで入力" aria-label="DAILY CIPHER 復号文" autocomplete="off" required><button type="submit">DECODE</button></form>
+<p class="bl-feedback" id="dcFeedback" role="status" aria-live="polite"></p>
+<div class="bl-controls"><button type="button" id="dcHintBtn" class="secondary">ヒントを見る（1/3）</button></div>
+<p class="bl-feedback" id="dcHint"></p>
+<div id="dcResult" class="bl-hidden">
+<p class="bl-complete">◈ SIGNAL DECODED</p>
+<div class="bl-data"><span id="dcRecordNo">RECEPTION RECORD — MO-DC-00000000</span><br><br><strong id="dcPlain"></strong><br><br><span id="dcComment"></span></div>
+<p class="bl-copy">受信記録はこの画面だけの表示です。保存はされません。明日0時（日本時間）、新しい暗号文が届きます。</p>
+</div>
+</div>
+<div class="bl-ribbon">[ DAILY CIPHER NOTICE] この演出はブラウザー内で完結します。入力内容のサーバー送信・保存は行いません。出題は日本時間の日付で切り替わります。</div>
+</div></section>
 
 <section class="section" id="directives"><div class="sectionhead"><span class="num">06 /</span><h2>CENTRAL DIRECTIVES<small>中央通信局・公開規程</small></h2><div class="goldline"></div></div>
 <div class="directive-head"><span class="eyebrow">[ PUBLIC RECORD / MO-PROTOCOL-001 ]</span><p>本部通信の要旨は公開する。参加者に命令・服従を求めない。秘密結社の様式は創作上の演出であり、活動は自由意志に基づく。</p></div>
@@ -1331,5 +1358,127 @@ if(status)status.textContent='● LINE SEALED';
   });
 })();
 /* === /MO-ADD5 === */
+</script>
+<script>
+/* === MO-ADD6 2026-11-26 : DAILY CIPHER — daily kana-shift cipher (additions only) === */
+(function () {
+  'use strict';
+  var cipherEl = document.getElementById('dcCipher');
+  if (!cipherEl) return;
+  var statusEl = document.getElementById('dcStatus');
+  var dateEl = document.getElementById('dcDate');
+  var editionEl = document.getElementById('dcEdition');
+  var offsetEl = document.getElementById('dcOffset');
+  var form = document.getElementById('dcForm');
+  var input = document.getElementById('dcInput');
+  var feedback = document.getElementById('dcFeedback');
+  var hintBtn = document.getElementById('dcHintBtn');
+  var hintEl = document.getElementById('dcHint');
+  var resultEl = document.getElementById('dcResult');
+  var recordEl = document.getElementById('dcRecordNo');
+  var plainEl = document.getElementById('dcPlain');
+  var commentEl = document.getElementById('dcComment');
+
+  var KANA = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+  function shiftText(text, n) {
+    var out = '', i, idx, j;
+    for (i = 0; i < text.length; i++) {
+      idx = KANA.indexOf(text.charAt(i));
+      if (idx < 0) { out += text.charAt(i); continue; }
+      j = (idx + n) % KANA.length; if (j < 0) j += KANA.length;
+      out += KANA.charAt(j);
+    }
+    return out;
+  }
+  function norm(s) {
+    s = (s || '').normalize('NFKC');
+    s = s.replace(/[\s・、,。.!！?？「」『』（）()\-ー]/g, '');
+    s = s.replace(/[ぁ-ん]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) + 0x60); });
+    return s;
+  }
+
+  /* Dated editions: 2026-11-26 .. 2026-12-05 (JST) */
+  var DATED = {
+    '2026-11-26': { plain: 'セカイハコエヲマツテイル', offset: 5, comment: '世界は、声を待っている。今日も回線は開かれている。' },
+    '2026-11-27': { plain: 'チンモクヲワラウナ', offset: 7, comment: '沈黙を笑うな。応答しない自由も、ここでは守られる。' },
+    '2026-11-28': { plain: 'カイセンハヒラカレタ', offset: 3, comment: '回線は開かれた。応答は、義務ではない。' },
+    '2026-11-29': { plain: 'ソウリツハアシタ', offset: 17, comment: '創立は明日。最後の調整を終えよ。' },
+    /* 2026-11-30 FOUNDING DAY SPECIAL — 「第一声」の正式文面は未定。以下の plain はプレースホルダー（仮文）であり、正式文面の決定後、この1行の plain と comment を差し替えること。 */
+    '2026-11-30': { plain: 'モシモシキコエテイマスカ', offset: 11, comment: '創立の日。始声者の第一声を、ここに受信した。', special: true },
+    '2026-12-01': { plain: 'ヘントウハナクテモイイ', offset: 9, comment: '返答がなくてもいい。呼びかけは届いている。' },
+    '2026-12-02': { plain: 'ユメノソトニタツ', offset: 13, comment: '夢の中では俯瞰できない。だから、外に立つ。' },
+    '2026-12-03': { plain: 'トウコトヲオソレルナ', offset: 6, comment: '問うことを恐れるな。教義も、始声者も。' },
+    '2026-12-04': { plain: 'ワラウコトヲワスレルナ', offset: 15, comment: '深刻な世界だからこそ、ユーモアを忘れない。' },
+    '2026-12-05': { plain: 'ツウシンハトマラナイ', offset: 4, comment: '通信は止まらない。次の信号を待て。' }
+  };
+  /* Generic pool: used after the dated run, chosen deterministically by date */
+  var POOL = [
+    { plain: 'モシモシキコエテイマスカ', comment: 'もしもし、聞こえていますか。応答は義務ではない。' },
+    { plain: 'コエヲトメルナ', comment: '声を止めるな。異なる声にも、耳を傾けよ。' },
+    { plain: 'モシモシヲヤメルナ', comment: '「もしもし」をやめるな。呼びかける自由は、誰にも奪えない。' },
+    { plain: 'ウケトレソノコエ', comment: '受け取れ、その声を。回線は開かれている。' },
+    { plain: 'カイセンノムコウニコエ', comment: '回線の向こうに、声がある。' },
+    { plain: 'ヨルノカイセンニテ', comment: '夜の回線にて、静かに受信中。' },
+    { plain: 'アンテナヲタテヨ', comment: 'アンテナを立てよ。信号は、待つ者のもとに届く。' },
+    { plain: 'ムセンキノムコウ', comment: '無線機の向こう側で、誰かが聞いている。' }
+  ];
+
+  function todayKey() {
+    var m = /[?&]date=(\d{4})-(\d{2})-(\d{2})/.exec(window.location.search || '');
+    if (m) return m[1] + '-' + m[2] + '-' + m[3];
+    var now = new Date();
+    var jst = new Date(now.getTime() + (now.getTimezoneOffset() + 540) * 60000);
+    function p(n) { return (n < 10 ? '0' : '') + n; }
+    return jst.getFullYear() + '-' + p(jst.getMonth() + 1) + '-' + p(jst.getDate());
+  }
+
+  var key = todayKey();
+  var entry = DATED[key] || null;
+  if (!entry) {
+    var parts = key.split('-');
+    var dayNum = Math.floor(Date.UTC(+parts[0], +parts[1] - 1, +parts[2]) / 86400000);
+    var base = POOL[((dayNum % POOL.length) + POOL.length) % POOL.length];
+    entry = { plain: base.plain, comment: base.comment, offset: 3 + ((dayNum * 7) % 21) };
+  }
+  var plain = entry.plain;
+  var cipher = shiftText(plain, entry.offset);
+
+  cipherEl.textContent = cipher;
+  dateEl.textContent = key.replace(/-/g, '.');
+  editionEl.textContent = entry.special ? 'FOUNDING DAY SPECIAL / 創立日特別版' : 'DAILY EDITION';
+  offsetEl.textContent = '+' + entry.offset;
+
+  var hints = [
+    'ヒント1：暗号文は、平文のカタカナを五十音の順に ' + entry.offset + ' つ後ろへずらしたもの。復号するには、各文字を逆向きに ' + entry.offset + ' つ戻す。',
+    'ヒント2：最初の文字「' + cipher.charAt(0) + '」は「' + plain.charAt(0) + '」に戻る。五十音の並びで対応を確かめよ。',
+    'ヒント3：文は「' + plain.slice(0, 3) + '」から始まる。全' + plain.length + '文字。'
+  ];
+  var hintCount = 0;
+  hintBtn.addEventListener('click', function () {
+    if (hintCount >= hints.length) return;
+    hintEl.textContent = hints[hintCount];
+    hintCount++;
+    hintBtn.textContent = hintCount >= hints.length ? 'ヒントは以上' : 'ヒントを見る（' + (hintCount + 1) + '/3）';
+    if (hintCount >= hints.length) hintBtn.disabled = true;
+  });
+
+  var solved = false;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (solved) return;
+    if (norm(input.value) === norm(plain)) {
+      solved = true;
+      statusEl.textContent = '● SIGNAL DECODED';
+      feedback.textContent = 'SIGNAL DECODED — 受信記録を開いた。';
+      recordEl.textContent = 'RECEPTION RECORD — MO-DC-' + key.replace(/-/g, '');
+      plainEl.textContent = plain;
+      commentEl.textContent = entry.comment;
+      resultEl.classList.remove('bl-hidden');
+    } else {
+      feedback.textContent = 'DECODE FAILED — 信号が乱れている。オフセットを確かめ、もう一度入力せよ。';
+    }
+  });
+})();
+/* === /MO-ADD6 === */
 </script>
 </body></html>
