@@ -2,7 +2,7 @@
 
 **THE BOOK OF THE FIRST CALL**
 
-> **Status: DRAFT v0.1 — Owner未承認。** 書名は仮採用であり、確定設定ではない。
+> **Status: DRAFT v0.2 — Owner未承認。** 書名は仮採用であり、確定設定ではない。
 > 本ディレクトリの内容は公式サイトへ未公開。公開・mainへのマージはOwnerの承認後に限る。
 
 「我々は、応答のない世界にも呼びかける。」
@@ -18,13 +18,13 @@
 |---|---|---|
 | [canon-register.md](canon-register.md) | 確定設定・新規提案・未確認事項の台帳 | Draft |
 | [outline.md](outline.md) | 全体構成、全8書の章立て、哲学設計、番号体系、伏線設計 | Draft |
-| [book-01.md](book-01.md) | 第一書「始声記」本文 | Draft v0.2 |
-| [book-02.md](book-02.md) | 第二書「五律記」本文 | Draft v0.1 |
-| [book-03.md](book-03.md) | 第三書「聴守記」本文 | Draft v0.1 |
-| [book-04.md](book-04.md) | 第四書「伝声記」本文 | Draft v0.1 |
-| [book-05.md](book-05.md) | 第五書「結社記」本文 | Draft v0.1 |
-| [book-06.md](book-06.md) | 第六書「笑声記」本文 | Draft v0.1 |
-| [book-07.md](book-07.md) | 第七書「通信黙示録」本文 | Draft v0.1 |
+| [book-01.md](book-01.md) | 第一書「始声記」本文 | Draft v0.3 |
+| [book-02.md](book-02.md) | 第二書「五律記」本文 | Draft v0.2 |
+| [book-03.md](book-03.md) | 第三書「聴守記」本文 | Draft v0.2 |
+| [book-04.md](book-04.md) | 第四書「伝声記」本文 | Draft v0.2 |
+| [book-05.md](book-05.md) | 第五書「結社記」本文 | Draft v0.2 |
+| [book-06.md](book-06.md) | 第六書「笑声記」本文 | Draft v0.2 |
+| [book-07.md](book-07.md) | 第七書「通信黙示録」本文 | Draft v0.2 |
 | [book-08.md](book-08.md) | 第八書「永続通信録」本文 | Draft v0.1 |
 | [editorial-review.md](editorial-review.md) | 編集レビュー、設定整合性検査、改善提案 | Draft |
 | [publication-plan.md](publication-plan.md) | 制作計画、品質評価表、装丁・Web・改訂履歴設計 | Draft |
