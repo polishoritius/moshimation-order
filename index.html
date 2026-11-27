@@ -305,6 +305,28 @@
 #daily-cipher .bl-body{min-height:0}
 .dc-cipher{font:700 clamp(19px,3.4vw,27px) 'Noto Serif JP',serif;letter-spacing:.32em;line-height:2;color:#f1d39c;border:1px solid #5b4c31;background:#060707;padding:20px 22px;margin:12px 0 4px;word-break:break-all}
 #daily-cipher .bl-data strong{color:#f1d39c;font-size:17px;letter-spacing:.14em}
+/* === MO-ADD8 2026-11-27 : MORSE TRANSMITTER (additions only) === */
+#morse-transmitter .bl-body{min-height:0}
+.mt-codes{display:flex;gap:10px;flex-wrap:wrap;margin:4px 0 6px}
+.mt-code{border:1px solid #5b4c31;background:#060707;padding:10px 16px;font:600 15px 'Space Mono',monospace;color:#f1d39c;letter-spacing:.18em}
+.mt-code small{display:block;font:10px 'Space Mono',monospace;color:#9e8b66;letter-spacing:.1em;margin-top:5px}
+.mt-slots{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 4px}
+.mt-slot{border:1px solid #5b4c31;min-width:86px;text-align:center;padding:10px 8px;color:#9e8b66;background:#0a0a09}
+.mt-slot .mt-kana{display:block;font:700 22px 'Noto Serif JP',serif;color:#ded3bb}
+.mt-slot .mt-sym{display:block;font:12px 'Space Mono',monospace;letter-spacing:.14em;margin-top:4px;min-height:15px}
+.mt-slot.mt-now{border-color:#d4ae64;color:#cfb47e;box-shadow:0 0 0 1px #d4ae6455}
+.mt-slot.mt-done{border-color:#b18a45;color:#edd08f}
+.mt-slot.mt-done .mt-kana{color:#f1d39c}
+.mt-slot.mt-err{border-color:#a34d3a;color:#e09a86}
+.mt-live{font:12px 'Space Mono',monospace;color:#cfb47e;letter-spacing:.12em;min-height:18px;margin-top:10px}
+.mt-key{display:block;width:100%;margin-top:16px;padding:26px 20px;background:linear-gradient(180deg,#241c10,#14100a);border:2px solid #b18a45;color:#f1d39c;font:700 17px 'Space Mono',monospace;letter-spacing:.22em;cursor:pointer;user-select:none;-webkit-user-select:none;touch-action:none}
+.mt-key small{display:block;margin-top:8px;font:10px 'Space Mono',monospace;color:#9e8b66;letter-spacing:.12em;font-weight:400}
+.mt-key.mt-on{background:#d4ae64;color:#14120c;box-shadow:0 0 34px #d4ae6477}
+.mt-key.mt-on small{color:#4a3a1c}
+.mt-key:disabled{opacity:.55;cursor:default}
+.mt-record{margin-top:20px;border:1px dashed #846b3a;color:#b6a788;font-size:12px;line-height:2;padding:14px 18px}
+@media (prefers-reduced-motion: reduce){.mt-key{transition:none}}
+/* === /MO-ADD8 CSS === */
 </style>
 </head>
 <body><div class="mo-scan" aria-hidden="true"></div>
@@ -365,6 +387,28 @@
 <section class="section" id="principles"><div class="sectionhead"><span class="num">02 /</span><h2>FIVE ARTICLES<small>五大教義</small></h2><div class="goldline"></div></div><div class="grid3"><article class="doctrine"><div class="index">I.</div><h3>呼びかけよ。</h3><p>声を届けることから、世界は動き始める。</p></article><article class="doctrine"><div class="index">II.</div><h3>沈黙を裁くな。</h3><p>応答する自由と、応答しない自由を尊重する。</p></article><article class="doctrine"><div class="index">III.</div><h3>声を奪うな。</h3><p>異なる声にも、耳を傾ける。</p></article><article class="doctrine"><div class="index">IV.</div><h3>疑うことを恐れるな。</h3><p>教義も始声者も、絶対ではない。</p></article><article class="doctrine"><div class="index">V.</div><h3>最後は笑え。</h3><p>深刻な世界だからこそ、ユーモアを忘れない。</p></article><article class="doctrine"><div class="index">∞</div><h3>認証語は一つ。</h3><p>呼びかけも、応答も。「もしもし」。</p></article></div></section>
 <section class="section" id="organization"><div class="sectionhead"><span class="num">03 /</span><h2>THE ORDER<small>組織構造（構想）</small></h2><div class="goldline"></div></div><div class="org"><div class="role founder"><div class="subtitle">FOUNDER / FIRST CALLER</div><div class="rtitle">始声者 — Police Horitius</div><p>理念の象徴・最初の通信の発信者</p></div><div class="role"><div class="subtitle">GUARDIAN</div><div class="rtitle">聴守官</div><p>理念と秩序を守る</p></div><div class="role"><div class="subtitle">MESSENGER</div><div class="rtitle">伝声官</div><p>通信と企画を届ける</p></div><div class="role"><div class="subtitle">RESPONDER</div><div class="rtitle">応声者</div><p>呼びかけを自由につなぐ</p></div></div><p class="hint">※階級は物語上の役割です。人の優劣や服従関係を意味しません。役職の実際の任命状況は未確認です。</p></section>
 <section class="section" id="transmission"><div class="sectionhead"><span class="num">04 /</span><h2>SECURE TRANSMISSION<small>内部通信端末</small></h2><div class="goldline"></div></div><div class="transmission"><div class="status">● CHANNEL OPEN &nbsp; / &nbsp; LOCAL DEMONSTRATION &nbsp; / &nbsp; MO-001</div><div class="terminal" id="screen" aria-live="polite"><p>&gt; SIGNAL DETECTED</p><p>&gt; SOURCE: MOSHIMATION ORDER</p><p class="muted">&gt; 認証語を入力してください。</p><p class="green">&gt; _</p></div><form class="termrow" id="termForm"><input id="code" maxlength="32" placeholder="認証語を入力…" autocomplete="off" aria-label="認証語"><button class="btn gold" type="submit">送信 / TRANSMIT</button></form><p class="hint">この端末は演出用です。入力内容は送信・保存されません。正式な入団登録機能はありません。</p></div></section>
+<section class="section" id="morse-transmitter">
+<div class="sectionhead"><span class="num">MT /</span><h2>MORSE TRANSMITTER<small>モールス発信機｜手動送信端末</small></h2><div class="goldline"></div></div>
+<p class="chapter-intro">認証語「モシモシ」を、和文モールスの電鍵で打つ送信端末。符号は下の表のとおり。短く押せば短点（・）、長く押せば長点（－）。一文字分の符号を打ち終えると、少しの沈黙で自動的に判定される。正しく届けば、始声者から応答がある。</p>
+<div class="bl-shell" id="mtApp">
+<div class="bl-top"><strong>◈ MORSE TRANSMITTER / MO-MT</strong><span class="bl-status" id="mtStatus">● KEY READY</span></div>
+<div class="bl-stage">TARGET — MOSHI MOSHI / 認証語を送信せよ</div>
+<div class="bl-body">
+<div class="mt-codes"><span class="mt-code">モ －・・－・<small>MO</small></span><span class="mt-code">シ －－・－・<small>SHI</small></span></div>
+<div class="mt-slots" id="mtSlots"></div>
+<p class="mt-live">KEYING — <span id="mtLive"></span></p>
+<button type="button" class="mt-key" id="mtKey">電鍵 / STRAIGHT KEY<small>押している間だけ発信音が鳴る ― 短く押す＝・ 長く押す＝－ ／ 打ち終えて少し待つと一文字が確定する。ボタンにフォーカス中はスペースキーでも打てる</small></button>
+<p class="bl-feedback" id="mtFeedback" role="status" aria-live="polite"></p>
+<div class="bl-controls"><button type="button" id="mtReset" class="secondary">最初から打ち直す</button></div>
+<div id="mtResult" class="bl-hidden">
+<p class="bl-complete">◈ TRANSMISSION RECEIVED — 「モシモシ」を受信した</p>
+<div class="bl-data"><span id="mtRecordNo">RECEPTION — MO-MT-00000000</span><br><br><strong>Police Horitius より応答</strong><br><span id="mtReply"></span></div>
+</div>
+<div class="mt-record" id="mtRecord">送信記録 — 読み込み中</div>
+</div>
+<div class="bl-ribbon">[ MORSE TRANSMITTER NOTICE ] この演出はブラウザー内で完結します。送信記録はこのブラウザー内にのみ保存され、外部へ送信・投稿されることはありません。</div>
+</div></section>
+
 
 <section class="section" id="black-line">
 <div class="sectionhead"><span class="num">BL /</span><h2>BLACK LINE<small>機密通信局｜公開体験版</small></h2><div class="goldline"></div></div>
@@ -1605,4 +1649,206 @@ if(status)status.textContent='● LINE SEALED';
 })();
 /* === /MO-ADD6 === */
 </script>
+<script>
+/* === MO-ADD8 2026-11-27 : MORSE TRANSMITTER — manual morse key, replies, local record (additions only) === */
+(function () {
+  'use strict';
+  var keyBtn = document.getElementById('mtKey');
+  if (!keyBtn) return;
+  var statusEl = document.getElementById('mtStatus');
+  var slotsEl = document.getElementById('mtSlots');
+  var liveEl = document.getElementById('mtLive');
+  var feedback = document.getElementById('mtFeedback');
+  var resetBtn = document.getElementById('mtReset');
+  var resultEl = document.getElementById('mtResult');
+  var recordNoEl = document.getElementById('mtRecordNo');
+  var replyEl = document.getElementById('mtReply');
+  var recordEl = document.getElementById('mtRecord');
+
+  /* 和文モールス符号（現行標準表に照合済み）: モ = －・・－・ / シ = －－・－・ */
+  var TARGET = [
+    { kana: 'モ', code: '-..-.' },
+    { kana: 'シ', code: '--.-.' },
+    { kana: 'モ', code: '-..-.' },
+    { kana: 'シ', code: '--.-.' }
+  ];
+  var DASH_MS = 200;   /* 押下が 200ms 以上で長点 */
+  var LETTER_MS = 600; /* 600ms 入力がなければ一文字を確定 */
+  var STORE_KEY = 'mo-mt-record-v1';
+
+  var REPLIES = {
+    normal: '受信した。モシモシ――その声は、確かに届いた。回線は開かれた。応答する。こちらは始声者、Police Horitius。あなたの呼びかけは、もう孤独ではない。',
+    founding: '受信した。創立の日に届いた、そのモシモシを記録する。回線は開かれた。ここから、通信が始まる。――始声者 Police Horitius。'
+  };
+
+  function todayKey() {
+    var m = /[?&]date=(\d{4})-(\d{2})-(\d{2})/.exec(window.location.search || '');
+    if (m) return m[1] + '-' + m[2] + '-' + m[3];
+    var now = new Date();
+    var jst = new Date(now.getTime() + (now.getTimezoneOffset() + 540) * 60000);
+    function p(n) { return (n < 10 ? '0' : '') + n; }
+    return jst.getFullYear() + '-' + p(jst.getMonth() + 1) + '-' + p(jst.getDate());
+  }
+  function disp(code) { return code.replace(/-/g, '－').replace(/\./g, '・'); }
+
+  var slotEls = [];
+  TARGET.forEach(function (t) {
+    var d = document.createElement('div');
+    d.className = 'mt-slot';
+    var k = document.createElement('span');
+    k.className = 'mt-kana';
+    k.textContent = t.kana;
+    var s = document.createElement('span');
+    s.className = 'mt-sym';
+    s.textContent = disp(t.code);
+    d.appendChild(k);
+    d.appendChild(s);
+    slotsEl.appendChild(d);
+    slotEls.push(d);
+  });
+
+  var idx = 0, buf = '', pressing = false, pressAt = 0, timer = null, done = false;
+
+  /* --- Web Audio: 単一サイン波の発信音 --- */
+  var actx = null, osc = null, gainNode = null;
+  function toneOn() {
+    try {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      if (!actx) actx = new AC();
+      if (actx.state === 'suspended' && actx.resume) actx.resume();
+      toneOff();
+      osc = actx.createOscillator();
+      gainNode = actx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = 600;
+      gainNode.gain.value = 0.07;
+      osc.connect(gainNode);
+      gainNode.connect(actx.destination);
+      osc.start();
+    } catch (e) { /* 音が出ない環境でも打鍵は続行できる */ }
+  }
+  function toneOff() {
+    try { if (osc) { osc.stop(); osc.disconnect(); osc = null; } } catch (e) {}
+    try { if (gainNode) { gainNode.disconnect(); gainNode = null; } } catch (e) {}
+  }
+
+  function render() {
+    slotEls.forEach(function (el, i) {
+      el.classList.toggle('mt-done', i < idx);
+      el.classList.toggle('mt-now', i === idx && !done);
+    });
+    liveEl.textContent = disp(buf);
+  }
+
+  function finalize() {
+    timer = null;
+    if (done || !buf) return;
+    var t = TARGET[idx];
+    if (buf === t.code) {
+      idx++;
+      buf = '';
+      if (idx >= TARGET.length) { succeed(); return; }
+      feedback.textContent = 'SIGNAL CLEAR — 「' + t.kana + '」確定。次は「' + TARGET[idx].kana + '」。';
+    } else {
+      slotEls[idx].classList.add('mt-err');
+      setTimeout(function () { slotEls[idx].classList.remove('mt-err'); }, 900);
+      feedback.textContent = 'SIGNAL UNREADABLE — その文字は読み取れなかった。「' + t.kana + '」（' + disp(t.code) + '）を打ち直せ。';
+      buf = '';
+    }
+    render();
+  }
+
+  function pressStart() {
+    if (done || pressing) return;
+    pressing = true;
+    pressAt = Date.now();
+    if (timer) { clearTimeout(timer); timer = null; }
+    keyBtn.classList.add('mt-on');
+    toneOn();
+  }
+  function pressEnd() {
+    if (!pressing) return;
+    pressing = false;
+    keyBtn.classList.remove('mt-on');
+    toneOff();
+    buf += (Date.now() - pressAt >= DASH_MS) ? '-' : '.';
+    render();
+    timer = setTimeout(finalize, LETTER_MS);
+  }
+
+  keyBtn.addEventListener('pointerdown', function (e) {
+    e.preventDefault();
+    try { keyBtn.setPointerCapture(e.pointerId); } catch (err) {}
+    pressStart();
+  });
+  keyBtn.addEventListener('pointerup', function (e) { e.preventDefault(); pressEnd(); });
+  keyBtn.addEventListener('pointercancel', function () { pressEnd(); });
+  keyBtn.addEventListener('keydown', function (e) {
+    if (e.code === 'Space' || e.key === ' ') { e.preventDefault(); if (!e.repeat) pressStart(); }
+  });
+  keyBtn.addEventListener('keyup', function (e) {
+    if (e.code === 'Space' || e.key === ' ') { e.preventDefault(); pressEnd(); }
+  });
+  keyBtn.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+
+  resetBtn.addEventListener('click', function () {
+    if (timer) { clearTimeout(timer); timer = null; }
+    pressing = false;
+    toneOff();
+    keyBtn.classList.remove('mt-on');
+    idx = 0; buf = ''; done = false;
+    keyBtn.disabled = false;
+    statusEl.textContent = '● KEY READY';
+    feedback.textContent = '';
+    resultEl.classList.add('bl-hidden');
+    slotEls.forEach(function (el) { el.classList.remove('mt-err'); });
+    render();
+  });
+
+  /* --- 送信記録（このブラウザーのみに保存） --- */
+  function loadRecord() {
+    try {
+      var raw = localStorage.getItem(STORE_KEY);
+      if (!raw) return { count: 0, last: '', lastNo: '' };
+      var r = JSON.parse(raw);
+      if (!r || typeof r.count !== 'number') return { count: 0, last: '', lastNo: '' };
+      return r;
+    } catch (e) { return { count: 0, last: '', lastNo: '' }; }
+  }
+  function renderRecord() {
+    var r = loadRecord();
+    if (r.count > 0) {
+      recordEl.textContent = '送信記録 — これまでに ' + r.count + ' 回送信 / 最終送信: ' + r.last + '（受付番号 ' + r.lastNo + '）';
+    } else {
+      recordEl.textContent = '送信記録 — まだ送信はない。最初の「モシモシ」を待っている。';
+    }
+  }
+
+  function succeed() {
+    done = true;
+    buf = '';
+    keyBtn.disabled = true;
+    statusEl.textContent = '● TRANSMISSION RECEIVED';
+    var key = todayKey();
+    var no = 'MO-MT-' + key.replace(/-/g, '');
+    var r = loadRecord();
+    r.count += 1;
+    r.last = key.replace(/-/g, '.');
+    r.lastNo = no;
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(r)); } catch (e) {}
+    recordNoEl.textContent = 'RECEPTION — ' + no;
+    replyEl.textContent = (key === '2026-11-30') ? REPLIES.founding : REPLIES.normal;
+    resultEl.classList.remove('bl-hidden');
+    feedback.textContent = 'TRANSMISSION COMPLETE — 応答を受信した。';
+    renderRecord();
+    render();
+  }
+
+  renderRecord();
+  render();
+})();
+/* === /MO-ADD8 === */
+</script>
+
 </body></html>
