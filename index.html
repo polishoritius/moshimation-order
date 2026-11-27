@@ -327,9 +327,62 @@
 .mt-record{margin-top:20px;border:1px dashed #846b3a;color:#b6a788;font-size:12px;line-height:2;padding:14px 18px}
 @media (prefers-reduced-motion: reduce){.mt-key{transition:none}}
 /* === /MO-ADD8 CSS === */
+
+/* === MO-ADD9 2026-11-27 : TRANSMISSION GATE (additions only) === */
+.tg-gate{display:none;position:fixed;inset:0;z-index:200;background:#070809;color:#f1eadb;align-items:center;justify-content:center;overflow:auto}
+.tg-gate.tg-on{display:flex}
+.tg-gate.tg-out{opacity:0;transition:opacity .6s ease}
+.tg-noise{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;pointer-events:none}
+.tg-panel{position:relative;z-index:1;width:min(560px,92vw);text-align:center;padding:44px 30px 38px;border:1px solid #7d6135;background:rgba(7,8,9,.9);box-shadow:inset 0 0 80px #000;margin:20px 0}
+.tg-kicker{font:10px 'Space Mono',monospace;letter-spacing:.3em;color:#d4ae64}
+.tg-title{font:500 34px 'Cormorant Garamond',serif;letter-spacing:.14em;color:#eacb8b;margin:12px 0 4px}
+.tg-phase{font:11px 'Space Mono',monospace;letter-spacing:.22em;color:#9e8b66}
+.tg-freq{font:700 clamp(38px,8vw,54px) 'Space Mono',monospace;color:#f3e5c4;margin:16px 0 2px}
+.tg-freq small{font-size:16px;color:#9e8b66}
+.tg-meter{font:16px 'Space Mono',monospace;letter-spacing:4px;color:#d4ae64;min-height:22px}
+.tg-hint{font-size:12px;color:#b6a788;min-height:2.6em;line-height:1.9;margin:10px 0 0}
+.tg-dial{display:flex;align-items:center;gap:10px;margin-top:18px}
+.tg-dial input[type=range]{flex:1;min-width:0;accent-color:#d4ae64}
+.tg-step{width:46px;height:42px;flex:0 0 auto;background:#14100a;border:1px solid #b18a45;color:#f1d39c;font:700 13px 'Space Mono',monospace;cursor:pointer}
+.tg-step:hover{background:#d4ae64;color:#14120c}
+.tg-btn{display:inline-block;margin-top:22px;padding:13px 30px;background:#d4ae64;border:1px solid #d4ae64;color:#16120b;font:700 12px 'Space Mono',monospace;letter-spacing:.14em;cursor:pointer}
+.tg-btn:hover{background:#f4cd81}
+.tg-link{display:inline-block;margin-top:14px;background:none;border:none;color:#9e8b66;font:11px 'Space Mono',monospace;letter-spacing:.12em;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+.tg-link:hover{color:#d4ae64}
+.tg-locked-msg{font-size:15px;line-height:2.2;letter-spacing:.08em;color:#f1eadb;margin:12px 0 0}
+.tg-locked-msg .tg-name{display:block;margin-top:10px;font:11px 'Space Mono',monospace;letter-spacing:.2em;color:#d4ae64}
+.tg-replay{background:none;border:none;color:#897e69;font:11px 'Space Mono',monospace;letter-spacing:.09em;cursor:pointer;text-decoration:underline;text-underline-offset:4px;padding:0}
+.tg-replay:hover{color:#d4ae64}
+@media (prefers-reduced-motion: reduce){.tg-gate.tg-out{transition:none}}
+/* === /MO-ADD9 CSS === */
 </style>
 </head>
 <body><div class="mo-scan" aria-hidden="true"></div>
+<div class="tg-gate" id="tgGate" role="dialog" aria-modal="true" aria-label="TRANSMISSION GATE — 回線接続">
+<canvas class="tg-noise" id="tgNoise" width="160" height="90" aria-hidden="true"></canvas>
+<div class="tg-panel">
+<div class="tg-kicker">MOSHIMATION ORDER</div>
+<div class="tg-title">TRANSMISSION GATE</div>
+<div class="tg-phase" id="tgPhase">SCANNING</div>
+<div class="tg-freq"><span id="tgFreq">10.00</span> <small>MHz</small></div>
+<div class="tg-meter" id="tgMeter" aria-hidden="true">▁▁▁▁▁</div>
+<div id="tgScanBox">
+<p class="tg-hint">回線に接続しています…</p>
+<div><button type="button" class="tg-link" id="tgSkip">SKIP</button></div>
+</div>
+<div id="tgTune" hidden>
+<div class="tg-dial"><button type="button" class="tg-step" id="tgDown" aria-label="周波数を0.01下げる">−</button><input type="range" id="tgDial" min="1000" max="1200" step="1" value="1042" aria-label="周波数ダイヤル"><button type="button" class="tg-step" id="tgUp" aria-label="周波数を0.01上げる">＋</button></div>
+<p class="tg-hint" id="tgHint" aria-live="polite">ダイヤルを動かして、声の在りかを探せ。</p>
+<div><button type="button" class="tg-link" id="tgSound">SOUND: OFF</button></div>
+<div><button type="button" class="tg-link" id="tgBypass">接続を省略して入る</button></div>
+</div>
+<div id="tgLocked" hidden>
+<p class="tg-locked-msg">もしもし。聞こえているか。<br>――回線は開かれた。応答を待っている。<span class="tg-name">Police Horitius</span></p>
+<button type="button" class="tg-btn" id="tgEnter">回線を開く</button>
+</div>
+</div>
+</div>
+
 <nav><div class="navinner"><a href="#top" class="brand" aria-label="MOSHIMATION ORDER ホーム">MOSHIMATION ORDER<small>OFFICIAL COMMUNICATION CHANNEL</small></a><div class="navlinks"><a href="#command-center">HQ</a><a href="#manifesto">PHILOSOPHY</a><a href="#principles">ARTICLES</a><a href="#organization">STRUCTURE</a><a href="#transmission">TRANSMISSION</a><a href="#black-line">BLACK LINE</a><a href="#archive">ARCHIVE</a><a href="#directives">DIRECTIVES</a><a href="#credential-policy">ID POLICY</a><a class="navcta" href="#join">ENTER THE ORDER ↗</a></div><button class="mobile-toggle" id="mobileToggle" aria-label="メニューを開く" aria-controls="mobileMenu" aria-expanded="false">☰</button></div><div class="mobile-menu" id="mobileMenu"><a href="#command-center">HQ / 司令室</a><a href="#manifesto">PHILOSOPHY</a><a href="#principles">ARTICLES</a><a href="#organization">STRUCTURE</a><a href="#transmission">TRANSMISSION</a><a href="#archive">ARCHIVE</a><a href="#directives">DIRECTIVES</a><a href="#story">ORIGIN</a><a href="#missions">MISSIONS</a><a href="#faq">FAQ</a><a href="#credential-policy">ID POLICY</a><a href="#join">ENTER THE ORDER ↗</a></div></nav>
 <main id="top"><header class="hero"><canvas id="moWave" class="mo-wave" aria-hidden="true"></canvas><div class="hero-inner"><div><div class="eyebrow">[ SECURE CHANNEL // EST. 2026 ]</div><h1><span>MOSHIMATION</span><span>ORDER</span></h1><div class="rule"></div><p class="jcopy">我々は、応答のない世界にも呼びかける。</p><p class="desc">最初の通信は、たった一言から始まる。<br>世界の沈黙に向けて、今日も信号を送る。<br>これは支配のための結社ではない。対話のための結社である。</p><div class="buttons"><a class="btn gold" href="#command-center">📡 &nbsp; CENTRAL COMMAND</a><a class="btn" href="#transmission">TRANSMISSION</a><a class="btn" href="#manifesto">READ THE MANIFESTO</a></div><p class="micro">FIRST CALLER / POLICE HORITIUS<br>FOUNDING DATE: 2026.11.30<br>AUTHORIZATION CODE: MOSHI MOSHI</p><div class="mo-typebox"><span id="moTyped"></span><span class="mo-caret">&nbsp;</span></div></div><span class="hero-emblem"><span class="mo-pulse-anchor"><img class="mo-emblem-img" src="assets/emblem.png" alt="アンティーク電話、電波、長い月桂樹の黄金紋章"><span class="mo-ring"></span><span class="mo-ring mo-r2"></span></span></span></div></header>
 
@@ -743,7 +796,7 @@
 <div class="protocol"><div class="step"><span>01 / LISTEN</span><h3>呼びかけを受信する</h3><p>理念と五大教義を読み、活動の世界観を知る。</p></div><div class="step"><span>02 / RESPOND</span><h3>「もしもし」と応答する</h3><p>Xでの交流や投稿への返信は自由。応答しなくても構わない。</p></div><div class="step"><span>03 / CONNECT</span><h3>自由に交流する</h3><p>他者の沈黙や異論を尊重し、無理な勧誘・大量メンションは行わない。</p></div></div>
 <p class="privacy">このサイトは架空の秘密結社をテーマにした創作コミュニティの紹介ページです。外部アカウントとの連携、会員データの収集、決済、正式入団審査は実装していません。</p>
 </section></main>
-<footer><strong>MOSHIMATION ORDER</strong><p>FIRST CALLER — POLICE HORITIUS</p><p>WE CALL EVEN A WORLD THAT DOES NOT ANSWER.</p><p>Creative fictional society & community project. No affiliation with historical fraternal organizations.</p><p>FOUNDING DATE — 2026.11.30</p><p>© 2026 MOSHIMATION ORDER — PUBLIC SITE CANDIDATE V3</p></footer>
+<footer><strong>MOSHIMATION ORDER</strong><p>FIRST CALLER — POLICE HORITIUS</p><p>WE CALL EVEN A WORLD THAT DOES NOT ANSWER.</p><p>Creative fictional society & community project. No affiliation with historical fraternal organizations.</p><p>FOUNDING DATE — 2026.11.30</p><p>© 2026 MOSHIMATION ORDER — PUBLIC SITE CANDIDATE V3</p><p><button type="button" class="tg-replay" id="tgReplay">TRANSMISSION GATE をもう一度</button></p></footer>
 <script>
 (function(){const form=document.getElementById('termForm'),input=document.getElementById('code'),screen=document.getElementById('screen');form.addEventListener('submit',function(e){e.preventDefault();const value=input.value.trim();const p=document.createElement('p');p.textContent='> RECEIVED: '+(value||'(EMPTY)');screen.appendChild(p);const a=document.createElement('p');a.className='green';a.textContent=value.replace(/[\s　]/g,'')==='もしもし'?' > ACCESS GRANTED — もしもし。通信を確認した。':'> SIGNAL NOT RECOGNIZED — 認証語は「もしもし」。';screen.appendChild(a);input.value='';screen.scrollIntoView({behavior:'smooth',block:'nearest'});});const toggle=document.getElementById('mobileToggle'),menu=document.getElementById('mobileMenu');if(toggle&&menu){toggle.addEventListener('click',function(){const open=menu.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'メニューを閉じる':'メニューを開く');});menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',function(){menu.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','メニューを開く');}));}})();
 
@@ -1849,6 +1902,212 @@ if(status)status.textContent='● LINE SEALED';
   render();
 })();
 /* === /MO-ADD8 === */
+</script>
+
+
+<script>
+/* === MO-ADD9 2026-11-27 : TRANSMISSION GATE — opening tuning ritual (additions only) === */
+(function () {
+  'use strict';
+  var gate = document.getElementById('tgGate');
+  if (!gate) return;
+  var KEY = 'mo-gate-passed-v1';
+  var TARGET = 11.30, LOCK = 0.05;
+  var reduced = false;
+  try { reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+  var SCAN_MS = reduced ? 350 : 1600;
+
+  var phaseEl = document.getElementById('tgPhase');
+  var freqEl = document.getElementById('tgFreq');
+  var meterEl = document.getElementById('tgMeter');
+  var scanBox = document.getElementById('tgScanBox');
+  var tuneBox = document.getElementById('tgTune');
+  var lockedBox = document.getElementById('tgLocked');
+  var dial = document.getElementById('tgDial');
+  var hintEl = document.getElementById('tgHint');
+  var canvas = document.getElementById('tgNoise');
+  var nctx = null;
+  try { nctx = canvas ? canvas.getContext('2d') : null; } catch (e) {}
+
+  var phase = 'idle'; /* idle | scan | tune | locked | closed */
+  var freqC = 1042;   /* centi-MHz */
+  var soundOn = false;
+  var scanTick = null, scanTimer = null, noiseTick = null, closeTimer = null;
+  var actx = null, noiseGain = null;
+
+  function storePassed() { try { sessionStorage.setItem(KEY, '1'); } catch (e) {} }
+  function hasPassed() { try { return sessionStorage.getItem(KEY) === '1'; } catch (e) { return false; } }
+  function clearPassed() { try { sessionStorage.removeItem(KEY); } catch (e) {} }
+
+  function freq() { return freqC / 100; }
+  function dist() { return Math.abs(freq() - TARGET); }
+  function level() {
+    if (phase === 'scan') return 1;
+    if (phase === 'locked' || phase === 'closed' || phase === 'idle') return 0;
+    var l = dist() / 0.55;
+    return l < 0 ? 0 : (l > 1 ? 1 : l);
+  }
+
+  function drawNoise() {
+    if (!nctx || !canvas) return;
+    var lv = level();
+    var w = canvas.width, h = canvas.height;
+    var img = nctx.createImageData(w, h);
+    var d = img.data;
+    for (var i = 0; i < d.length; i += 4) {
+      var v = Math.random() * 255 * lv;
+      d[i] = v; d[i + 1] = v * 0.92; d[i + 2] = v * 0.7; d[i + 3] = 255;
+    }
+    nctx.putImageData(img, 0, 0);
+    canvas.style.opacity = String(0.12 + 0.78 * lv);
+    if (noiseGain) { try { noiseGain.gain.value = soundOn ? 0.1 * lv : 0; } catch (e) {} }
+  }
+  function startNoise() {
+    if (noiseTick) return;
+    drawNoise();
+    noiseTick = setInterval(drawNoise, reduced ? 420 : 90);
+  }
+  function stopNoise() {
+    if (noiseTick) { clearInterval(noiseTick); noiseTick = null; }
+    if (noiseGain) { try { noiseGain.gain.value = 0; } catch (e) {} }
+  }
+
+  function render() {
+    freqEl.textContent = freq().toFixed(2);
+    var dd = dist();
+    var bars = phase === 'locked' ? 5 : Math.max(0, 5 - Math.floor(dd / 0.14));
+    var chars = ['▁', '▂', '▃', '▅', '▇'], s = '';
+    for (var i = 0; i < 5; i++) s += i < bars ? chars[i] : '▁';
+    meterEl.textContent = s;
+    if (phase === 'tune') {
+      hintEl.textContent = dd > 0.35 ? 'ノイズが強い…周波数を探せ。' : (dd > 0.12 ? '何か聞こえる。近い。' : '―― その声だ。合わせきれ。');
+    }
+  }
+
+  function beep() {
+    if (!actx || !soundOn) return;
+    try {
+      var o = actx.createOscillator(), g = actx.createGain();
+      o.frequency.value = 880; g.gain.value = 0.06;
+      o.connect(g); g.connect(actx.destination);
+      o.start();
+      g.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime + 0.5);
+      o.stop(actx.currentTime + 0.55);
+    } catch (e) {}
+  }
+  function initAudio() {
+    if (actx) return;
+    try {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      actx = new AC();
+      var len = Math.floor(actx.sampleRate * 1.2), buf = actx.createBuffer(1, len, actx.sampleRate), ch = buf.getChannelData(0);
+      for (var i = 0; i < len; i++) ch[i] = Math.random() * 2 - 1;
+      var srcNode = actx.createBufferSource();
+      srcNode.buffer = buf; srcNode.loop = true;
+      noiseGain = actx.createGain(); noiseGain.gain.value = 0;
+      srcNode.connect(noiseGain); noiseGain.connect(actx.destination);
+      srcNode.start();
+    } catch (e) { actx = null; noiseGain = null; }
+  }
+
+  function doLock() {
+    if (phase !== 'tune') return;
+    phase = 'locked';
+    phaseEl.textContent = 'SIGNAL LOCKED';
+    tuneBox.hidden = true;
+    lockedBox.hidden = false;
+    render();
+    drawNoise();
+    beep();
+  }
+  function checkLock() {
+    if (phase === 'tune' && dist() <= LOCK + 1e-9) doLock();
+  }
+  function setFreq(c) {
+    freqC = Math.max(1000, Math.min(1200, Math.round(c)));
+    if (dial) dial.value = String(freqC);
+    render();
+    checkLock();
+  }
+
+  function toTune() {
+    if (phase !== 'scan') return;
+    if (scanTick) { clearInterval(scanTick); scanTick = null; }
+    if (scanTimer) { clearTimeout(scanTimer); scanTimer = null; }
+    phase = 'tune';
+    phaseEl.textContent = 'TUNING';
+    scanBox.hidden = true;
+    tuneBox.hidden = false;
+    freqC = dial ? parseInt(dial.value, 10) || 1042 : 1042;
+    render();
+  }
+
+  function closeGate() {
+    if (phase === 'closed') return;
+    phase = 'closed';
+    storePassed();
+    if (scanTick) { clearInterval(scanTick); scanTick = null; }
+    if (scanTimer) { clearTimeout(scanTimer); scanTimer = null; }
+    stopNoise();
+    document.body.style.overflow = '';
+    if (reduced) {
+      gate.classList.remove('tg-on');
+    } else {
+      gate.classList.add('tg-out');
+      closeTimer = setTimeout(function () {
+        gate.classList.remove('tg-on');
+        gate.classList.remove('tg-out');
+      }, 650);
+    }
+  }
+
+  function showGate() {
+    if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+    gate.classList.remove('tg-out');
+    phase = 'scan';
+    phaseEl.textContent = 'SCANNING';
+    scanBox.hidden = false;
+    tuneBox.hidden = true;
+    lockedBox.hidden = true;
+    gate.classList.add('tg-on');
+    document.body.style.overflow = 'hidden';
+    startNoise();
+    scanTick = setInterval(function () {
+      freqEl.textContent = (10 + Math.random() * 2).toFixed(2);
+    }, reduced ? 160 : 80);
+    scanTimer = setTimeout(toTune, SCAN_MS);
+  }
+
+  /* --- controls --- */
+  document.getElementById('tgSkip').addEventListener('click', toTune);
+  document.getElementById('tgBypass').addEventListener('click', closeGate);
+  document.getElementById('tgEnter').addEventListener('click', closeGate);
+  if (dial) dial.addEventListener('input', function () { setFreq(parseInt(dial.value, 10) || 1000); });
+  document.getElementById('tgDown').addEventListener('click', function () { setFreq(freqC - 1); });
+  document.getElementById('tgUp').addEventListener('click', function () { setFreq(freqC + 1); });
+  var soundBtn = document.getElementById('tgSound');
+  soundBtn.addEventListener('click', function () {
+    soundOn = !soundOn;
+    if (soundOn) { initAudio(); if (actx && actx.state === 'suspended') actx.resume(); }
+    soundBtn.textContent = 'SOUND: ' + (soundOn ? 'ON' : 'OFF');
+    drawNoise();
+  });
+  var replayBtn = document.getElementById('tgReplay');
+  if (replayBtn) replayBtn.addEventListener('click', function () {
+    clearPassed();
+    try { window.scrollTo(0, 0); } catch (e) {}
+    if (dial) dial.value = '1042';
+    freqC = 1042;
+    showGate();
+  });
+
+  /* --- entry decision: no gate on anchor links or after passing in this session --- */
+  var hasHash = false;
+  try { hasHash = !!(window.location && window.location.hash); } catch (e) {}
+  if (!hasHash && !hasPassed()) showGate();
+})();
+/* === /MO-ADD9 === */
 </script>
 
 </body></html>
