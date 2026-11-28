@@ -366,6 +366,22 @@
 .ob-replay:hover{color:#d4ae64}
 @media (prefers-reduced-motion: reduce){.ob-gate.ob-out{transition:none}.ob-flicker{animation:none}.ob-caret{animation:none}.ob-bar{transition:none}.ob-shake{animation:none}}
 /* === /MO-ADD10 CSS === */
+
+/* === MO-ADD11 2026-11-28 : WORLD TRANSMISSION (additions only) === */
+#world-transmission .bl-body{min-height:0}
+.wt-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 14px}
+.wt-tab{border:1px solid #5b4c31;background:#0a0a09;color:#b6a788;padding:9px 14px;font:600 12px 'Space Mono',monospace;letter-spacing:.12em;cursor:pointer}
+.wt-tab:hover{border-color:#b18a45;color:#edd08f}
+.wt-tab[aria-selected="true"]{background:#d4ae64;color:#14120c;border-color:#d4ae64;font-weight:700}
+.wt-tab:focus-visible{outline:2px solid #f7df9b;outline-offset:2px}
+.wt-panel{border:1px solid #5b4c31;background:#060707;padding:22px}
+.wt-call{font:700 clamp(26px,5vw,40px) 'Noto Serif JP',serif;color:#f1d39c;letter-spacing:.06em;line-height:1.4}
+.wt-read{font:13px 'Space Mono',monospace;color:#cfb47e;letter-spacing:.14em;margin-top:8px}
+.wt-note{color:#ded3bb;font-size:14px;line-height:2;margin-top:10px}
+.wt-meta{font:10px 'Space Mono',monospace;color:#9e8b66;letter-spacing:.16em;margin-top:14px}
+.wt-founding{display:none;margin-top:16px;border:1px dashed #846b3a;color:#edd08f;font-size:13px;line-height:2;padding:14px 18px;background:#0a0805}
+.wt-founding.wt-on{display:block}
+/* === /MO-ADD11 CSS === */
 </style>
 </head>
 <body><div class="mo-scan" aria-hidden="true"></div>
@@ -759,6 +775,19 @@
 <article class="mission-card"><span class="eyebrow">MISSION / 004</span><h3>THE SIGNAL ARCHIVE</h3><p>許可を得た名言、迷言、交流の記録をアーカイブ化する。引用・公開前の同意を重視する。</p><small>STATUS: PROPOSED</small></article>
 </div><div class="mission-notice">中央通信局の活動計画は構想段階です。実施日・担当者・参加人数は現時点で確定していません。</div>
 <a class="section-jump" href="#join">参加方法を見る ↗</a></section>
+<section class="section" id="world-transmission">
+<div class="sectionhead"><span class="num">WT /</span><h2>WORLD TRANSMISSION<small>世界の呼びかけ｜世界回線帳</small></h2><div class="goldline"></div></div>
+<p class="chapter-intro">MISSION 002「WORLD TRANSMISSION」の第一歩として、中央通信局は世界の回線の呼びかけをここに記録する。電話に出たとき、世界はそれぞれの言葉で「声が届いているか」を確かめている。国を選ぶと、その回線の呼びかけが開く。――呼びかける自由は、どの言語でも奪えない。</p>
+<div class="bl-shell" id="wtApp">
+<div class="bl-top"><strong>◈ WORLD TRANSMISSION / MO-WT</strong><span class="bl-status" id="wtStatus">● LINES OPEN</span></div>
+<div class="bl-stage">WORLD LINE LEDGER — 世界回線帳 ／ 国を選ぶと、その回線の呼びかけが開く</div>
+<div class="bl-body">
+<div class="wt-tabs" id="wtTabs" role="tablist" aria-label="世界の回線"></div>
+<div class="wt-panel" id="wtPanel" role="tabpanel" aria-live="polite"></div>
+<div class="wt-founding" id="wtFounding">本日、2026年11月30日。MOSHIMATION ORDER 創立の日。世界のすべての回線へ告げる。呼びかけは、今日も届いている。回線は開かれた。――中央通信局</div>
+</div>
+<div class="bl-ribbon">[ WORLD TRANSMISSION NOTICE ] この回線帳はブラウザー内で完結します。選択内容の送信・保存は行いません。掲載の呼びかけは、各国で一般的に使われている電話の挨拶です。</div>
+</div></section>
 <section class="section" id="faq">
 <div class="sectionhead"><span class="num">09 /</span><h2>FREQUENTLY ASKED<small>入団・通信に関するFAQ</small></h2><div class="goldline"></div></div>
 <div class="faq">
@@ -2181,6 +2210,93 @@ if(status)status.textContent='● LINE SEALED';
   if (!hasHash && !hasPassed()) showGate();
 })();
 /* === /MO-ADD10 === */
+</script>
+<script>
+/* === MO-ADD11 2026-11-28 : WORLD TRANSMISSION — world greeting line ledger (additions only) === */
+(function () {
+  'use strict';
+  var tabsEl = document.getElementById('wtTabs');
+  if (!tabsEl) return;
+  var panelEl = document.getElementById('wtPanel');
+  var foundingEl = document.getElementById('wtFounding');
+  var statusEl = document.getElementById('wtStatus');
+
+  /* 世界の電話の呼びかけ（一般的な挨拶）。原語表記＋読み＋一言メモ。 */
+  var LINES = [
+    { country: '日本', en: 'JAPAN', call: 'もしもし', read: 'モシモシ', note: '本結社の認証語そのもの。まず声が届いているかを確かめる、日本の呼びかけ。' },
+    { country: 'アメリカ', en: 'UNITED STATES', call: 'Hello?', read: 'ハロー', note: '電話の普及とともに広まった、英語圏の標準の呼びかけ。米国回線は本結社の米国局長が管轄する。' },
+    { country: 'フランス', en: 'FRANCE', call: 'Allô ?', read: 'アロ', note: '英語の Hello が海を渡り、フランスの回線に根づいた形とされる。' },
+    { country: 'ドイツ', en: 'GERMANY', call: 'Hallo?', read: 'ハロ', note: 'ドイツでは呼びかけとともに名を名乗るのが流儀。短く、確かに名乗り合う回線。' },
+    { country: 'イタリア', en: 'ITALY', call: 'Pronto?', read: 'プロント', note: '意味は「用意ができた」。受ける側の準備が整ったことを告げる、珍しい呼びかけ。' },
+    { country: 'スペイン', en: 'SPAIN', call: '¿Diga?', read: 'ディガ', note: '「どうぞ、話してください」の意。相手に先に話すよう促す呼びかけ。' },
+    { country: 'ブラジル', en: 'BRAZIL', call: 'Alô?', read: 'アロ', note: 'ポルトガル語圏の呼びかけ。フランスの Allô と同じ系譜を引く響き。' },
+    { country: 'ロシア', en: 'RUSSIA', call: 'Алло?', read: 'アッロ', note: 'ロシアでも「アロ」。呼びかけの響きは、国境を越えて似ていく。' },
+    { country: '中国', en: 'CHINA', call: '喂？', read: 'ウェイ（Wéi）', note: '「もしもし」に最も近いとされる、中国語の呼びかけ。声が届いたか確かめる短い一音。' },
+    { country: '韓国', en: 'KOREA', call: '여보세요?', read: 'ヨボセヨ', note: 'もとは「こちらを見てください」の意とされる。丁寧な呼びかけが回線を開く。' },
+    { country: 'ハンガリー', en: 'HUNGARY', call: 'Halló?', read: 'ハロ', note: '「聞こえる」に由来するとされる、ハンガリーの呼びかけ。聞こえるか、と問う心は同じ。' },
+    { country: 'トルコ', en: 'TURKEY', call: 'Alo?', read: 'アロ', note: 'トルコでも「アロ」。大陸を越えて届く、同じ響きの呼びかけ。' }
+  ];
+
+  function todayKey() {
+    var m = /[?&]date=(\d{4})-(\d{2})-(\d{2})/.exec(window.location.search || '');
+    if (m) return m[1] + '-' + m[2] + '-' + m[3];
+    var now = new Date();
+    var jst = new Date(now.getTime() + (now.getTimezoneOffset() + 540) * 60000);
+    function p(n) { return (n < 10 ? '0' : '') + n; }
+    return jst.getFullYear() + '-' + p(jst.getMonth() + 1) + '-' + p(jst.getDate());
+  }
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+
+  var tabBtns = [];
+  function render(i) {
+    var L = LINES[i];
+    panelEl.textContent = '';
+    var call = document.createElement('div');
+    call.className = 'wt-call';
+    call.textContent = L.call;
+    var read = document.createElement('div');
+    read.className = 'wt-read';
+    read.textContent = 'READING — ' + L.read;
+    var note = document.createElement('p');
+    note.className = 'wt-note';
+    note.textContent = L.note;
+    var meta = document.createElement('div');
+    meta.className = 'wt-meta';
+    meta.textContent = 'LINE ' + pad2(i + 1) + ' / ' + pad2(LINES.length) + ' — ' + L.en;
+    panelEl.appendChild(call);
+    panelEl.appendChild(read);
+    panelEl.appendChild(note);
+    panelEl.appendChild(meta);
+    panelEl.setAttribute('aria-label', L.country + 'の呼びかけ: ' + L.call);
+  }
+  function select(i) {
+    tabBtns.forEach(function (b, j) {
+      b.setAttribute('aria-selected', j === i ? 'true' : 'false');
+      b.setAttribute('tabindex', j === i ? '0' : '-1');
+    });
+    render(i);
+  }
+  LINES.forEach(function (L, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'wt-tab';
+    b.id = 'wtTab' + i;
+    b.setAttribute('role', 'tab');
+    b.setAttribute('aria-controls', 'wtPanel');
+    b.textContent = L.country;
+    b.addEventListener('click', function () { select(i); });
+    tabsEl.appendChild(b);
+    tabBtns.push(b);
+  });
+  select(0);
+
+  /* 2026-11-30 創立日フック: 記念の一文を追加表示する（「第一声」とは名乗らない） */
+  if (todayKey() === '2026-11-30') {
+    if (foundingEl) foundingEl.classList.add('wt-on');
+    if (statusEl) statusEl.textContent = '● FOUNDING DAY — 2026.11.30';
+  }
+})();
+/* === /MO-ADD11 === */
 </script>
 
 </body></html>
